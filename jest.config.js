@@ -29,7 +29,7 @@ module.exports = {
     "^.+\\.svg$": "<rootDir>/__mocks__/fileMock.js", // svg to fileMock
 
     // Handle module aliases
-    "^@/components/(.*)$": "<rootDir>/src/components/1$",
+    "^@/(.*)$": "<rootDir>/src/$1",
   },
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
