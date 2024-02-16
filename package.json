@@ -1,0 +1,39 @@
+{
+  "name": "instagram__clone__coding",
+  "description": "I'm going to start the instagram clone coding project for practicing TDD methodology.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ksheyon123/instagram__with__tdd.git"
+  },
+  "keywords": [
+    "instagram",
+    "clonecoding",
+    "tdd"
+  ],
+  "author": "KangSeohyeon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ksheyon123/instagram__with__tdd/issues"
+  },
+  "homepage": "https://github.com/ksheyon123/instagram__with__tdd#readme",
+  "dependencies": {
+    "@nextui-org/react": "^2.2.9",
+    "framer-motion": "^11.0.5",
+    "next": "^14.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.19",
+    "@types/react": "^18.2.55"
+  }
+}

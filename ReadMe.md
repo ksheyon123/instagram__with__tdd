@@ -7,3 +7,9 @@ TDD methodology is the most interesting item I've been interested in since I sta
 It seems like abolutely by reducing the bug, increasing the productivity, etc...
 
 And finally, I had time to practice it.
+
+### Setup
+
+- Nextjs 14
+- NextUI
+- Typescript
