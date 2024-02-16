@@ -1,1 +1,5 @@
 /node_modules
+/.next
+
+# Coverage is created after run the yarn test
+/coverage
