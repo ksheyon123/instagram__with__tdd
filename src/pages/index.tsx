@@ -1,9 +1,10 @@
-import { Input } from "@/components/common/Input";
+import { LoginForm } from "@/components/Login/LoginForm";
+
 const Home: React.FC = () => {
+  const onClick = () => {};
   return (
     <div>
-      Home
-      <Input value="" onChange={() => {}} />
+      <LoginForm />
     </div>
   );
 };
