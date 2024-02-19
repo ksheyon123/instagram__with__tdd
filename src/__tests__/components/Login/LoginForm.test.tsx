@@ -1,7 +1,6 @@
 import { render, fireEvent, getByText, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { LoginForm } from "@/components/Login/LoginForm";
-import exp from "constants";
 
 describe("LoginForm Component Login logic integration test", () => {
   it("when the user insert the user email", () => {
@@ -25,4 +24,6 @@ describe("LoginForm Component Login logic integration test", () => {
       expect(errorMsg).toBeInTheDocument();
     });
   });
+
+  it("when the user try to login with wrong passward", () => {});
 });

@@ -4,6 +4,7 @@ import { Input } from "../common/Input";
 
 const LoginForm: React.FC = () => {
   const [input, setInput] = useState<string>("");
+  const [pw, setPw] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
   const onChange = (e) => {
     setInput(e.target.value);
@@ -24,7 +25,13 @@ const LoginForm: React.FC = () => {
       <Input
         placeholder="전화번호, 사용자 이름 혹은 이메일"
         value={input}
-        onChange={onChange}
+        onChange={(e) => setInput(e.target.value)}
+        errorMsg={errorMsg}
+      />
+      <Input
+        placeholder="비밀번호"
+        value={pw}
+        onChange={(e) => setPw(e.target.value)}
         errorMsg={errorMsg}
       />
       <Button name="Login" onClick={onClick} />
