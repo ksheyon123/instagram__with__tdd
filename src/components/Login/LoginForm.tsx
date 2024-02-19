@@ -1,40 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button } from "../common/Button";
-import { Input } from "../common/Input";
+import { SDKContext } from "@/contexts/SDKContext";
 
 const LoginForm: React.FC = () => {
-  const [input, setInput] = useState<string>("");
-  const [pw, setPw] = useState<string>("");
-  const [errorMsg, setErrorMsg] = useState<string>("");
-  const onChange = (e) => {
-    setInput(e.target.value);
+  const { fb } = useContext(SDKContext);
+  const login = async () => {
+    const result = await (fb as any).login();
+    console.log(result);
   };
-
-  const validate = (input) => {
-    if (!input) return 404;
-    return 200;
-  };
-  const onClick = () => {
-    const isValid = validate(input);
-    if (isValid !== 200) {
-      return setErrorMsg("There is no user input");
-    }
+  const go = async () => {
+    (fb as any).api("/me", { fields: "name, email" }, function (response) {
+      console.log(response);
+    });
   };
   return (
-    <div>
-      <Input
-        placeholder="전화번호, 사용자 이름 혹은 이메일"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        errorMsg={errorMsg}
-      />
-      <Input
-        placeholder="비밀번호"
-        value={pw}
-        onChange={(e) => setPw(e.target.value)}
-        errorMsg={errorMsg}
-      />
-      <Button name="Login" onClick={onClick} />
+    <div className="py-2">
+      <Button name="Login with Instagram" onClick={login} />
+      <Button name="Login with Instagram" onClick={go} />
     </div>
   );
 };

@@ -3,27 +3,11 @@ import "@testing-library/jest-dom";
 import { LoginForm } from "@/components/Login/LoginForm";
 
 describe("LoginForm Component Login logic integration test", () => {
-  it("when the user insert the user email", () => {
-    const PLACEHOLDER = "전화번호, 사용자 이름 혹은 이메일";
-    const USER_EMAIL = "test@test.com";
-    const { getByPlaceholderText, getByDisplayValue } = render(<LoginForm />);
-    const input = getByPlaceholderText(PLACEHOLDER);
-    fireEvent.change(input, { target: { value: USER_EMAIL } });
-    const inputWithValue = getByDisplayValue(USER_EMAIL);
-    expect(inputWithValue).toBeInTheDocument();
-  });
-
-  it("when the user click button without user input", () => {
-    const ERROR_MSG = "There is no user input";
+  it("User click the instagram social login btn", () => {
+    const BUTTON_NAME = "Login with Instagram";
     const { getByText } = render(<LoginForm />);
-    const button = getByText("Login");
-    fireEvent.click(button);
-
-    waitFor(() => {
-      const errorMsg = getByText(ERROR_MSG);
-      expect(errorMsg).toBeInTheDocument();
-    });
+    const component = getByText(BUTTON_NAME);
   });
 
-  it("when the user try to login with wrong passward", () => {});
+  it("User redirect to current page after open auth 2.0", () => {});
 });
