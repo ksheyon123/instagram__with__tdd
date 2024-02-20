@@ -1,7 +1,7 @@
 const PATHNAME = {
-  SIGN_IN: "/sign-in",
-  SIGN_UP: "/sign-up",
-  LOGGED_IN: "/logged-in",
+  SIGN_IN: "/signin",
+  SIGN_UP: "/signup",
+  LOGGED_IN: "/loggedin",
 };
 
 const ERROR_CODE = {};
