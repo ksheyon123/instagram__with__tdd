@@ -1,4 +1,6 @@
 import { NextMiddleware, NextRequest, NextResponse } from "next/server";
+import { PATHNAME } from "@/constants/index";
+import { cookies } from "next/headers";
 
 const keys = Object.keys(PATHNAME).filter(
   (el) => el !== "SIGN_IN" && el !== "SIGN_UP"
@@ -6,11 +8,10 @@ const keys = Object.keys(PATHNAME).filter(
 const allPaths = Object.values(PATHNAME);
 
 const middleware: NextMiddleware = (request) => {
-  console.log("Request", request.nextUrl.pathname);
   const res = NextResponse.next();
+
+  // If the user access to the wrong path, redirect them to the SIGN_IN page.
   if (!allPaths.some((el) => el === request.nextUrl.pathname)) {
-    console.log("Main Middleware", request.nextUrl.pathname);
-    // If the user access to the wrong path, redirect them to the SIGN_IN page.
     return NextResponse.redirect(new URL(PATHNAME.SIGN_IN, request.url));
   }
 

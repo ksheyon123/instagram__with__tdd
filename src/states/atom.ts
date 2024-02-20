@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
 export const jwtState = atom({
-  key: "jwtAtom",
+  key: "jwtStateAtom",
   default: "",
 });

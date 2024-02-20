@@ -1,6 +1,6 @@
 import { LoginForm } from "@/components/Login/LoginForm";
 
-const Home: React.FC = () => {
+const SignIn: React.FC = () => {
   const onClick = () => {};
   return (
     <div>
@@ -9,4 +9,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default SignIn;

@@ -6,7 +6,7 @@ const LoginForm: React.FC = () => {
   const login = async () => {
     const qs = new URLSearchParams({
       client_id: "1367563664130376",
-      redirect_uri: "http://localhost:3000",
+      redirect_uri: "http://localhost:3000/signin",
       state: "1234",
     });
     router.push(`https://www.facebook.com/v19.0/dialog/oauth?${qs}`);
