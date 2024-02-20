@@ -3,8 +3,7 @@ const get = async (domain: string, params = {}, headers = {}) => {
   const initHeaders: HeadersInit = {
     ...headers,
   };
-  console.log(`${domain}?${qs}`);
-  const rsp = await fetch(`${domain}?${qs}`, {
+  const rsp = await fetch(`${domain}${qs ? `?${qs}` : ""} `, {
     method: "GET",
     headers: {
       ...initHeaders,

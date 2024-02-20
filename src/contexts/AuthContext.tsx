@@ -1,5 +1,5 @@
 import { PATHNAME } from "@/constants";
-import { jwtState } from "@/states/atom";
+import { jwtStateAtom } from "@/states/atom";
 import { ChildrenProps } from "@/types/types";
 import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
@@ -11,7 +11,7 @@ export const AuthContextProvider = ({ children }: ChildrenProps) => {
   const router = useRouter();
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
-  const setJwt = useSetRecoilState(jwtState);
+  const setJwt = useSetRecoilState(jwtStateAtom);
 
   useEffect(() => {
     console.log("Before Mounted");
@@ -28,6 +28,7 @@ export const AuthContextProvider = ({ children }: ChildrenProps) => {
   const getJwt = () => {
     const params = window.location.search;
     const code = new URLSearchParams(params).get("code");
+    console.log(code);
     if (code) {
       router.push(PATHNAME.LOGGED_IN);
       setJwt(code);

@@ -4,4 +4,4 @@
 # Coverage is created after run the yarn test
 /coverage
 
-/.env
+/.env*
