@@ -2,6 +2,10 @@ import { render, fireEvent, getByText, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { LoginForm } from "@/components/Login/LoginForm";
 
+jest.mock("next/router", () => ({
+  useRouter: () => {},
+}));
+
 describe("LoginForm Component Login logic integration test", () => {
   it("User click the instagram social login btn", () => {
     const BUTTON_NAME = "Login with Instagram";
