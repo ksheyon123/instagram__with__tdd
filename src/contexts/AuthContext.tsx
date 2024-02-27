@@ -1,9 +1,10 @@
+import { getAccessToken } from "@/apis/api";
 import { PATHNAME } from "@/constants";
-import { jwtStateAtom } from "@/states/atom";
+import { jwtAtom } from "@/states/atom";
 import { ChildrenProps } from "@/types/types";
+import { useAtomValue, useSetAtom } from "jotai";
 import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
 
 export const AuthContext = createContext({});
 
@@ -11,7 +12,7 @@ export const AuthContextProvider = ({ children }: ChildrenProps) => {
   const router = useRouter();
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
-  const setJwt = useSetRecoilState(jwtStateAtom);
+  const setJwt = useSetAtom(jwtAtom);
 
   useEffect(() => {
     console.log("Before Mounted");
@@ -25,13 +26,13 @@ export const AuthContextProvider = ({ children }: ChildrenProps) => {
     }
   }, [isMounted]);
 
-  const getJwt = () => {
+  const getJwt = async () => {
     const params = window.location.search;
     const code = new URLSearchParams(params).get("code");
-    console.log(code);
     if (code) {
+      const data = await getAccessToken(code);
       router.push(PATHNAME.LOGGED_IN);
-      setJwt(code);
+      setJwt(data);
     }
   };
   return <AuthContext.Provider value={{}}>{children}</AuthContext.Provider>;

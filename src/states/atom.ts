@@ -1,6 +1,3 @@
-import { atom } from "recoil";
+import { atom } from "jotai";
 
-export const jwtStateAtom = atom({
-  key: "jwtStateAtom",
-  default: "",
-});
+export const jwtAtom = atom<string>("");

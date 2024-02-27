@@ -13,9 +13,7 @@ const FB_PREFIX = "graph";
 const FB_PATHNAME = "facebook.com";
 const FB_API_VERSION = "v19.0";
 
-const getAccessToken = async (access_token: string) => {
-  console.log(process.env.FACEBOOK_CLIENT_SECRET);
-  console.log(process.env.FACEBOOK_CLIENT_ID);
+const getAccessToken = async (code: string) => {
   //https://graph.facebook.com/v19.0/oauth/access_token?
   const data = await get(
     `https://${FB_PREFIX}.${FB_PATHNAME}/${FB_API_VERSION}${PATH.GET_ACCESS_TOKEN}`,
@@ -23,10 +21,11 @@ const getAccessToken = async (access_token: string) => {
       client_id: process.env.FACEBOOK_CLIENT_ID,
       client_secret: process.env.FACEBOOK_CLIENT_SECRET,
       redirect_uri: "http://localhost:3000/signin",
-      code: access_token,
+      code,
     }
   );
-  console.log(data);
+  const { access_token } = data;
+  return access_token;
 };
 const getAccounts = async (key: string) => {
   // https://graph.facebook.com/v19.0/me/accounts?access_token={access-token}
