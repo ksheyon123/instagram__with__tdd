@@ -10,7 +10,14 @@ const LoggedIn: React.FC = () => {
   };
   return (
     <div>
-      <List items={[]} child={<div>A</div>} />
+      <List
+        items={[]}
+        child={(d) =>
+          d.map((el) => {
+            return <div>a</div>;
+          })
+        }
+      />
     </div>
   );
 };

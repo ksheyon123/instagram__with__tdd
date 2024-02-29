@@ -7,5 +7,6 @@ export type ChildrenProps = {
 export type ListItem = {
   name: string;
   description?: string;
+  data?: any | any[];
   ChildComponent?: ReactElement;
 };
