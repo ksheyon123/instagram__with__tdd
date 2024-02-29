@@ -9,4 +9,5 @@ export type ListItem = {
   description?: string;
   data?: any | any[];
   ChildComponent?: ReactElement;
+  active?: boolean;
 };
