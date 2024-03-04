@@ -1,13 +1,13 @@
-import { ListItem } from "@/types/types";
-import { ReactElement, ReactNode } from "react";
+import { AccordionItem } from "@/types/types";
+import { ReactNode } from "react";
 
 interface IListProps {
-  items: ListItem[];
-  onClick?: (e: ListItem) => void;
+  items: AccordionItem[];
+  onClick?: (e: AccordionItem) => void;
   child?: (d: any) => ReactNode | ReactNode[];
 }
 
-export const List: React.FC<IListProps> = ({ items, onClick, child }) => {
+export const Accordion: React.FC<IListProps> = ({ items, onClick, child }) => {
   return (
     <div>
       {items.map((item, idx) => {

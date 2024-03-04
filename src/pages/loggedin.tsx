@@ -1,5 +1,5 @@
 import { getAccounts } from "@/apis/api";
-import { List } from "@/components/common/List";
+import { Accordion } from "@/components/common/Accordion";
 import { jwtAtom } from "@/states/atom";
 import { useAtom } from "jotai";
 
@@ -10,7 +10,7 @@ const LoggedIn: React.FC = () => {
   };
   return (
     <div>
-      <List
+      <Accordion
         items={[]}
         child={(d) =>
           d.map((el) => {

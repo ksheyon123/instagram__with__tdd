@@ -4,7 +4,7 @@ export type ChildrenProps = {
   children: ReactNode | ReactNode[];
 };
 
-export type ListItem = {
+export type AccordionItem = {
   name: string;
   description?: string;
   data?: any | any[];
