@@ -1,4 +1,4 @@
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Accordion } from "@/components/common/Accordion";
 import { AccordionItem } from "@/types/types";
@@ -7,14 +7,21 @@ const NAME1 = "1";
 const DESCRIPTION1 = "DESCRIPTION1";
 const NAME2 = "2";
 const DESCRIPTION2 = "DESCRIPTION2";
-let items: AccordionItem[] = [
-  { name: NAME1, description: DESCRIPTION1 },
-  { name: NAME2, description: DESCRIPTION2 },
-];
-const onClick = jest.fn((d) => {
-  const idx = items.findIndex((e) => e.name === d.name);
-  items[idx].active = true;
+let items: AccordionItem[] = [];
+
+beforeEach(() => {
+  items = [
+    { name: NAME1, description: DESCRIPTION1 },
+    { name: NAME2, description: DESCRIPTION2 },
+  ];
 });
+
+const onClick = (d) => {
+  const idx = items.findIndex((e) => e.name === d.name);
+  if (idx >= 0) {
+    items[idx].active = !items[idx]?.active;
+  }
+};
 
 describe("Accordion Component", () => {
   it("which render a number of items", () => {
@@ -23,33 +30,54 @@ describe("Accordion Component", () => {
     expect(component).toHaveLength(2);
   });
 
-  it("which is clicked the hidden child component is opened.", () => {
-    const c = render(<Accordion items={items} onClick={onClick} />);
-    const { getByText } = c;
-    const component = getByText(NAME1);
-    fireEvent.click(component);
-    c.rerender(<Accordion items={items} onClick={onClick} />);
-    const description1 = getByText(DESCRIPTION1);
+  it("which receives child component", () => {
+    const CHILD_COMPONENT = <div>{DESCRIPTION1}</div>;
+    const newItems = [{ name: NAME1, active: true, data: {} }];
+    const component = render(
+      <Accordion
+        items={newItems}
+        onClick={onClick}
+        child={(d) => CHILD_COMPONENT}
+      />
+    );
+    expect(component.getByText(DESCRIPTION1)).toBeInTheDocument();
+  });
+
+  it("which is clicked the hidden child component is opened.", async () => {
+    const component = render(<Accordion items={items} onClick={onClick} />);
+    const item = component.getAllByRole("listitem")[0];
+    fireEvent.click(item);
+
+    component.rerender(<Accordion items={items} onClick={onClick} />);
+    expect(item).toHaveClass("active");
+    const description1 = component.getByText(DESCRIPTION1);
     expect(description1).toBeInTheDocument();
   });
 
   it("if the user click the same item twice, it will be closed", () => {
-    const c = render(<Accordion items={items} onClick={onClick} />);
-    const { getAllByRole, getByText } = c;
-    const component = getAllByRole("listitem")[0];
-    const hiddenComponent = getByText(DESCRIPTION1);
-    expect(hiddenComponent).not.toBeInTheDocument();
-    fireEvent.click(component);
-    c.rerender(<Accordion items={items} onClick={onClick} />);
-    expect(hiddenComponent).toBeInTheDocument();
-    fireEvent.click(component);
-    c.rerender(<Accordion items={items} onClick={onClick} />);
-    expect(hiddenComponent).not.toBeInTheDocument();
+    const { rerender, getAllByRole, getByText } = render(
+      <Accordion items={items} onClick={onClick} />
+    );
+    const item = getAllByRole("listitem")[0];
+    expect(item).not.toHaveTextContent(DESCRIPTION1);
+
+    fireEvent.click(item);
+
+    rerender(<Accordion items={items} onClick={onClick} />);
+    expect(item).toHaveTextContent(DESCRIPTION1);
+
+    fireEvent.click(item);
+
+    rerender(<Accordion items={items} onClick={onClick} />);
+    expect(item).not.toHaveTextContent(DESCRIPTION1);
   });
 });
 
 describe("Accordion component with the remove button", () => {
-  const items = [{ name: "1" }];
+  let items = [{ name: "1" }];
+  const onRemove = () => {
+    items.shift();
+  };
 
   it("if the user click the btn, item will be removed.", () => {
     // const REMOVED_TXT = "removed txt";

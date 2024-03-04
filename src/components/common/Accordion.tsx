@@ -1,5 +1,5 @@
 import { AccordionItem } from "@/types/types";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 interface IListProps {
   items: AccordionItem[];
@@ -13,7 +13,11 @@ export const Accordion: React.FC<IListProps> = ({ items, onClick, child }) => {
       {items.map((item, idx) => {
         const { name, description, data, active } = item;
         return (
-          <div role="listitem" onClick={() => onClick(item)}>
+          <div
+            className={active && "active"}
+            role="listitem"
+            onClick={() => onClick(item)}
+          >
             <div>{name}</div>
             {active && description && <div>{description}</div>}
             {active && !!child && child(data)}

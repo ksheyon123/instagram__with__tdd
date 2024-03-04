@@ -5,3 +5,7 @@ export const loginValidate = (val: string) => {
   if (!reg.test(val)) return false;
   else return true;
 };
+
+export const findIdxByKey = (items, d, key) => {
+  const idx = items.findIndex((e) => e[key] === d[key]);
+};
