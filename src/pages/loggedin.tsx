@@ -1,5 +1,5 @@
 import { getAccounts } from "@/apis/api";
-import { Accordion } from "@/components/common/Accordion/Accordion";
+import { Comments } from "@/components/common/Comments";
 import { jwtAtom } from "@/states/atom";
 import { AccordionItem } from "@/types/types";
 import { useAtom } from "jotai";
@@ -20,18 +20,7 @@ const LoggedIn: React.FC = () => {
   };
   return (
     <div>
-      <Accordion
-        items={items}
-        onClick={(d) => {
-          console.log(d);
-          const idx = items.findIndex((e) => e.name === d.name);
-          console.log(idx);
-          if (idx >= 0) {
-            items[idx].active = !items[idx]?.active;
-            console.log(items);
-          }
-        }}
-      />
+      <Comments />
     </div>
   );
 };

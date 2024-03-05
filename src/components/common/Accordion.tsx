@@ -2,8 +2,8 @@ import { AccordionItem } from "@/types/types";
 import { ReactNode, useState } from "react";
 
 interface IListProps {
-  items: AccordionItem[];
-  onClick?: (e: AccordionItem) => void;
+  items: any[];
+  onClick?: (e: any) => void;
   mainComponent?: (d: any) => ReactNode | ReactNode[];
   childComponent?: (d: any) => ReactNode | ReactNode[];
 }
@@ -24,7 +24,7 @@ export const Accordion: React.FC<IListProps> = ({
             role="listitem"
             onClick={() => onClick(item)}
           >
-            <div>{!!mainComponent && mainComponent(item)}</div>
+            {!!mainComponent && mainComponent(item)}
             {active && !!childComponent && childComponent(item)}
           </div>
         );
