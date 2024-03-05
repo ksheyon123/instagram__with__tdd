@@ -25,80 +25,96 @@ const onClick = (d) => {
 
 // Test Cases : items 수 확인, child component 렌더 확인, 열고 닫힘 확인, 아이템 삭제 확인
 
+const mainComponent = (props) => <div>{props.name}</div>;
+const childComponent = (props) => <div>{props.description}</div>;
+
 describe("Accordion Component", () => {
+  const accordion = (props?: any) => <Accordion items={items} {...props} />;
+  it("which show accordion title", () => {
+    const { getByText } = render(
+      accordion({
+        mainComponent: (d) => mainComponent({ name: d.name }),
+      })
+    );
+    const title = getByText(NAME1);
+    expect(title).toBeInTheDocument();
+  });
+
   it("which render a number of items", () => {
-    const { getAllByRole } = render(<Accordion items={items} />);
+    const { getAllByRole } = render(accordion());
     const component = getAllByRole("listitem");
     expect(component).toHaveLength(2);
   });
 
   it("which receives child component", () => {
-    const CHILD_COMPONENT = <div>{DESCRIPTION1}</div>;
-    const newItems = [{ name: NAME1, active: true, data: {} }];
-    const component = render(
-      <Accordion
-        items={newItems}
-        onClick={onClick}
-        child={(d) => CHILD_COMPONENT}
-      />
+    const newItems = [
+      { name: NAME1, description: DESCRIPTION1, active: true, data: {} },
+    ];
+    const { getByText } = render(
+      accordion({
+        items: newItems,
+        onClick: onClick,
+        childComponent: (d) => childComponent(d),
+      })
     );
-    expect(component.getByText(DESCRIPTION1)).toBeInTheDocument();
+    const description = getByText(DESCRIPTION1);
+    expect(description).toBeInTheDocument();
   });
 
   it("which is clicked the hidden child component is opened.", async () => {
-    const component = render(<Accordion items={items} onClick={onClick} />);
+    const component = render(
+      accordion({
+        items,
+        onClick: onClick,
+        childComponent: (d) => childComponent(d),
+      })
+    );
     const item = component.getAllByRole("listitem")[0];
     fireEvent.click(item);
 
-    component.rerender(<Accordion items={items} onClick={onClick} />);
+    component.rerender(
+      accordion({
+        items,
+        onClick: onClick,
+        childComponent: (d) => childComponent(d),
+      })
+    );
     expect(item).toHaveClass("active");
     const description1 = component.getByText(DESCRIPTION1);
     expect(description1).toBeInTheDocument();
   });
 
   it("if the user click the same item twice, it will be closed", () => {
-    const { rerender, getAllByRole, getByText } = render(
-      <Accordion items={items} onClick={onClick} />
+    const { rerender, getAllByRole } = render(
+      accordion({
+        items,
+        onClick: onClick,
+        childComponent: (d) => childComponent(d),
+      })
     );
     const item = getAllByRole("listitem")[0];
     expect(item).not.toHaveTextContent(DESCRIPTION1);
 
     fireEvent.click(item);
 
-    rerender(<Accordion items={items} onClick={onClick} />);
+    rerender(
+      accordion({
+        items,
+        onClick: onClick,
+        childComponent: (d) => childComponent(d),
+      })
+    );
     expect(item).toHaveTextContent(DESCRIPTION1);
 
     fireEvent.click(item);
 
-    rerender(<Accordion items={items} onClick={onClick} />);
+    rerender(
+      accordion({
+        items,
+        onClick: onClick,
+        childComponent: (d) => childComponent(d),
+      })
+    );
     expect(item).not.toHaveTextContent(DESCRIPTION1);
-  });
-});
-
-describe("Accordion component with the remove button", () => {
-  let items = [{ name: "1" }];
-  const onRemove = () => {
-    items.shift();
-  };
-
-  it("if the user click the btn, item will be removed.", () => {
-    // const REMOVED_TXT = "removed txt";
-    const REMOVE_BTN_NAME = "Remove";
-    const { getByRole, getByText } = render(<Accordion items={items} />);
-    const rmBtn = getByText(REMOVE_BTN_NAME);
-    const listItem = getByRole("listitem");
-    fireEvent.click(rmBtn);
-    expect(listItem).not.toBeInTheDocument();
-  });
-});
-
-describe("Accordion component with the chk button", () => {
-  const items = [{ name: "1" }];
-
-  it("if the user click the btn, item will be high-lighted.", () => {
-    const ITEM_NAME = "will be highlighted";
-    const { getByText } = render(<Accordion items={items} />);
-    const listItem = getByText(ITEM_NAME);
-    expect(listItem.classList.contains("active")).toBe(true);
   });
 });

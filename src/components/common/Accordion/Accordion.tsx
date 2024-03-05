@@ -4,23 +4,28 @@ import { ReactNode, useState } from "react";
 interface IListProps {
   items: AccordionItem[];
   onClick?: (e: AccordionItem) => void;
-  child?: (d: any) => ReactNode | ReactNode[];
+  mainComponent?: (d: any) => ReactNode | ReactNode[];
+  childComponent?: (d: any) => ReactNode | ReactNode[];
 }
 
-export const Accordion: React.FC<IListProps> = ({ items, onClick, child }) => {
+export const Accordion: React.FC<IListProps> = ({
+  items,
+  onClick,
+  mainComponent,
+  childComponent,
+}) => {
   return (
     <div>
       {items.map((item, idx) => {
-        const { name, description, data, active } = item;
+        const { active } = item;
         return (
           <div
             className={active && "active"}
             role="listitem"
             onClick={() => onClick(item)}
           >
-            <div>{name}</div>
-            {active && description && <div>{description}</div>}
-            {active && !!child && child(data)}
+            <div>{!!mainComponent && mainComponent(item)}</div>
+            {active && !!childComponent && childComponent(item)}
           </div>
         );
       })}

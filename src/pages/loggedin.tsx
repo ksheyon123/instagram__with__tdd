@@ -1,5 +1,5 @@
 import { getAccounts } from "@/apis/api";
-import { Accordion } from "@/components/common/Accordion";
+import { Accordion } from "@/components/common/Accordion/Accordion";
 import { jwtAtom } from "@/states/atom";
 import { AccordionItem } from "@/types/types";
 import { useAtom } from "jotai";
