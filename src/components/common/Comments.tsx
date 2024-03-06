@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import { Accordion } from "./Accordion";
 import { Replies } from "./Replies";
+import { MoreButton } from "./MoreButton";
+import { Button } from "./Button";
+
+type CommentType = {
+  title: string | number;
+  data?: CommentType[];
+};
 
 export const Comments: React.FC = () => {
-  const [items, setItems] = useState<any[]>([
+  const [items, setItems] = useState<CommentType[]>([
     { title: "Comment1", data: [{ title: "Reply1" }] },
     { title: "Comment2", data: [{ title: "Reply2" }] },
   ]);
@@ -20,15 +27,35 @@ export const Comments: React.FC = () => {
       return newArr;
     });
   };
+
+  const onClickComment = async () => {};
   return (
     <Accordion
       items={items}
       onClick={onClick}
-      mainComponent={(d) => <div>{d.title}</div>}
+      mainComponent={(d) => <Comment {...d} onClick={onClickComment} />}
       childComponent={(d) => {
         const { data } = d;
         return <Replies items={data} />;
       }}
     />
+  );
+};
+
+interface ICommentProps extends CommentType {
+  onClick: MouseEventHandler<HTMLDivElement>;
+}
+
+const Comment: React.FC<ICommentProps> = ({ title }) => {
+  const buttons = [
+    <Button name="" onClick={() => {}} />,
+    <Button name="" onClick={() => {}} />,
+  ];
+
+  return (
+    <div>
+      {title}
+      <MoreButton buttons={buttons} />
+    </div>
   );
 };

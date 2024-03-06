@@ -6,7 +6,7 @@ import { Comments } from "@/components/common/Comments";
 const COMMENT1 = "Comment1";
 const REPLY1 = "Reply1";
 
-describe("Comment component", () => {
+describe("Comments component", () => {
   it("which shows title", () => {
     const { getByText } = render(<Comments />);
     const comment = getByText(COMMENT1);
