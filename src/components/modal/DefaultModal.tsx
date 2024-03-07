@@ -25,9 +25,9 @@ export const ModalWrapper: React.FC<IModalProps> = ({
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
       <ModalContent>
-        {!!header && header}
-        {!!body && body}
-        {!!footer && footer}
+        <ModalHeader>{!!header && header}</ModalHeader>
+        <ModalBody>{!!body && body}</ModalBody>
+        <ModalFooter>{!!footer && footer}</ModalFooter>
       </ModalContent>
     </Modal>
   );

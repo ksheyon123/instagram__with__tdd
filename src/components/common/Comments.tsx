@@ -6,14 +6,19 @@ import { Button } from "./Button";
 
 type CommentType = {
   title: string | number;
+  active?: boolean;
+  like?: boolean;
   data?: CommentType[];
 };
 
-export const Comments: React.FC = () => {
-  const [items, setItems] = useState<CommentType[]>([
-    { title: "Comment1", data: [{ title: "Reply1" }] },
-    { title: "Comment2", data: [{ title: "Reply2" }] },
-  ]);
+const comments = [
+  { title: "Comment1", data: [{ title: "Reply1" }] },
+  { title: "Comment2", data: [{ title: "Reply2" }] },
+];
+
+const Comments: React.FC = () => {
+  const [items, setItems] = useState<CommentType[]>(comments);
+
   const onClick = (d) => {
     setItems((prev: any[]) => {
       const idx = prev.findIndex((el) => el.title === d.title);
@@ -28,12 +33,33 @@ export const Comments: React.FC = () => {
     });
   };
 
-  const onClickComment = async () => {};
+  const fetchLike = async (d) => {
+    setItems((prev: any[]) => {
+      const idx = prev.findIndex((el) => el.title === d);
+      const newArr = prev
+        .slice(0, idx)
+        .concat({
+          ...prev[idx],
+          like: !prev[idx]?.like,
+        })
+        .concat(prev.slice(idx + 1));
+      return newArr;
+    });
+  };
+  const fetchRemove = async (d) => {
+    setItems((prev: any[]) => {
+      const idx = prev.findIndex((el) => el.title === d);
+      const newArr = prev.slice(0, idx).concat(prev.slice(idx + 1));
+      return newArr;
+    });
+  };
   return (
     <Accordion
       items={items}
       onClick={onClick}
-      mainComponent={(d) => <Comment {...d} onClick={onClickComment} />}
+      mainComponent={(d) => (
+        <Comment {...d} onClickLike={fetchLike} onClickRemove={fetchRemove} />
+      )}
       childComponent={(d) => {
         const { data } = d;
         return <Replies items={data} />;
@@ -43,19 +69,27 @@ export const Comments: React.FC = () => {
 };
 
 interface ICommentProps extends CommentType {
-  onClick: MouseEventHandler<HTMLDivElement>;
+  onClickLike: (data) => void;
+  onClickRemove: (data) => void;
 }
 
-const Comment: React.FC<ICommentProps> = ({ title }) => {
+const Comment: React.FC<ICommentProps> = ({
+  title,
+  like,
+  onClickLike,
+  onClickRemove,
+}) => {
   const buttons = [
-    <Button name="" onClick={() => {}} />,
-    <Button name="" onClick={() => {}} />,
+    <Button name="Like" onClick={() => onClickLike(title)} />,
+    <Button name="Remove" onClick={() => onClickRemove(title)} />,
   ];
 
   return (
-    <div>
-      {title}
+    <div className={`comment-container ${like ? "like" : ""}`}>
+      <div>{title}</div>
       <MoreButton buttons={buttons} />
     </div>
   );
 };
+
+export { Comments, Comment };
