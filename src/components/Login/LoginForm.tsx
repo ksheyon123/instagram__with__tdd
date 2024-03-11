@@ -1,4 +1,5 @@
 import { Button } from "../common/Button";
+import { BorderBox } from "../common/BorderBox";
 import { useRouter } from "next/router";
 
 const LoginForm: React.FC = () => {
@@ -22,9 +23,9 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="py-2">
+    <BorderBox>
       <Button name="Login with Instagram" onClick={login} />
-    </div>
+    </BorderBox>
   );
 };
 
