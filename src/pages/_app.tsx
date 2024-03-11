@@ -1,16 +1,23 @@
+import type { AppProps } from "next/app";
+
+import { Provider as JotaiProvider } from "jotai";
+import { NextUIProvider } from "@nextui-org/react";
+
 import { Layout } from "@/components/common/Layout";
 import { AuthContextProvider } from "@/contexts/AuthContext";
-import type { AppProps } from "next/app";
-import { Provider as JotaiProvider } from "jotai";
+
+import "@/styles/output.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <JotaiProvider>
-      <AuthContextProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </AuthContextProvider>
+      <NextUIProvider>
+        <AuthContextProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </AuthContextProvider>
+      </NextUIProvider>
     </JotaiProvider>
   );
 }

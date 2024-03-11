@@ -56,22 +56,18 @@ describe("More Btn in the Comments Component", () => {
   });
 
   it("click the remove btn", () => {
-    const { getByText, getAllByText } = render(<Comments />);
+    const { getByText, getAllByText, container } = render(<Comments />);
 
     const moreBtn = getAllByText(moreBtnName)[0];
     fireEvent.click(moreBtn);
 
+    // Before click the remove btn
+    expect(container.childNodes[0].childNodes).toHaveLength(2);
+
     const removeBtn = getByText(rmBtnName);
-    const comment1 = getByText(COMMENT1);
     fireEvent.click(removeBtn);
 
-    expect(comment1).toHaveLength(0);
+    // After click the remove btn
+    expect(container.childNodes[0].childNodes).toHaveLength(1);
   });
 });
-
-// describe("Comment component", () => {
-//   it("When the user clicked the like btn, it is high-lighted", () => {
-//     const{} = render(<></>)
-//   });
-//   it("When the user clicked the rm btn, item on the list is removed", () => {});
-// });
