@@ -13,3 +13,7 @@ And finally, I had time to practice it.
 - Nextjs 14
 - NextUI
 - Typescript
+
+### Tailwindcss compiler
+
+compile cli : `npx tailwindcss -i ./src/styles/input.css -o ./src/styles/output.css --watch`

@@ -1195,6 +1195,10 @@ video {
   width: var(--nextui-spacing-unit-8);
 }
 
+.w-\[100px\] {
+  width: 100px;
+}
+
 .min-w-10 {
   min-width: 2.5rem;
 }
@@ -2437,6 +2441,14 @@ video {
   padding-top: 0.5rem;
 }
 
+.pt-10 {
+  padding-top: 2.5rem;
+}
+
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -2511,9 +2523,9 @@ video {
   color: hsl(var(--nextui-danger) / var(--nextui-danger-opacity, var(--tw-text-opacity))) !important;
 }
 
-.text-\[\#000\] {
+.text-\[\#FFF\] {
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .text-background {
@@ -2664,11 +2676,6 @@ video {
 }
 
 .text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-\[\#FFF\] {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
@@ -5396,6 +5403,10 @@ video {
   opacity: var(--nextui-disabled-opacity);
 }
 
+.data-\[hover\=true\]\:opacity-100[data-hover=true] {
+  opacity: 1;
+}
+
 .data-\[hover\=true\]\:opacity-hover[data-hover=true] {
   opacity: var(--nextui-hover-opacity);
 }
@@ -5421,14 +5432,6 @@ video {
 }
 
 .data-\[visible\=true\]\:opacity-100[data-visible=true] {
-  opacity: 1;
-}
-
-.data-\[hover\=true\]\:opacity-90[data-hover=true] {
-  opacity: 0.9;
-}
-
-.data-\[hover\=true\]\:opacity-100[data-hover=true] {
   opacity: 1;
 }
 
