@@ -24,7 +24,12 @@ const LoginForm: React.FC = () => {
 
   return (
     <BorderBox>
-      <Button name="Login with Instagram" onClick={login} />
+      <div className="lg:block md:hidden sm:hidden">
+        <Button name="Login with Instagram" onClick={login} />
+      </div>
+      <div className="">
+        <Button name="Login with Instagram" onClick={login} />
+      </div>
     </BorderBox>
   );
 };
