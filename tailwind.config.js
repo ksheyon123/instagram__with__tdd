@@ -13,17 +13,9 @@ module.exports = {
       borderColor0: "rgb(219, 219, 219)",
     },
     screens: {
-      sm: "640px",
-      // => @media (min-width: 640px) { ... }
-
-      md: "768px",
-      // => @media (min-width: 768px) { ... }
-
-      lg: "1024px",
-      // => @media (min-width: 1024px) { ... }
-
-      xl: "1280px",
-      // => @media (min-width: 1280px) { ... }
+      sm: { min: "0px", max: "450px" },
+      md: { min: "451px", max: "875px" },
+      lg: { min: "876px" },
     },
   },
   darkMode: "class",

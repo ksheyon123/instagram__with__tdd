@@ -1,5 +1,5 @@
 import { Button } from "../common/Button";
-import { BorderBox } from "../common/BorderBox";
+import { styles } from "@/styles";
 import { useRouter } from "next/router";
 
 const LoginForm: React.FC = () => {
@@ -23,14 +23,16 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <BorderBox>
-      <div className="lg:block md:hidden sm:hidden">
+    <div
+      className={`flex py-2 border border-solid border-[${styles.COLOR.GRAY0}] rounded sm:w-[420px] md:w-[875px] lg:w-[1200px] xl:w-[1800px]`}
+    >
+      <div className="sm:hidden md:hidden lg:block lg:w-6/12">
         <Button name="Login with Instagram" onClick={login} />
       </div>
-      <div className="">
+      <div className="block sm:block sm:w-full w-[350px]">
         <Button name="Login with Instagram" onClick={login} />
       </div>
-    </BorderBox>
+    </div>
   );
 };
 

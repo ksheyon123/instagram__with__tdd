@@ -553,27 +553,21 @@ video {
   width: 100%;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 0px) {
   .container {
-    max-width: 640px;
+    max-width: 0px;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 451px) {
   .container {
-    max-width: 768px;
+    max-width: 451px;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 876px) {
   .container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
+    max-width: 876px;
   }
 }
 
@@ -1187,6 +1181,10 @@ video {
 
 .w-unit-8 {
   width: var(--nextui-spacing-unit-8);
+}
+
+.w-\[350px\] {
+  width: 350px;
 }
 
 .min-w-10 {
@@ -6773,7 +6771,7 @@ video {
   color: hsl(var(--nextui-warning) / var(--nextui-warning-opacity, var(--tw-text-opacity)));
 }
 
-@media (min-width: 640px) {
+@media (min-width: 0px) and (max-width: 450px) {
   .sm\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
@@ -6794,8 +6792,24 @@ video {
     margin-bottom: 4rem;
   }
 
+  .sm\:block {
+    display: block;
+  }
+
   .sm\:hidden {
     display: none;
+  }
+
+  .sm\:w-\[300px\] {
+    width: 300px;
+  }
+
+  .sm\:w-full {
+    width: 100%;
+  }
+
+  .sm\:w-\[420px\] {
+    width: 420px;
   }
 
   .sm\:items-start {
@@ -6835,35 +6849,47 @@ video {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 451px) and (max-width: 875px) {
+  .md\:block {
+    display: block;
+  }
+
   .md\:hidden {
     display: none;
   }
 
-  .md\:w-40 {
-    width: 10rem;
+  .md\:w-\[600px\] {
+    width: 600px;
   }
 
-  .md\:w-\[640px\] {
-    width: 640px;
+  .md\:w-full {
+    width: 100%;
+  }
+
+  .md\:w-\[350px\] {
+    width: 350px;
+  }
+
+  .md\:w-\[900px\] {
+    width: 900px;
+  }
+
+  .md\:w-\[875px\] {
+    width: 875px;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 876px) {
   .lg\:block {
     display: block;
   }
 
-  .lg\:w-80 {
-    width: 20rem;
+  .lg\:w-6\/12 {
+    width: 50%;
   }
 
-  .lg\:w-\[800px\] {
-    width: 800px;
-  }
-
-  .lg\:w-\[1280px\] {
-    width: 1280px;
+  .lg\:w-\[1200px\] {
+    width: 1200px;
   }
 }
 
