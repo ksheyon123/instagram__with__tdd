@@ -1,6 +1,7 @@
 import { Button } from "../common/Button";
-import { styles } from "@/styles";
+import { Image } from "@nextui-org/react";
 import { useRouter } from "next/router";
+import { Input } from "../common/Input";
 
 const LoginForm: React.FC = () => {
   const router = useRouter();
@@ -24,12 +25,20 @@ const LoginForm: React.FC = () => {
 
   return (
     <div
-      className={`flex py-2 border border-solid border-[${styles.COLOR.GRAY0}] rounded sm:w-[420px] md:w-[875px] lg:w-[1200px] xl:w-[1800px]`}
+      className={`flex justify-center items-center sm:w-[450px] md:w-[875px] lg:w-[1200px] xl:w-[1800px]`}
     >
-      <div className="sm:hidden md:hidden lg:block lg:w-[500px]">
+      <div className="sm:hidden md:hidden lg:block lg:w-[550px]">
         <Button name="Login with Instagram" onClick={login} />
       </div>
-      <div className="block sm:block sm:w-full w-[350px]">
+      <div className="flex flex-col justify-center items-center border border-solid border-[${styles.COLOR.GRAY0}] rounded py-2.5 mb-2.5 w-[350px]">
+        <Image
+          width="175"
+          height="51"
+          style={{ margin: "36px 0px 12px" }}
+          src="@/styles/assets/images/instagram_title_logo.png"
+        />
+        <Input value="" onChange={() => {}} />
+        <Input value="" onChange={() => {}} />
         <Button name="Login with Instagram" onClick={login} />
       </div>
     </div>
