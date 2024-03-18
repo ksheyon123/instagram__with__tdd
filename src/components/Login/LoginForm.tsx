@@ -26,7 +26,7 @@ const LoginForm: React.FC = () => {
     <div
       className={`flex py-2 border border-solid border-[${styles.COLOR.GRAY0}] rounded sm:w-[420px] md:w-[875px] lg:w-[1200px] xl:w-[1800px]`}
     >
-      <div className="sm:hidden md:hidden lg:block lg:w-6/12">
+      <div className="sm:hidden md:hidden lg:block lg:w-[500px]">
         <Button name="Login with Instagram" onClick={login} />
       </div>
       <div className="block sm:block sm:w-full w-[350px]">

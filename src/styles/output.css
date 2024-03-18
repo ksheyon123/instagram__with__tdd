@@ -6891,6 +6891,14 @@ video {
   .lg\:w-\[1200px\] {
     width: 1200px;
   }
+
+  .lg\:w-full {
+    width: 100%;
+  }
+
+  .lg\:w-\[500px\] {
+    width: 500px;
+  }
 }
 
 .rtl\:-rotate-180:where([dir="rtl"], [dir="rtl"] *) {
