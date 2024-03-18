@@ -454,6 +454,7 @@ body {
   font-weight: 600;
   color: #737373;
   box-sizing: border-box;
+  background-color: transparent;
 }
 
 *, ::before, ::after {
@@ -1962,6 +1963,10 @@ body {
   border-color: hsl(var(--nextui-danger) / var(--nextui-danger-opacity, var(--tw-border-opacity))) !important;
 }
 
+.border-\[gray0\] {
+  border-color: gray0;
+}
+
 .border-background {
   --tw-border-opacity: 1;
   border-color: hsl(var(--nextui-background) / var(--nextui-background-opacity, var(--tw-border-opacity)));
@@ -2120,6 +2125,10 @@ body {
 .bg-\[\#0094f6\] {
   --tw-bg-opacity: 1;
   background-color: rgb(0 148 246 / var(--tw-bg-opacity));
+}
+
+.bg-\[gray0\] {
+  background-color: gray0;
 }
 
 .bg-background {
@@ -2290,6 +2299,11 @@ body {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-hfb0 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 148 246 / var(--tw-bg-opacity));
 }
 
 .bg-stripe-gradient {
@@ -2559,6 +2573,10 @@ body {
   font-size: 0.6rem;
 }
 
+.text-\[14px\] {
+  font-size: 14px;
+}
+
 .text-large {
   font-size: var(--nextui-font-size-large);
   line-height: var(--nextui-line-height-large);
@@ -2595,11 +2613,6 @@ body {
 .\!text-danger {
   --tw-text-opacity: 1 !important;
   color: hsl(var(--nextui-danger) / var(--nextui-danger-opacity, var(--tw-text-opacity))) !important;
-}
-
-.text-\[\#FFF\] {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .text-background {
@@ -2653,6 +2666,11 @@ body {
 .text-default-foreground {
   --tw-text-opacity: 1;
   color: hsl(var(--nextui-default-foreground) / var(--nextui-default-foreground-opacity, var(--tw-text-opacity)));
+}
+
+.text-fb0 {
+  --tw-text-opacity: 1;
+  color: rgb(0 55 107 / var(--tw-text-opacity));
 }
 
 .text-foreground {

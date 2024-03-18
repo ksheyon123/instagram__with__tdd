@@ -32,7 +32,7 @@ const LoginForm: React.FC = () => {
         <Button name="Login with Instagram" onClick={login} />
       </div>
       <div
-        className={`flex flex-col justify-center items-center border border-solid border-[${styles.COLOR.GRAY0}] rounded py-2.5 mb-2.5 w-[350px]`}
+        className={`flex flex-col justify-center items-center border border-solid border-[gray0] rounded py-2.5 mb-2.5 w-[350px]`}
       >
         <div className="mt-9 mb-3">
           <div className="pointer-events-auto">
@@ -53,10 +53,17 @@ const LoginForm: React.FC = () => {
           </div>
           <div className="mx-10 mb-[22px] mt-[14px]">
             <div className="flex">
-              <div className="relative top-2.5 h-[1px] grow"></div>
+              <div className={`relative top-2.5 h-[1px] grow bg-[gray0]`}></div>
               <div className="mx-[18px]">또는</div>
-              <div className="relative top-2.5 h-[1px] grow"></div>
+              <div className={`relative top-2.5 h-[1px] grow bg-[gray0]`}></div>
             </div>
+          </div>
+          <div className="my-2 mx-10">
+            <Button
+              name="Facebook으로 로그인"
+              onClick={() => {}}
+              btnStyleType="fb0"
+            />
           </div>
         </div>
       </div>
