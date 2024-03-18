@@ -914,6 +914,10 @@ body {
   margin-top: 14px;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -931,6 +935,10 @@ body {
 
 .inline-block {
   display: inline-block;
+}
+
+.inline {
+  display: inline;
 }
 
 .flex {
@@ -1441,6 +1449,10 @@ body {
   flex-grow: 1;
 }
 
+.grow-0 {
+  flex-grow: 0;
+}
+
 .basis-0 {
   flex-basis: 0px;
 }
@@ -1688,6 +1700,10 @@ body {
   align-items: center;
 }
 
+.items-stretch {
+  align-items: stretch;
+}
+
 .justify-start {
   justify-content: flex-start;
 }
@@ -1758,6 +1774,10 @@ body {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.125rem * var(--tw-space-x-reverse));
   margin-left: calc(0.125rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.self-auto {
+  align-self: auto;
 }
 
 .self-center {
@@ -1874,6 +1894,10 @@ body {
   border-radius: var(--nextui-radius-small);
 }
 
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
 .\!rounded-l-none {
   border-top-left-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
@@ -1944,6 +1968,10 @@ body {
 
 .border-b-medium {
   border-bottom-width: var(--nextui-border-width-medium);
+}
+
+.border-r-2 {
+  border-right-width: 2px;
 }
 
 .border-solid {
@@ -2602,12 +2630,21 @@ body {
   line-height: 1.75rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-normal {
   font-weight: 400;
 }
 
 .font-semibold {
   font-weight: 600;
+}
+
+.font-\[12px\] {
+  font-weight: 12px;
 }
 
 .\!text-danger {

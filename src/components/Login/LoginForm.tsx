@@ -43,7 +43,11 @@ const LoginForm: React.FC = () => {
         </div>
         <div className="w-full flex flex-col">
           <div className="mb-[6px] mx-10">
-            <Input value="" onChange={() => {}} />
+            <Input
+              placeholder="전화번호, 사용자 이름 또는 이메일"
+              value=""
+              onChange={() => {}}
+            />
           </div>
           <div className="mb-[6px] mx-10">
             <Input value="" onChange={() => {}} />
@@ -58,13 +62,18 @@ const LoginForm: React.FC = () => {
               <div className={`relative top-2.5 h-[1px] grow bg-[gray0]`}></div>
             </div>
           </div>
-          <div className="my-2 mx-10">
+          <div className="flex flex-col items-stretch self-auto grow-0 self-auto my-2 mx-10">
             <Button
               name="Facebook으로 로그인"
               onClick={() => {}}
               btnStyleType="fb0"
             />
           </div>
+          <a className="inline text-center mt-3">
+            <span className="block font-normal text-fb0 text-xs">
+              Forgot password?
+            </span>
+          </a>
         </div>
       </div>
     </div>
