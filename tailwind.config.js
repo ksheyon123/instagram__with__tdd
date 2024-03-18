@@ -11,6 +11,10 @@ module.exports = {
   theme: {
     extend: {
       borderColor0: "rgb(219, 219, 219)",
+      backgroundImage: {
+        "insta-logos": "url(./public/assets/images/insta_logos.png)",
+        "footer-texture": "url('/img/footer-texture.png')",
+      },
     },
     screens: {
       sm: { min: "0px", max: "450px" },

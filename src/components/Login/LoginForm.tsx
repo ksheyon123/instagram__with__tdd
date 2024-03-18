@@ -2,6 +2,7 @@ import { Button } from "../common/Button";
 import { Image } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import { Input } from "../common/Input";
+import { styles } from "@/styles";
 
 const LoginForm: React.FC = () => {
   const router = useRouter();
@@ -30,16 +31,34 @@ const LoginForm: React.FC = () => {
       <div className="sm:hidden md:hidden lg:block lg:w-[550px]">
         <Button name="Login with Instagram" onClick={login} />
       </div>
-      <div className="flex flex-col justify-center items-center border border-solid border-[${styles.COLOR.GRAY0}] rounded py-2.5 mb-2.5 w-[350px]">
-        <Image
-          width="175"
-          height="51"
-          style={{ margin: "36px 0px 12px" }}
-          src="@/styles/assets/images/instagram_title_logo.png"
-        />
-        <Input value="" onChange={() => {}} />
-        <Input value="" onChange={() => {}} />
-        <Button name="Login with Instagram" onClick={login} />
+      <div
+        className={`flex flex-col justify-center items-center border border-solid border-[${styles.COLOR.GRAY0}] rounded py-2.5 mb-2.5 w-[350px]`}
+      >
+        <div className="mt-9 mb-3">
+          <div className="pointer-events-auto">
+            <div className="flex w-[175px] h-[51px]">
+              <i className="relative overflow-hidden w-full h-full bg-auto bg-left-top" />
+            </div>
+          </div>
+        </div>
+        <div className="w-full flex flex-col">
+          <div className="mb-[6px] mx-10">
+            <Input value="" onChange={() => {}} />
+          </div>
+          <div className="mb-[6px] mx-10">
+            <Input value="" onChange={() => {}} />
+          </div>
+          <div className="my-2 mx-10">
+            <Button name="Login with Instagram" onClick={login} />
+          </div>
+          <div className="mx-10 mb-[22px] mt-[14px]">
+            <div className="flex">
+              <div className="relative top-2.5 h-[1px] grow"></div>
+              <div className="mx-[18px]">또는</div>
+              <div className="relative top-2.5 h-[1px] grow"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

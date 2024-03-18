@@ -13,6 +13,9 @@ const DefaultButton = extendVariants(ButtonUI, {
       default:
         "bg-[#0094f6] text-[#FFF] opacity-70 data-[hover=true]:opacity-100",
     },
+    size: {
+      md: "w-full h-8",
+    },
     defaultVariants: {
       color: "default",
     },
@@ -22,7 +25,12 @@ const DefaultButton = extendVariants(ButtonUI, {
 const Button: React.FC<IProps> = (props) => {
   const { name, onClick, disabled = false } = props;
   return (
-    <DefaultButton color="default" onClick={onClick} disabled={disabled}>
+    <DefaultButton
+      size="md"
+      color="default"
+      onClick={onClick}
+      disabled={disabled}
+    >
       {name}
     </DefaultButton>
   );
