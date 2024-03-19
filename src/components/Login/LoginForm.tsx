@@ -3,20 +3,28 @@ import { Image } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import { Input } from "../common/Input";
 import { styles } from "@/styles";
+import { useEffect } from "react";
+import { useAtomValue } from "jotai";
+import { accessTokenAtom } from "@/states/atom";
 
 const LoginForm: React.FC = () => {
+  const accessToken = useAtomValue(accessTokenAtom);
   const router = useRouter();
   const login = async () => {
     const qs = new URLSearchParams({
       client_id: process.env.FACEBOOK_CLIENT_ID,
-      redirect_uri: "http://localhost:3000/signin",
+      redirect_uri: "http://localhost:3000/login/callback",
       state: "1234",
       response_type: "token",
       // display: "popup",
       auth_type: "rerequest",
-      scope: "email,pages_show_list,public_profile,instagram_basic",
+      scope: "public_profile, instagram_basic, pages_show_list",
     });
 
+    //email,instagram_basic,pages_show_list
+    // https://www.facebook.com/v19.0/dialog/oauth?
+    // response_type=token&display=popup&client_id=949275753220874
+    // &redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer%2Fcallback&auth_type=rerequest&scope=
     router.replace(
       `https://www.facebook.com/v19.0/dialog/oauth?${qs}`
       // "popup",
@@ -24,10 +32,34 @@ const LoginForm: React.FC = () => {
     );
   };
 
+  const loginInsta = () => {
+    const qs = new URLSearchParams({
+      client_id: process.env.INSTAGRAM_CLIENT_ID,
+      redirect_uri: "http://localhost:3000/login/callback",
+      state: "1234",
+      response_type: "code",
+      // display: "popup",
+      auth_type: "rerequest",
+      scope: "user_profile,user_media",
+    });
+    // https://api.instagram.com/oauth/authorize
+    router.replace(
+      `https://api.instagram.com/oauth/authorize?${qs}`
+      // "popup",
+      // "popup=true"
+    );
+    // Next : https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
+  };
+
+  useEffect(() => {
+    console.log(accessToken);
+  }, [accessToken]);
+
   return (
     <article className="flex flex-row justify-center items-stretch mt-8 pb-8 w-full">
       <div className="sm:hidden md:hidden lg:block lg:w-[550px]">
         <Button name="Login with Instagram" onClick={login} />
+        <Button name="Login with Instagram" onClick={loginInsta} />
       </div>
       <div className={`flex flex-col justify-center items-center`}>
         <div

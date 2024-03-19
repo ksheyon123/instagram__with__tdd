@@ -51,7 +51,7 @@ const Input: React.FC<IProps> = (props) => {
         color="inputColor"
         size="md"
         radius="md"
-        value={"12"}
+        value={value}
         onChange={onChange}
         placeholder={placeholder}
         disabled={disabled}
