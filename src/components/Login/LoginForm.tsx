@@ -55,11 +55,16 @@ const LoginForm: React.FC = () => {
     console.log(accessToken);
   }, [accessToken]);
 
+  const a = async () => {
+    await fetch("/api/openai");
+  };
+
   return (
     <article className="flex flex-row justify-center items-stretch mt-8 pb-8 w-full">
       <div className="sm:hidden md:hidden lg:block lg:w-[550px]">
         <Button name="Login with Instagram" onClick={login} />
         <Button name="Login with Instagram" onClick={loginInsta} />
+        <Button name="openai" onClick={a} />
       </div>
       <div className={`flex flex-col justify-center items-center`}>
         <div
