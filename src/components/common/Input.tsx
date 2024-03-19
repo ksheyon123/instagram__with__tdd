@@ -1,3 +1,4 @@
+import { styles } from "@/styles";
 import { Input as InputUI, extendVariants } from "@nextui-org/react";
 import { ChangeEventHandler } from "react";
 
@@ -14,13 +15,24 @@ interface IProps {
 const DefaultInputUI = extendVariants(InputUI, {
   variants: {
     color: {
-      stone: {
-        inputWrapper: [""],
+      inputColor: {
+        inputWrapper: [
+          "shadow-none",
+          `border-gray219`,
+          `bg-gray250`,
+          `focus-within:bg-gray250`,
+          `data-[hover=true]:border-gray168`,
+          `data-[hover=true]:bg-gray250`,
+          `group-data-[focus=true]:border-gray168`,
+          `group-data-[focus=true]:bg-gray250`,
+        ],
+        input: ["text-black"],
       },
     },
     size: {
       md: {
-        innerWrapper: "pl-px-0",
+        inputWrapper: "px-0 border",
+        input: "pl-[8px] pt-[9px] pb-[7px] text-xs",
       },
     },
     radius: {
@@ -36,9 +48,10 @@ const Input: React.FC<IProps> = (props) => {
   return (
     <div>
       <DefaultInputUI
+        color="inputColor"
         size="md"
         radius="md"
-        value={value}
+        value={"12"}
         onChange={onChange}
         placeholder={placeholder}
         disabled={disabled}
