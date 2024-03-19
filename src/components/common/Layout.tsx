@@ -4,11 +4,13 @@ import { Footer } from "./Footer";
 
 const Layout: React.FC<ChildrenProps> = ({ children }) => {
   return (
-    <main className="w-screen h-screen">
+    <>
       <Header />
-      <section className="pt-10 pb-10 w-full h-full">{children}</section>
+      <main className="relative flex flex-col items-stretch grow shrink-0 z-0 top-0 w-screen h-screen">
+        {children}
+      </main>
       <Footer />
-    </main>
+    </>
   );
 };
 
