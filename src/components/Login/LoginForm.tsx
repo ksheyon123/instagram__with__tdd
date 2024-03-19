@@ -79,7 +79,18 @@ const LoginForm: React.FC = () => {
             </a>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center border border-solid border-[gray0] rounded py-2.5 mb-2.5 w-[350px]"></div>
+        <div className="flex flex-col justify-center items-center border border-solid border-[gray0] rounded py-2.5 mb-2.5 w-[350px]">
+          <div className="block">
+            <span className="leading-[18px]">
+              <p className="m-[15px] text-black font-normal">
+                {"Don't have an account? "}
+                <a>
+                  <span className="text-hfb0 font-semibold">Register</span>
+                </a>
+              </p>
+            </span>
+          </div>
+        </div>
       </div>
     </article>
   );
