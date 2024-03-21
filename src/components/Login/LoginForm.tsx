@@ -89,7 +89,7 @@ const LoginForm: React.FC = () => {
               <Input placeholder="비밀번호" value="" onChange={() => {}} />
             </div>
             <div className="my-2 mx-10">
-              <Button name="Login with Instagram" onClick={login} />
+              <Button name="Login with Instagram" onClick={loginInsta} />
             </div>
             <div className="mx-10 mb-[22px] mt-[14px]">
               <div className="flex">

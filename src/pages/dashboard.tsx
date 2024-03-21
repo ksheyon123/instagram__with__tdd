@@ -13,7 +13,7 @@ let items: AccordionItem[] = [
   { name: NAME2, description: DESCRIPTION2 },
 ];
 
-const LoggedIn: React.FC = () => {
+const Dashboard: React.FC = () => {
   const [jwt, setJwt] = useAtom(jwtAtom);
   const onClick = () => {
     getAccounts(jwt);
@@ -25,4 +25,4 @@ const LoggedIn: React.FC = () => {
   );
 };
 
-export default LoggedIn;
+export default Dashboard;

@@ -22,7 +22,7 @@ export const Callback: React.FC = () => {
     });
     const { access_token = "", state = "" } = obj;
     setAccessToken(access_token);
-    router.replace("/signin");
+    router.replace("/login");
   }, []);
   return <></>;
 };

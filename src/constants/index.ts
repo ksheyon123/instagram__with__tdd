@@ -1,7 +1,6 @@
 export const PATHNAME = {
-  SIGN_IN: "/signin",
-  SIGN_UP: "/signup",
-  LOGGED_IN: "/loggedin",
+  SIGN_IN: "/login",
+  DASHBOARD: "/dashboard",
 };
 
 const ERROR_CODE = {};
