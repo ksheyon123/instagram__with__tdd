@@ -8,6 +8,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
 ) {
+  console.log(global?.data);
   const { code } = req.body;
 
   const formData = new URLSearchParams();
@@ -20,11 +21,7 @@ export default async function handler(
     "https://e462-183-99-76-67.ngrok-free.app/login/callback"
   );
 
-  console.log(
-    code,
-    process.env.INSTAGRAM_CLIENT_ID,
-    process.env.INSTAGRAM_CLIENT_SECRET
-  );
+  //https://graph.instagram.com/v19.0/me
   const resp = await fetch("https://api.instagram.com/oauth/access_token", {
     method: "POST",
     headers: {
@@ -33,20 +30,9 @@ export default async function handler(
     },
     body: formData,
   });
-  // const resp = await fetch("https://api.instagram.com/oauth/access_token", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify({
-  //     client_id: process.env.INSTAGRAM_CLIENT_ID,
-  //     client_secret: process.env.INSTAGRAM_CLIENT_SECRET,
-  //     grant_type: "authorization_code",
-  //     redirect_uri: "https://e462-183-99-76-67.ngrok-free.app/login/callback",
-  //     code: code,
-  //   }),
-  // });
 
-  const result = await resp.json();
-  res.status(200).json({ ...result });
+  const { access_token, user_id } = await resp.json();
+  global.data = { [user_id]: access_token };
+
+  res.status(200).json({ userId: user_id } as any);
 }

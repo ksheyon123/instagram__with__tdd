@@ -4,11 +4,13 @@ import { useRouter } from "next/router";
 import { Input } from "../common/Input";
 import { styles } from "@/styles";
 import { useEffect } from "react";
-import { useAtomValue } from "jotai";
-import { accessTokenAtom } from "@/states/atom";
+import { useAtomValue, useSetAtom } from "jotai";
+import { instaAuthCodeAtom, accessCodeAtom } from "@/states/atom";
+import { PATHNAME } from "@/constants";
 
 const LoginForm: React.FC = () => {
-  const accessToken = useAtomValue(accessTokenAtom);
+  const instaCode = useAtomValue(instaAuthCodeAtom);
+  const setAccessCode = useSetAtom(accessCodeAtom);
   const router = useRouter();
   const login = async () => {
     const qs = new URLSearchParams({
@@ -52,33 +54,31 @@ const LoginForm: React.FC = () => {
   };
 
   const codeToAccessToken = async () => {
-    await fetch("/api/oauth", {
+    const resp = await fetch("/api/oauth", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        code: accessToken,
+        code: instaCode,
       }),
     });
+    const { userId } = await resp.json();
+    setAccessCode(userId);
+    router.replace(PATHNAME.DASHBOARD);
   };
 
   useEffect(() => {
-    if (accessToken) {
+    if (instaCode) {
       codeToAccessToken();
     }
-  }, [accessToken]);
-
-  const a = async () => {
-    await fetch("/api/openai");
-  };
+  }, [instaCode]);
 
   return (
     <article className="flex flex-row justify-center items-stretch mt-8 pb-8 w-full">
       <div className="sm:hidden md:hidden lg:block lg:w-[550px]">
         <Button name="Login with Instagram" onClick={login} />
         <Button name="Login with Instagram" onClick={loginInsta} />
-        <Button name="openai" onClick={a} />
       </div>
       <div className={`flex flex-col justify-center items-center`}>
         <div

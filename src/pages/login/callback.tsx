@@ -1,11 +1,11 @@
-import { accessTokenAtom } from "@/states/atom";
+import { instaAuthCodeAtom } from "@/states/atom";
 import { useAtom, useSetAtom } from "jotai";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 const Callback: React.FC = () => {
   const router = useRouter();
-  const setAccessToken = useSetAtom(accessTokenAtom);
+  const setInstaAuthCode = useSetAtom(instaAuthCodeAtom);
 
   useEffect(() => {
     const url = window.location.href;
@@ -22,7 +22,7 @@ const Callback: React.FC = () => {
       };
     });
     const { code = "", state = "" } = obj;
-    setAccessToken(code);
+    setInstaAuthCode(code);
     router.replace("/login");
   }, []);
   return <div></div>;
