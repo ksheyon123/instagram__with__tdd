@@ -29,13 +29,13 @@ export const AuthContextProvider = ({ children }: ChildrenProps) => {
   const getJwt = async () => {
     const params = window.location.search;
     const code = new URLSearchParams(params).get("code");
-    if (code) {
-      const data = await getAccessToken(code);
-      console.log(data);
-      router.push(PATHNAME.LOGGED_IN);
-      setJwt(data);
-      setIsMounted(true);
-    }
+    // if (code) {
+    // const data = await getAccessToken(code);
+    // console.log(data);
+    // router.push(PATHNAME.LOGGED_IN);
+    // setJwt(data);
+    setIsMounted(true);
+    // }
   };
   return <AuthContext.Provider value={{}}>{children}</AuthContext.Provider>;
 };

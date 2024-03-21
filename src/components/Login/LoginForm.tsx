@@ -35,7 +35,7 @@ const LoginForm: React.FC = () => {
   const loginInsta = () => {
     const qs = new URLSearchParams({
       client_id: process.env.INSTAGRAM_CLIENT_ID,
-      redirect_uri: "http://localhost:3000/login/callback",
+      redirect_uri: "https://e462-183-99-76-67.ngrok-free.app/login/callback",
       state: "1234",
       response_type: "code",
       // display: "popup",
@@ -51,8 +51,22 @@ const LoginForm: React.FC = () => {
     // Next : https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
   };
 
+  const codeToAccessToken = async () => {
+    await fetch("/api/oauth", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        code: accessToken,
+      }),
+    });
+  };
+
   useEffect(() => {
-    console.log(accessToken);
+    if (accessToken) {
+      codeToAccessToken();
+    }
   }, [accessToken]);
 
   const a = async () => {
