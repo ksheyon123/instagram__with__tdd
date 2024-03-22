@@ -8,8 +8,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
 ) {
-  console.log(global?.data);
   const { code } = req.body;
+  console.log(global?.data, code);
 
   const formData = new URLSearchParams();
   formData.append("grant_type", "authorization_code");
@@ -32,7 +32,6 @@ export default async function handler(
   });
 
   const { access_token, user_id } = await resp.json();
-  global.data = { [user_id]: access_token };
-
+  (req.cookies as any).set("access_token", access_token);
   res.status(200).json({ userId: user_id } as any);
 }

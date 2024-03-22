@@ -9,8 +9,10 @@ export default async function handler(
   res: NextApiResponse<ResponseData>
 ) {
   const { userId } = req.query;
-  const accessToken = global.data[userId as string];
+  const accessToken = (req.cookies as any).get("access_token");
+  // const accessToken = global.data[userId as string];
 
+  console.log("accessToken", accessToken);
   const resp0 = await fetch(
     `https://graph.instagram.com/v19.0/me?fields=id,username&access_token=${accessToken}`,
     {

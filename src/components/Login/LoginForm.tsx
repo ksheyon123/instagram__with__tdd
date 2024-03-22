@@ -9,18 +9,21 @@ import { instaAuthCodeAtom, accessCodeAtom } from "@/states/atom";
 import { PATHNAME } from "@/constants";
 
 const LoginForm: React.FC = () => {
+  const ENDPOINT = process.env.NGROK_ENDPOINT;
   const instaCode = useAtomValue(instaAuthCodeAtom);
   const setAccessCode = useSetAtom(accessCodeAtom);
   const router = useRouter();
   const login = async () => {
+    console.log(ENDPOINT);
     const qs = new URLSearchParams({
       client_id: process.env.FACEBOOK_CLIENT_ID,
-      redirect_uri: "http://localhost:3000/login/callback",
+      redirect_uri: `${ENDPOINT}/login/callback`,
       state: "1234",
       response_type: "token",
       // display: "popup",
       auth_type: "rerequest",
-      scope: "public_profile, instagram_basic, pages_show_list",
+      // scope: "public_profile, instagram_basic, pages_show_list",
+      scope: "public_profile",
     });
 
     //email,instagram_basic,pages_show_list
@@ -37,7 +40,7 @@ const LoginForm: React.FC = () => {
   const loginInsta = () => {
     const qs = new URLSearchParams({
       client_id: process.env.INSTAGRAM_CLIENT_ID,
-      redirect_uri: "https://e462-183-99-76-67.ngrok-free.app/login/callback",
+      redirect_uri: `${ENDPOINT}/login/callback`,
       state: "1234",
       response_type: "code",
       // display: "popup",
@@ -103,7 +106,7 @@ const LoginForm: React.FC = () => {
               <Input placeholder="비밀번호" value="" onChange={() => {}} />
             </div>
             <div className="my-2 mx-10">
-              <Button name="Login with Instagram" onClick={loginInsta} />
+              <Button name="Login with Instagram" onClick={login} />
             </div>
             <div className="mx-10 mb-[22px] mt-[14px]">
               <div className="flex">
