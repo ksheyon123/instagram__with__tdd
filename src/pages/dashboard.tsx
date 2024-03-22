@@ -1,4 +1,5 @@
 // import { getAccounts } from "@/apis/api";
+import { MainItem } from "@/components/Dashboard/MainItem";
 import { Accordion } from "@/components/common/Accordion";
 import { Comments } from "@/components/common/Comments";
 import { accessCodeAtom } from "@/states/atom";
@@ -9,14 +10,20 @@ import { useEffect } from "react";
 const Dashboard: React.FC = () => {
   const userId = useAtomValue(accessCodeAtom);
   const getItems = async () => {
-    const items = await fetch(`/api/items?userId=7314100441978717`);
+    const resp = await fetch(`/api/account?userId=${userId}`);
+    const data = await resp.json();
+    console.log(data);
   };
   useEffect(() => {
     getItems();
   }, []);
   return (
     <div>
-      <Accordion items={[]} />
+      <Accordion
+        items={[]}
+        mainComponent={() => <MainItem />}
+        childComponent={() => <></>}
+      />
     </div>
   );
 };

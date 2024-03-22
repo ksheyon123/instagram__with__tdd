@@ -5,25 +5,23 @@ import { Input } from "../common/Input";
 import { styles } from "@/styles";
 import { useEffect } from "react";
 import { useAtomValue, useSetAtom } from "jotai";
-import { instaAuthCodeAtom, accessCodeAtom } from "@/states/atom";
 import { PATHNAME } from "@/constants";
 
 const LoginForm: React.FC = () => {
   const ENDPOINT = process.env.NGROK_ENDPOINT;
-  const instaCode = useAtomValue(instaAuthCodeAtom);
-  const setAccessCode = useSetAtom(accessCodeAtom);
   const router = useRouter();
   const login = async () => {
     console.log(ENDPOINT);
     const qs = new URLSearchParams({
       client_id: process.env.FACEBOOK_CLIENT_ID,
-      redirect_uri: `${ENDPOINT}/login/callback`,
+      redirect_uri: `${ENDPOINT}/login/fb/callback`,
       state: "1234",
       response_type: "token",
       // display: "popup",
       auth_type: "rerequest",
-      // scope: "public_profile, instagram_basic, pages_show_list",
-      scope: "public_profile",
+      scope:
+        "public_profile, instagram_basic, pages_show_list, instagram_manage_comments",
+      // scope: ", instagram_basic, pages_show_list",
     });
 
     //email,instagram_basic,pages_show_list
@@ -37,51 +35,10 @@ const LoginForm: React.FC = () => {
     );
   };
 
-  const loginInsta = () => {
-    const qs = new URLSearchParams({
-      client_id: process.env.INSTAGRAM_CLIENT_ID,
-      redirect_uri: `${ENDPOINT}/login/callback`,
-      state: "1234",
-      response_type: "code",
-      // display: "popup",
-      auth_type: "rerequest",
-      scope: "user_profile,user_media",
-    });
-    // https://api.instagram.com/oauth/authorize
-    router.replace(
-      `https://api.instagram.com/oauth/authorize?${qs}`
-      // "popup",
-      // "popup=true"
-    );
-    // Next : https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
-  };
-
-  const codeToAccessToken = async () => {
-    const resp = await fetch("/api/oauth", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        code: instaCode,
-      }),
-    });
-    const { userId } = await resp.json();
-    setAccessCode(userId);
-    router.replace(PATHNAME.DASHBOARD);
-  };
-
-  useEffect(() => {
-    if (instaCode) {
-      codeToAccessToken();
-    }
-  }, [instaCode]);
-
   return (
     <article className="flex flex-row justify-center items-stretch mt-8 pb-8 w-full">
       <div className="sm:hidden md:hidden lg:block lg:w-[550px]">
         <Button name="Login with Instagram" onClick={login} />
-        <Button name="Login with Instagram" onClick={loginInsta} />
       </div>
       <div className={`flex flex-col justify-center items-center`}>
         <div

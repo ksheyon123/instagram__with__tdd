@@ -19,14 +19,14 @@ export const Accordion: React.FC<IListProps> = ({
       {items.map((item, idx) => {
         const { active } = item;
         return (
-          <div
+          <article
             className={active && "active"}
             role="listitem"
             onClick={() => onClick(item)}
           >
             {!!mainComponent && mainComponent(item)}
             {active && !!childComponent && childComponent(item)}
-          </div>
+          </article>
         );
       })}
     </div>

@@ -1,18 +1,18 @@
-import { instaAuthCodeAtom } from "@/states/atom";
+import { PATHNAME } from "@/constants";
+import { accessCodeAtom } from "@/states/atom";
 import { useAtom, useSetAtom } from "jotai";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 const Callback: React.FC = () => {
   const router = useRouter();
-  const setInstaAuthCode = useSetAtom(instaAuthCodeAtom);
+  const setAccessCode = useSetAtom(accessCodeAtom);
 
   useEffect(() => {
     const url = window.location.href;
     const qs = url.split("?")[1];
     const queries = qs.split("&");
     let obj: any = new Object();
-    console.log(queries);
     queries.map((el) => {
       const key = el.split("=")[0];
       const value = el.split("=")[1];
@@ -21,9 +21,26 @@ const Callback: React.FC = () => {
         [key]: value,
       };
     });
-    const { code = "", state = "" } = obj;
-    setInstaAuthCode(code);
-    router.replace("/login");
+    const { code = "", state = "", accessToken = "" } = obj;
+    if (code) {
+      console.log("Code: ", code);
+      const codeToAccessToken = async () => {
+        const resp = await fetch("/api/oauth", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            code: code,
+          }),
+        });
+        const { userId, accessToken } = await resp.json();
+        console.log("Access Token", accessToken);
+        setAccessCode(accessToken);
+        router.replace(PATHNAME.DASHBOARD);
+      };
+      codeToAccessToken();
+    }
   }, []);
   return <div></div>;
 };
