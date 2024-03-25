@@ -4,8 +4,8 @@ export const MainItem: React.FC = () => {
   const [] = useState<boolean>(false);
 
   return (
-    <div className="w-full h-full">
-      <div>Main</div>
+    <div className="border rounded">
+      <img />
     </div>
   );
 };

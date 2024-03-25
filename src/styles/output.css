@@ -846,6 +846,11 @@ body {
   margin-bottom: calc((1.75rem - 1.25rem) / 2);
 }
 
+.my-\[4px\] {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
 .-mr-2 {
   margin-right: -0.5rem;
 }
@@ -898,6 +903,10 @@ body {
   margin-left: 0.5rem;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
 .mr-2 {
   margin-right: 0.5rem;
 }
@@ -926,8 +935,8 @@ body {
   margin-top: 14px;
 }
 
-.ml-\[72px\] {
-  margin-left: 72px;
+.mr-0 {
+  margin-right: 0px;
 }
 
 .box-border {
@@ -963,6 +972,10 @@ body {
 
 .table {
   display: table;
+}
+
+.grid {
+  display: grid;
 }
 
 .inline-grid {
@@ -1286,6 +1299,10 @@ body {
   width: var(--nextui-spacing-unit-8);
 }
 
+.w-\[72px\] {
+  width: 72px;
+}
+
 .min-w-10 {
   min-width: 2.5rem;
 }
@@ -1370,6 +1387,14 @@ body {
 
 .min-w-unit-8 {
   min-width: var(--nextui-spacing-unit-8);
+}
+
+.min-w-\[470px\] {
+  min-width: 470px;
+}
+
+.min-w-\[390px\] {
+  min-width: 390px;
 }
 
 .max-w-2xl {
@@ -1682,6 +1707,10 @@ body {
 
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -2592,6 +2621,18 @@ body {
 
 .pt-\[9px\] {
   padding-top: 9px;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
+.pb-3 {
+  padding-bottom: 0.75rem;
+}
+
+.pl-\[4px\] {
+  padding-left: 4px;
 }
 
 .text-left {

@@ -1,4 +1,5 @@
 // import { getAccounts } from "@/apis/api";
+import { ChildItem } from "@/components/Dashboard/ChildItem";
 import { MainItem } from "@/components/Dashboard/MainItem";
 import { Accordion } from "@/components/common/Accordion";
 import { Comments } from "@/components/common/Comments";
@@ -23,12 +24,17 @@ const Dashboard: React.FC = () => {
     d();
   }, []);
   return (
-    <div className="ml-[72px] w-[calc(100%-72px)] h-full">
-      <Accordion
-        items={[]}
-        mainComponent={() => <MainItem />}
-        childComponent={() => <></>}
-      />
+    <div className="flex flex-row w-full h-full justify-center">
+      <div className="max-w-screen-sm">
+        <div></div>
+        <div className="min-w-[470px]">
+          <Accordion
+            items={[{}]}
+            mainComponent={() => <MainItem />}
+            childComponent={() => <ChildItem />}
+          />
+        </div>
+      </div>
     </div>
   );
 };
