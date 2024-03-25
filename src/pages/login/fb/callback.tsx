@@ -1,3 +1,4 @@
+import { PATHNAME } from "@/constants";
 import { useAtom, useSetAtom } from "jotai";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -26,6 +27,7 @@ const Callback: React.FC = () => {
     const access_token = qs();
     console.log("FB", access_token);
     if (!!access_token) {
+      window.localStorage.setItem("fbac", access_token);
       const loginInsta = () => {
         const qs = new URLSearchParams({
           client_id: process.env.INSTAGRAM_CLIENT_ID,
@@ -42,6 +44,8 @@ const Callback: React.FC = () => {
         // Next : https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
       };
       loginInsta();
+    } else {
+      router.replace(PATHNAME.SIGN_IN);
     }
   }, []);
   return <div></div>;

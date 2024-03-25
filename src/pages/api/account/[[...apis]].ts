@@ -38,26 +38,8 @@ export default async function handler(
       }
     );
 
-    // Content ID : "18014984534190753"
-
-    const resp2 = await fetch(
-      `https://graph.facebook.com/v19.0/18014984534190753/comments?access_token=${fbAccessToken}`
-    );
-    const resp3 = await fetch(
-      `https://graph.facebook.com/v19.0/18014984534190753/comments?message=H1&access_token=${fbAccessToken}`,
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/x-www-form-urlencoded",
-          accept: "application/json",
-        },
-      }
-    );
-
-    console.log(resp3.status);
     const d0 = await resp0.json();
     const { data } = await resp1.json();
-    const d1 = await resp2.json();
     // console.log("d1", d1, data);
 
     // const getMedia = async (id) => {
