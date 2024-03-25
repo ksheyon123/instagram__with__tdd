@@ -5,10 +5,10 @@ type ResponseData = {
   message: string;
 };
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
 ) {
-  main();
-  res.status(200).json({ message: "Hello from Next.js!" });
+  const d = await main();
+  res.status(200).json({ data: d } as any);
 }

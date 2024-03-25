@@ -14,11 +14,16 @@ const Dashboard: React.FC = () => {
     const data = await resp.json();
     console.log(data);
   };
+  const d = async () => {
+    const d = await fetch("/api/openai");
+    const { data } = await d.json();
+    console.log(data);
+  };
   useEffect(() => {
-    getItems();
+    d();
   }, []);
   return (
-    <div>
+    <div className="ml-[72px] w-[calc(100%-72px)] h-full">
       <Accordion
         items={[]}
         mainComponent={() => <MainItem />}

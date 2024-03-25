@@ -926,6 +926,10 @@ body {
   margin-top: 14px;
 }
 
+.ml-\[72px\] {
+  margin-left: 72px;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -963,6 +967,10 @@ body {
 
 .inline-grid {
   display: inline-grid;
+}
+
+.contents {
+  display: contents;
 }
 
 .hidden {
@@ -1232,6 +1240,10 @@ body {
 
 .w-\[80\%\] {
   width: 80%;
+}
+
+.w-\[calc\(100\%-72px\)\] {
+  width: calc(100% - 72px);
 }
 
 .w-\[calc\(100\%_-_theme\(spacing\.unit-6\)\)\] {
@@ -2034,6 +2046,11 @@ body {
   border-color: hsl(var(--nextui-foreground) / var(--nextui-foreground-opacity, var(--tw-border-opacity)));
 }
 
+.border-gray219 {
+  --tw-border-opacity: 1;
+  border-color: rgb(219 219 219 / var(--tw-border-opacity));
+}
+
 .border-primary {
   --tw-border-opacity: 1;
   border-color: hsl(var(--nextui-primary) / var(--nextui-primary-opacity, var(--tw-border-opacity)));
@@ -2056,11 +2073,6 @@ body {
 .border-warning {
   --tw-border-opacity: 1;
   border-color: hsl(var(--nextui-warning) / var(--nextui-warning-opacity, var(--tw-border-opacity)));
-}
-
-.border-gray219 {
-  --tw-border-opacity: 1;
-  border-color: rgb(219 219 219 / var(--tw-border-opacity));
 }
 
 .border-x-transparent {
@@ -2260,6 +2272,11 @@ body {
   background-color: hsl(var(--nextui-foreground) / 0.1);
 }
 
+.bg-gray250 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity));
+}
+
 .bg-hfb0 {
   --tw-bg-opacity: 1;
   background-color: rgb(0 148 246 / var(--tw-bg-opacity));
@@ -2336,11 +2353,6 @@ body {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-gray250 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(250 250 250 / var(--tw-bg-opacity));
 }
 
 .bg-stripe-gradient {
@@ -5129,6 +5141,11 @@ body {
   border-color: hsl(var(--nextui-default-400) / var(--nextui-default-400-opacity, var(--tw-border-opacity)));
 }
 
+.data-\[hover\=true\]\:border-gray168[data-hover=true] {
+  --tw-border-opacity: 1;
+  border-color: rgb(168 168 168 / var(--tw-border-opacity));
+}
+
 .data-\[hover\=true\]\:border-primary[data-hover=true] {
   --tw-border-opacity: 1;
   border-color: hsl(var(--nextui-primary) / var(--nextui-primary-opacity, var(--tw-border-opacity)));
@@ -5177,11 +5194,6 @@ body {
 .data-\[open\=true\]\:border-warning[data-open=true] {
   --tw-border-opacity: 1;
   border-color: hsl(var(--nextui-warning) / var(--nextui-warning-opacity, var(--tw-border-opacity)));
-}
-
-.data-\[hover\=true\]\:border-gray168[data-hover=true] {
-  --tw-border-opacity: 1;
-  border-color: rgb(168 168 168 / var(--tw-border-opacity));
 }
 
 .data-\[active\=true\]\:bg-danger[data-active=true] {
@@ -5250,6 +5262,11 @@ body {
 
 .data-\[hover\=true\]\:bg-default\/40[data-hover=true] {
   background-color: hsl(var(--nextui-default) / 0.4);
+}
+
+.data-\[hover\=true\]\:bg-gray250[data-hover=true] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity));
 }
 
 .data-\[hover\=true\]\:bg-primary[data-hover=true] {
@@ -5383,11 +5400,6 @@ body {
 .data-\[selected\=true\]\:bg-warning[data-selected=true] {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--nextui-warning) / var(--nextui-warning-opacity, var(--tw-bg-opacity)));
-}
-
-.data-\[hover\=true\]\:bg-gray250[data-hover=true] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(250 250 250 / var(--tw-bg-opacity));
 }
 
 .data-\[has-end-content\=true\]\:pe-1\.5[data-has-end-content=true] {
@@ -6450,6 +6462,11 @@ body {
   border-color: hsl(var(--nextui-default-foreground) / var(--nextui-default-foreground-opacity, var(--tw-border-opacity)));
 }
 
+.group[data-focus=true] .group-data-\[focus\=true\]\:border-gray168 {
+  --tw-border-opacity: 1;
+  border-color: rgb(168 168 168 / var(--tw-border-opacity));
+}
+
 .group[data-focus=true] .group-data-\[focus\=true\]\:border-primary {
   --tw-border-opacity: 1;
   border-color: hsl(var(--nextui-primary) / var(--nextui-primary-opacity, var(--tw-border-opacity)));
@@ -6500,11 +6517,6 @@ body {
   border-color: hsl(var(--nextui-warning) / var(--nextui-warning-opacity, var(--tw-border-opacity)));
 }
 
-.group[data-focus=true] .group-data-\[focus\=true\]\:border-gray168 {
-  --tw-border-opacity: 1;
-  border-color: rgb(168 168 168 / var(--tw-border-opacity));
-}
-
 .group[data-focus=true] .group-data-\[focus\=true\]\:bg-danger-50 {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--nextui-danger-50) / var(--nextui-danger-50-opacity, var(--tw-bg-opacity)));
@@ -6513,6 +6525,11 @@ body {
 .group[data-focus=true] .group-data-\[focus\=true\]\:bg-default-100 {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--nextui-default-100) / var(--nextui-default-100-opacity, var(--tw-bg-opacity)));
+}
+
+.group[data-focus=true] .group-data-\[focus\=true\]\:bg-gray250 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity));
 }
 
 .group[data-focus=true] .group-data-\[focus\=true\]\:bg-primary-50 {
@@ -6568,11 +6585,6 @@ body {
 .group[data-selected=true] .group-data-\[selected\=true\]\:bg-warning {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--nextui-warning) / var(--nextui-warning-opacity, var(--tw-bg-opacity)));
-}
-
-.group[data-focus=true] .group-data-\[focus\=true\]\:bg-gray250 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(250 250 250 / var(--tw-bg-opacity));
 }
 
 .group[data-has-helper=true] .group-data-\[has-helper\=true\]\:pt-2 {

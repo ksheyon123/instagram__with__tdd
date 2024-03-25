@@ -15,7 +15,7 @@ export const Accordion: React.FC<IListProps> = ({
   childComponent,
 }) => {
   return (
-    <div>
+    <div className="flex flex-col">
       {items.map((item, idx) => {
         const { active } = item;
         return (
