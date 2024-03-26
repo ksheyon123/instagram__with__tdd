@@ -6,7 +6,7 @@ interface IProps {
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
 
-  color?: string;
+  style?: any;
   placeholder?: string;
   errorMsg?: string;
   disabled?: boolean;
@@ -15,7 +15,7 @@ interface IProps {
 const DefaultInputUI = extendVariants(InputUI, {
   variants: {
     color: {
-      inputColor: {
+      default: {
         inputWrapper: [
           "shadow-none",
           `border-gray219`,
@@ -28,29 +28,55 @@ const DefaultInputUI = extendVariants(InputUI, {
         ],
         input: ["text-black"],
       },
+      secondary: {
+        inputWrapper: [
+          "shadow-none",
+          "border-none",
+          "bg-transparent",
+          "text-gray219",
+          `focus-within:bg-transparent`,
+          `data-[hover=true]:border-transparent`,
+          `data-[hover=true]:bg-transparent`,
+          `group-data-[focus=true]:border-transparent`,
+          `group-data-[focus=true]:bg-transparent`,
+        ],
+        input: ["text-gray219", "placeholder:text-gray219"],
+      },
     },
     size: {
-      md: {
+      default: {
         inputWrapper: "px-0 border",
         input: "pl-[8px] pt-[9px] pb-[7px] text-xs",
       },
+      secondary: {
+        inputWrapper: "px-0 h-[18px] min-h-[0px]",
+        input: "inline text-xs",
+      },
     },
     radius: {
-      md: {
+      default: {
         inputWrapper: "rounded-[4px]",
       },
+      secondary: {},
     },
   },
 });
 
 const Input: React.FC<IProps> = (props) => {
-  const { value, onChange, errorMsg, placeholder, disabled } = props;
+  const {
+    value,
+    onChange,
+    errorMsg,
+    placeholder,
+    disabled,
+    style = "default",
+  } = props;
   return (
     <div>
       <DefaultInputUI
-        color="inputColor"
-        size="md"
-        radius="md"
+        color={style}
+        size={style}
+        radius={style}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
