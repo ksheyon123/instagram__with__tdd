@@ -1327,6 +1327,10 @@ body {
   width: 14px;
 }
 
+.w-\[470px\] {
+  width: 470px;
+}
+
 .min-w-10 {
   min-width: 2.5rem;
 }
@@ -2464,6 +2468,11 @@ body {
 
 .stroke-default-300\/50 {
   stroke: hsl(var(--nextui-default-300) / 0.5);
+}
+
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .object-cover {

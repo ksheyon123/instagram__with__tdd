@@ -1,12 +1,12 @@
 import { PATHNAME } from "@/constants";
-import { accessCodeAtom } from "@/states/atom";
+import { staAccessCodeAtom } from "@/states/atom";
 import { useAtom, useSetAtom } from "jotai";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 const Callback: React.FC = () => {
   const router = useRouter();
-  const setAccessCode = useSetAtom(accessCodeAtom);
+  const setAccessCode = useSetAtom(staAccessCodeAtom);
 
   useEffect(() => {
     const url = window.location.href;

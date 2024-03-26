@@ -1,17 +1,11 @@
 import { Button } from "../common/Button";
-import { Image } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import { Input } from "../common/Input";
-import { styles } from "@/styles";
-import { useEffect } from "react";
-import { useAtomValue, useSetAtom } from "jotai";
-import { PATHNAME } from "@/constants";
 
 const LoginForm: React.FC = () => {
   const ENDPOINT = process.env.NGROK_ENDPOINT;
   const router = useRouter();
   const login = async () => {
-    console.log(ENDPOINT);
     const qs = new URLSearchParams({
       client_id: process.env.FACEBOOK_CLIENT_ID,
       redirect_uri: `${ENDPOINT}/login/fb/callback`,

@@ -3,17 +3,25 @@ import { ChildItem } from "@/components/Dashboard/ChildItem";
 import { MainItem } from "@/components/Dashboard/MainItem";
 import { Accordion } from "@/components/common/Accordion";
 import { Comments } from "@/components/common/Comments";
-import { accessCodeAtom } from "@/states/atom";
-import { AccordionItem } from "@/types/types";
-import { useAtom, useAtomValue } from "jotai";
-import { useEffect } from "react";
+import { staAccessCodeAtom } from "@/states/atom";
+import { InstagramContent } from "@/types/types";
+import { useAtomValue } from "jotai";
+import { useEffect, useState } from "react";
 
 const Dashboard: React.FC = () => {
-  const userId = useAtomValue(accessCodeAtom);
+  const [instagramContents, setInstagramContents] = useState<
+    InstagramContent[]
+  >([]);
+  // const fbac = window.localStorage.getItem("fbac");
+
   const getItems = async () => {
-    const resp = await fetch(`/api/account?userId=${userId}`);
+    const instaac = window.localStorage.getItem("instaac");
+    console.log(instaac);
+    const resp = await fetch(`/api/account?insta_ac=${instaac}`);
     const data = await resp.json();
-    console.log(data);
+    const { contents } = data;
+    setInstagramContents(contents);
+    console.log("GET ITEMS : ", data);
   };
   const d = async () => {
     const d = await fetch("/api/openai");
@@ -21,7 +29,7 @@ const Dashboard: React.FC = () => {
     console.log(data);
   };
   useEffect(() => {
-    d();
+    getItems();
   }, []);
   return (
     <div className="flex flex-row w-full h-full justify-center">
@@ -29,9 +37,11 @@ const Dashboard: React.FC = () => {
         <div></div>
         <div className="min-w-[470px]">
           <Accordion
-            items={[{}]}
-            mainComponent={() => <MainItem />}
-            childComponent={() => <ChildItem />}
+            items={instagramContents}
+            mainComponent={(data) => <MainItem {...data} />}
+            childComponent={(data) => (
+              <Accordion items={[{}]} mainComponent={() => <ChildItem />} />
+            )}
           />
         </div>
       </div>

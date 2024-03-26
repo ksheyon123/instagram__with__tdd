@@ -36,6 +36,7 @@ const Callback: React.FC = () => {
           scope: "user_profile,user_media",
         });
         // https://api.instagram.com/oauth/authorize
+        console.log(`https://api.instagram.com/oauth/authorize?${qs}`);
         router.replace(
           `https://api.instagram.com/oauth/authorize?${qs}`
           // "popup",

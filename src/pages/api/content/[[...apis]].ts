@@ -24,25 +24,6 @@ export default async function handler(
         },
       }
     );
-    // console.log("d1", d1, data);
-
-    // const getMedia = async (id) => {
-    //   const resp = await fetch(
-    //     `https://graph.instagram.com/${id}?fields=id,media_type,media_url,username,timestamp&access_token=${accessToken}`,
-    //     {
-    //       method: "GET",
-    //       headers: {
-    //         "content-type": "application/x-www-form-urlencoded",
-    //         accept: "application/json",
-    //       },
-    //     }
-    //   );
-    //   return await resp.json();
-    // };
-
-    // const [d1] = await Promise.all(data.map((el: any) => getMedia(el.id)));
-
-    // console.log(d1);
 
     res.status(200).json({} as any);
   } catch (e) {

@@ -11,3 +11,9 @@ export type AccordionItem = {
   ChildComponent?: ReactElement;
   active?: boolean;
 };
+
+export type InstagramContent = {
+  id: string;
+  media_url: string;
+  caption: string;
+};

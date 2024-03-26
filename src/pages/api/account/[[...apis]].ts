@@ -9,12 +9,9 @@ export default async function handler(
   res: NextApiResponse<ResponseData>
 ) {
   try {
-    const { userId } = req.query;
-    console.log(userId);
-    const fbAccessToken =
-      "EAAT7Me1T73ABO5SNKs13HVkCButNR3QycRQrHLoBmdYTL7cXz0wkHGpsokdjM7XlisuD11Eqk42bZBJjVpkuXQmw89LTsK7WlLoEgOZA7qTTIE8xxYlkx0YiIRUS0ZCS99ZCjSOv8ZBR1JKzis0ktBRZAYZAlg6UZCfNmVtyBnrZASKxTlJQLXF334j0YKb1rZAtVx0vlJzriTf3919wAbR5nbuQngBDMZD";
-    const accessToken =
-      "IGQWRNd2pMQWJaUnJNRXpCUGhXa2ZARRjdkaGhxQjg4UTlmSDQtQ2RtV093N0k3aHlDdnE5MUlzM3ZASUi0yODVGemNzeXVqU0VEOVJLS3Boa1JKUFNVRF9iM1ZAFRU8tVmFadHJWRU5TTFQ5VDdVTUNUMjlRWFZA2WXFSSVE0VEVIZA0pUdwZDZD";
+    const { insta_ac } = req.query;
+    console.log();
+    const accessToken = insta_ac;
     // const accessToken = global.data[userId as string];
 
     const resp0 = await fetch(
