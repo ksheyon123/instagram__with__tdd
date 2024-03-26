@@ -14,33 +14,28 @@ const Dashboard: React.FC = () => {
   >([]);
   // const fbac = window.localStorage.getItem("fbac");
 
+  const getMedia = async (data) => {
+    const fbac = window.localStorage.getItem("fbac");
+    const { id } = data;
+    console.log(id);
+    const resp = await fetch(`/api/media?media_id=${id}&access_token=${fbac}`);
+    const d = await resp.json();
+    return {
+      ...data,
+      ...d,
+    };
+  };
+
   const getItems = async () => {
     const instaac = window.localStorage.getItem("instaac");
-    const fbac = window.localStorage.getItem("fbac");
-
-    console.log("instaac", instaac);
-    let arr = [];
     const resp = await fetch(`/api/account?insta_ac=${instaac}`);
     const data = await resp.json();
     const { contents } = data;
     if (contents) {
-      await Promise.all(
-        contents.map(async (el: InstagramContent) => {
-          const { id } = el;
-          const resp = await fetch(
-            `/api/media?media_id=${id}&access_token=${fbac}`
-          );
-          const d = await resp.json();
-          console.log("D", d);
-          return {
-            ...el,
-            ...d,
-          };
-        })
+      const newArr = await Promise.all(
+        (contents as any[]).map((el) => getMedia(el))
       );
-      arr;
-      console.log(contents);
-      setInstagramContents(contents);
+      setInstagramContents(newArr);
     }
   };
   const d = async () => {

@@ -25,7 +25,7 @@ export default async function handler(
       }
     );
     const resp1 = await fetch(
-      `https://graph.instagram.com/me/media?fields=id,caption,media_url,like&access_token=${accessToken}`,
+      `https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type&access_token=${accessToken}`,
       {
         method: "GET",
         headers: {
@@ -37,25 +37,6 @@ export default async function handler(
 
     const d0 = await resp0.json();
     const { data } = await resp1.json();
-    // console.log("d1", d1, data);
-
-    // const getMedia = async (id) => {
-    //   const resp = await fetch(
-    //     `https://graph.instagram.com/${id}?fields=id,media_type,media_url,username,timestamp&access_token=${accessToken}`,
-    //     {
-    //       method: "GET",
-    //       headers: {
-    //         "content-type": "application/x-www-form-urlencoded",
-    //         accept: "application/json",
-    //       },
-    //     }
-    //   );
-    //   return await resp.json();
-    // };
-
-    // const [d1] = await Promise.all(data.map((el: any) => getMedia(el.id)));
-
-    // console.log(d1);
 
     res.status(200).json({ ...d0, contents: data } as any);
   } catch (e) {
