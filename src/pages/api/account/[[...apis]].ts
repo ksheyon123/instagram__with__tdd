@@ -25,7 +25,7 @@ export default async function handler(
       }
     );
     const resp1 = await fetch(
-      `https://graph.instagram.com/me/media?fields=id,caption,media_url&access_token=${accessToken}`,
+      `https://graph.instagram.com/me/media?fields=id,caption,media_url,like&access_token=${accessToken}`,
       {
         method: "GET",
         headers: {

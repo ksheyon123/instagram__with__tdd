@@ -14,7 +14,7 @@ const LoginForm: React.FC = () => {
       // display: "popup",
       auth_type: "rerequest",
       scope:
-        "public_profile, instagram_basic, pages_show_list, instagram_manage_comments",
+        "public_profile, instagram_basic, pages_show_list, instagram_manage_comments, pages_read_engagement",
       // scope: ", instagram_basic, pages_show_list",
     });
 

@@ -12,12 +12,12 @@ export const MainItem: React.FC<IProps> = ({
   console.log(media_url);
   return (
     <div className="border rounded">
-      <div className="w-[470px] h-full">
+      <div className="w-[470px] max-h-[585px] bg-black  overflow-hidden">
         {isVideo ? (
-          <video src={media_url} />
+          <video className="object-contain" src={media_url} autoPlay />
         ) : (
           <Image
-            className="object-contain"
+            className="block object-contain w-full h-full"
             width={470}
             height={100}
             src={media_url}

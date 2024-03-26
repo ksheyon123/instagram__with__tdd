@@ -16,12 +16,32 @@ const Dashboard: React.FC = () => {
 
   const getItems = async () => {
     const instaac = window.localStorage.getItem("instaac");
-    console.log(instaac);
+    const fbac = window.localStorage.getItem("fbac");
+
+    console.log("instaac", instaac);
+    let arr = [];
     const resp = await fetch(`/api/account?insta_ac=${instaac}`);
     const data = await resp.json();
     const { contents } = data;
-    setInstagramContents(contents);
-    console.log("GET ITEMS : ", data);
+    if (contents) {
+      await Promise.all(
+        contents.map(async (el: InstagramContent) => {
+          const { id } = el;
+          const resp = await fetch(
+            `/api/media?media_id=${id}&access_token=${fbac}`
+          );
+          const d = await resp.json();
+          console.log("D", d);
+          return {
+            ...el,
+            ...d,
+          };
+        })
+      );
+      arr;
+      console.log(contents);
+      setInstagramContents(contents);
+    }
   };
   const d = async () => {
     const d = await fetch("/api/openai");
