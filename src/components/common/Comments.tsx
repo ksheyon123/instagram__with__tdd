@@ -3,25 +3,24 @@ import { Accordion } from "./Accordion";
 import { Replies } from "./Replies";
 import { MoreButton } from "./MoreButton";
 import { Button } from "./Button";
+import { List } from "./List";
 
-type CommentType = {
-  title: string | number;
+interface IProps {
+  replies: Comment[];
+}
+
+type Comment = {
+  id: string;
+  text: string;
+  timestamp: string;
   active?: boolean;
-  like?: boolean;
-  data?: CommentType[];
 };
 
-const comments = [
-  { title: "Comment1", data: [{ title: "Reply1" }] },
-  { title: "Comment2", data: [{ title: "Reply2" }] },
-];
-
-const Comments: React.FC = () => {
-  const [items, setItems] = useState<CommentType[]>(comments);
-
+const Comments: React.FC<IProps> = ({ replies }) => {
+  const [items, setItems] = useState<Comment[]>(replies);
   const onClick = (d) => {
-    setItems((prev: any[]) => {
-      const idx = prev.findIndex((el) => el.title === d.title);
+    setItems((prev: Comment[]) => {
+      const idx = prev.findIndex((el) => el.id === d.id);
       const newArr = prev
         .slice(0, idx)
         .concat({
@@ -54,41 +53,52 @@ const Comments: React.FC = () => {
     });
   };
   return (
-    <Accordion
+    <List
       items={items}
-      onClick={onClick}
-      mainComponent={(d) => (
-        <Comment {...d} onClickLike={fetchLike} onClickRemove={fetchRemove} />
-      )}
-      childComponent={(d) => {
-        const { data } = d;
-        return <Replies items={data} />;
+      child={(d: Comment) => {
+        const { text } = d;
+        return (
+          <Accordion
+            mainComponent={
+              <Comment
+                text={text}
+                onClickLike={fetchLike}
+                onClickRemove={fetchRemove}
+              />
+            }
+            childComponent={<></>}
+          />
+        );
       }}
     />
   );
 };
 
-interface ICommentProps extends CommentType {
+interface ICommentProps extends Comment {
   onClickLike: (data) => void;
   onClickRemove: (data) => void;
 }
 
-const Comment: React.FC<ICommentProps> = ({
-  title,
-  like,
+const Comment: React.FC<any> = ({
+  id,
+  timestamp,
+  text,
   onClickLike,
   onClickRemove,
 }) => {
   const buttons = [
-    <Button name="Like" onClick={() => onClickLike(title)} />,
-    <Button name="Remove" onClick={() => onClickRemove(title)} />,
+    <Button name="Like" onClick={() => onClickLike(id)} />,
+    <Button name="Remove" onClick={() => onClickRemove(id)} />,
   ];
 
   return (
-    <div className={`comment-container ${like ? "like" : ""}`}>
-      <div>{title}</div>
+    // <div className={`comment-container ${like ? "like" : ""}`}>
+    <>
+      <div>{text}</div>
       <MoreButton buttons={buttons} />
-    </div>
+    </>
+
+    // </div>
   );
 };
 

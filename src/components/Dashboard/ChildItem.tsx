@@ -5,9 +5,15 @@ import SendIcon from "./send_icon.svg";
 import SaveIcon from "./save_icon.svg";
 import Image from "next/image";
 import { Input } from "../common/Input";
+import { InstagramContent } from "@/types/types";
 
-export const ChildItem: React.FC<any> = ({ data }) => {
-  const [] = useState<boolean>(false);
+interface IProps extends InstagramContent {
+  userData?: any;
+  onClick?: Function;
+}
+
+export const ChildItem: React.FC<IProps> = (props) => {
+  const { userData, like_count, comments_count, caption, id, onClick } = props;
 
   return (
     <div className="block">
@@ -59,25 +65,28 @@ export const ChildItem: React.FC<any> = ({ data }) => {
               </div>
               <div>
                 <span>
-                  <a>강서현</a>
-                  <span>님</span>
-                  <span>Count</span>
-                  <span>이 좋아합니다</span>
+                  <span>좋아요</span>
+                  <span> {like_count}</span>
+                  <span>개</span>
                 </span>
               </div>
             </div>
           </section>{" "}
           {/** For the likes */}
           <div className="flex flex-row mt-2">
-            <div className="">강서현</div>
-            <div>내용내용내용내용내용</div>
-            <div>더보기</div>
+            <div className="">{!!userData ? userData.userName : "Unknown"}</div>
+            <div> {caption}</div>
+            {/* <div>더보기</div> */}
           </div>{" "}
           {/** For the content description */}
-          <div>
+          <div
+            onClick={() => {
+              if (!!onClick) onClick(id);
+            }}
+          >
             <a>
               댓글
-              <span> n</span>개 모두 보기
+              <span> {comments_count}</span>개 모두 보기
             </a>
           </div>{" "}
           {/** For showing other comments */}
