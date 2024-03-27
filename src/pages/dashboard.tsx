@@ -58,9 +58,16 @@ const Dashboard: React.FC = () => {
   };
 
   const gpt = async () => {
-    await fetch(
-      "/api/openai?url=https://rhino-organic-bison.ngrok-free.app/_next/image?url=https%3A%2F%2Fscontent-ssn1-1.cdninstagram.com%2Fv%2Ft51.29350-15%2F434224751_420929407129743_2607815568303248409_n.heic%3Fstp%3Ddst-jpg%26_nc_cat%3D104%26ccb%3D1-7%26_nc_sid%3D18de74%26_nc_ohc%3DwNliAHV3U2cAX8jbPCE%26_nc_ht%3Dscontent-ssn1-1.cdninstagram.com%26edm%3DANo9K5cEAAAA%26oh%3D00_AfBMtCB_ty6GqDEXIzGgXbynFVJYnudAIZ88mnlJu3wgXg%26oe%3D6608790B&w=1080&q=75"
-    );
+    //?url=https://rhino-organic-bison.ngrok-free.app/_next/image?url=https%3A%2F%2Fscontent-ssn1-1.cdninstagram.com%2Fv%2Ft51.29350-15%2F434224751_420929407129743_2607815568303248409_n.heic%3Fstp%3Ddst-jpg%26_nc_cat%3D104%26ccb%3D1-7%26_nc_sid%3D18de74%26_nc_ohc%3DwNliAHV3U2cAX8jbPCE%26_nc_ht%3Dscontent-ssn1-1.cdninstagram.com%26edm%3DANo9K5cEAAAA%26oh%3D00_AfBMtCB_ty6GqDEXIzGgXbynFVJYnudAIZ88mnlJu3wgXg%26oe%3D6608790B&w=1080&q=75
+    const resp = await fetch("/api/openai", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    });
+    const result = await resp.json();
+    console.log(result);
   };
 
   return (
@@ -71,7 +78,6 @@ const Dashboard: React.FC = () => {
           <List
             items={instagramContents}
             child={(data: InstagramContent) => {
-              console.log(data);
               return (
                 <Accordion
                   mainComponent={

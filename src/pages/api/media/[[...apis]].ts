@@ -37,7 +37,6 @@ export default async function handler(
       ...media,
       replies: replies,
     };
-    console.log(data);
     res.status(200).json({ ...data } as any);
   } catch (e) {
     console.error("Error", JSON.stringify(e));
