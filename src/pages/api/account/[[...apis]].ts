@@ -10,9 +10,7 @@ export default async function handler(
 ) {
   try {
     const { insta_ac } = req.query;
-    console.log();
     const accessToken = insta_ac;
-    // const accessToken = global.data[userId as string];
 
     const resp0 = await fetch(
       `https://graph.instagram.com/me?fields=id,username&access_token=${accessToken}`,

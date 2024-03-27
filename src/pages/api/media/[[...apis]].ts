@@ -32,10 +32,12 @@ export default async function handler(
     ]);
 
     const replies = comments.data;
+
     const data = {
       ...media,
       replies: replies,
     };
+    console.log(data);
     res.status(200).json({ ...data } as any);
   } catch (e) {
     console.error("Error", JSON.stringify(e));
