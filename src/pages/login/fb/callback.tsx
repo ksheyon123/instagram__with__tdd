@@ -25,7 +25,6 @@ const Callback: React.FC = () => {
 
   useEffect(() => {
     const access_token = qs();
-    console.log("FB", access_token);
     if (!!access_token) {
       window.localStorage.setItem("fbac", access_token);
       const loginInsta = () => {

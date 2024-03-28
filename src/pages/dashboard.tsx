@@ -26,8 +26,9 @@ const Dashboard: React.FC = () => {
   };
 
   const getItems = async () => {
-    const instaac = window.localStorage.getItem("instaac");
-    const resp = await fetch(`/api/account?insta_ac=${instaac}`);
+    const fbac = window.localStorage.getItem("fbac");
+    const igac = window.localStorage.getItem("instaac");
+    const resp = await fetch(`/api/account?ig_ac=${igac}&fb_ac=${fbac}`);
     const data = await resp.json();
     console.log(data);
     const { contents } = data;
