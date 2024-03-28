@@ -10,7 +10,9 @@ export const List: React.FC<IProps> = ({ items, child, prefix = "" }) => {
   return (
     <div>
       {items.map((el, idx) => (
-        <div key={prefix + idx}>{child(el)}</div>
+        <article className="block" key={prefix + idx}>
+          {child(el)}
+        </article>
       ))}
     </div>
   );

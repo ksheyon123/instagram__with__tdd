@@ -90,12 +90,12 @@ export const ChildItem: React.FC<IProps> = (props) => {
             </a>
           </div>{" "}
           {/** For showing other comments */}
-          <Input
+          {/* <Input
             style="secondary"
             placeholder="댓글 달기..."
             value=""
             onChange={() => {}}
-          />
+          /> */}
           {/** For writing new comment */}
         </div>
       </div>

@@ -1150,6 +1150,10 @@ body {
   max-height: calc(100% - 7.5rem);
 }
 
+.max-h-\[568px\] {
+  max-height: 568px;
+}
+
 .min-h-3 {
   min-height: 0.75rem;
 }
@@ -1200,6 +1204,10 @@ body {
 
 .min-h-unit-8 {
   min-height: var(--nextui-spacing-unit-8);
+}
+
+.min-h-full {
+  min-height: 100%;
 }
 
 .w-1 {
@@ -1330,6 +1338,10 @@ body {
   width: var(--nextui-spacing-unit-8);
 }
 
+.w-\[468px\] {
+  width: 468px;
+}
+
 .min-w-10 {
   min-width: 2.5rem;
 }
@@ -1418,6 +1430,10 @@ body {
 
 .min-w-unit-8 {
   min-width: var(--nextui-spacing-unit-8);
+}
+
+.min-w-\[370px\] {
+  min-width: 370px;
 }
 
 .max-w-2xl {
@@ -1862,6 +1878,10 @@ body {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-clip {
+  overflow: clip;
 }
 
 .overflow-visible {
@@ -2670,6 +2690,10 @@ body {
 
 .pt-\[9px\] {
   padding-top: 9px;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
 }
 
 .text-left {

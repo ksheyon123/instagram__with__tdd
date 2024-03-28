@@ -1,20 +1,19 @@
 import { fireEvent, render } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { Chip } from "@/components/common/Chip";
 
 describe("Chip component", () => {
-  const FIRST_ITEM = "1";
-  const SECOND_ITEM = "2";
-  const CHIP_ITEMS = [FIRST_ITEM, SECOND_ITEM];
-  it("receives string[] and shows it for the UI", () => {
-    const { getAllByRole } = render(<></>);
-    const chips = getAllByRole("listitem");
-    expect(chips).toHaveLength(2);
+  const CHIP_NAME = "chip_name";
+  it("receives string and shows it for the UI", () => {
+    const { getByText } = render(<Chip name={CHIP_NAME} />);
+    const chip = getByText(CHIP_NAME);
+    expect(chip).toBeInTheDocument();
   });
 
-  it("When the user click the one of chip, it will disappear", async () => {
-    const { getByText } = render(<></>);
-    const chip = getByText(FIRST_ITEM);
-    await fireEvent.click(chip);
-    expect(chip).not.toBeInTheDocument();
-  });
+  // NextUI 로 테스트 할 방법 없음
+  // it("is now disabled", () => {
+  //   const { getByText } = render(<Chip isDisabled={true} name={CHIP_NAME} />);
+  //   const chip = getByText(CHIP_NAME);
+  //   expect(chip).not.toBeInTheDocument();
+  // });
 });

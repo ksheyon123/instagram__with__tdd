@@ -1,4 +1,5 @@
 import { ChildItem } from "@/components/Dashboard/ChildItem";
+import { DBoardItem } from "@/components/Dashboard/DBoardItem";
 import { MainItem } from "@/components/Dashboard/MainItem";
 import { Accordion } from "@/components/common/Accordion";
 import { Comments } from "@/components/common/Comments";
@@ -79,19 +80,19 @@ const Dashboard: React.FC = () => {
             items={instagramContents}
             child={(data: InstagramContent) => {
               return (
-                <Accordion
-                  mainComponent={
-                    <>
-                      <MainItem {...data} />
-                      <ChildItem
-                        onClick={getRepliesData}
-                        userData={userData}
-                        {...data}
-                      />
-                    </>
-                  }
-                  childComponent={<Comments replies={data.replies} />}
-                />
+                <DBoardItem {...data} />
+                // <Accordion
+                //   mainComponent={
+                //     <>
+                //       <MainItem {...data} />
+                //       <ChildItem
+                //         onClick={getRepliesData}
+                //         userData={userData}
+                //         {...data}
+                //       />
+                //     </>
+                //   }
+                //   childComponent={<Comments replies={data.replies} />}
               );
             }}
           />
