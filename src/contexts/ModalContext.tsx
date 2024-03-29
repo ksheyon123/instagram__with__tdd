@@ -12,18 +12,25 @@ export const ModalContextProvider = ({ children }: ChildrenProps) => {
   const [body, setBody] = useState<ReactNode>(<></>);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const handleModal = (e: any) => {};
+
+  /**
+   * @description body와 footer를 전달하고 모달을 open합니다.
+   * @returns
+   */
+  const handleModal = (props: any) => {};
   return (
-    <ModalContext.Provider value={{}}>
+    <ModalContext.Provider
+      value={{
+        handleModal,
+      }}
+    >
       {children}
-      <>
-        <ModalWrapper
-          isOpen={isOpen}
-          onOpenChange={(e) => handleModal(e)}
-          body={body}
-          footer={buttons}
-        />
-      </>
+      <ModalWrapper
+        isOpen={isOpen}
+        onOpenChange={(e) => handleModal(e)}
+        body={body}
+        buttons={buttons}
+      />
     </ModalContext.Provider>
   );
 };
