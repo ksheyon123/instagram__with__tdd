@@ -732,6 +732,14 @@ body {
   top: var(--navbar-height);
 }
 
+.left-\[-5px\] {
+  left: -5px;
+}
+
+.top-\[-5px\] {
+  top: -5px;
+}
+
 .-z-30 {
   z-index: -30;
 }
@@ -942,6 +950,10 @@ body {
   margin-top: 14px;
 }
 
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -1138,8 +1150,16 @@ body {
   height: var(--nextui-spacing-unit-8);
 }
 
+.h-\[42px\] {
+  height: 42px;
+}
+
 .max-h-64 {
   max-height: 16rem;
+}
+
+.max-h-\[568px\] {
+  max-height: 568px;
 }
 
 .max-h-\[585px\] {
@@ -1148,10 +1168,6 @@ body {
 
 .max-h-\[calc\(100\%_-_7\.5rem\)\] {
   max-height: calc(100% - 7.5rem);
-}
-
-.max-h-\[568px\] {
-  max-height: 568px;
 }
 
 .min-h-3 {
@@ -1182,6 +1198,10 @@ body {
   min-height: 0px;
 }
 
+.min-h-full {
+  min-height: 100%;
+}
+
 .min-h-unit-10 {
   min-height: var(--nextui-spacing-unit-10);
 }
@@ -1204,10 +1224,6 @@ body {
 
 .min-h-unit-8 {
   min-height: var(--nextui-spacing-unit-8);
-}
-
-.min-h-full {
-  min-height: 100%;
 }
 
 .w-1 {
@@ -1278,8 +1294,16 @@ body {
   width: 175px;
 }
 
+.w-\[200px\] {
+  width: 200px;
+}
+
 .w-\[350px\] {
   width: 350px;
+}
+
+.w-\[468px\] {
+  width: 468px;
 }
 
 .w-\[470px\] {
@@ -1338,8 +1362,12 @@ body {
   width: var(--nextui-spacing-unit-8);
 }
 
-.w-\[468px\] {
-  width: 468px;
+.w-\[300px\] {
+  width: 300px;
+}
+
+.w-\[42px\] {
+  width: 42px;
 }
 
 .min-w-10 {
@@ -1376,6 +1404,10 @@ body {
 
 .min-w-\[200px\] {
   min-width: 200px;
+}
+
+.min-w-\[370px\] {
+  min-width: 370px;
 }
 
 .min-w-\[470px\] {
@@ -1430,10 +1462,6 @@ body {
 
 .min-w-unit-8 {
   min-width: var(--nextui-spacing-unit-8);
-}
-
-.min-w-\[370px\] {
-  min-width: 370px;
 }
 
 .max-w-2xl {
@@ -2062,6 +2090,10 @@ body {
   border-width: var(--nextui-border-width-small);
 }
 
+.border-\[1px\] {
+  border-width: 1px;
+}
+
 .border-b {
   border-bottom-width: 1px;
 }
@@ -2076,6 +2108,10 @@ body {
 
 .border-dotted {
   border-style: dotted;
+}
+
+.border-hidden {
+  border-style: hidden;
 }
 
 .border-none {
@@ -2161,6 +2197,20 @@ body {
 .border-warning {
   --tw-border-opacity: 1;
   border-color: hsl(var(--nextui-warning) / var(--nextui-warning-opacity, var(--tw-border-opacity)));
+}
+
+.border-\[\#000\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.border-gray250 {
+  --tw-border-opacity: 1;
+  border-color: rgb(250 250 250 / var(--tw-border-opacity));
+}
+
+.border-\[\#000\]\/\[0\.0975\] {
+  border-color: rgb(0 0 0 / 0.0975);
 }
 
 .border-x-transparent {
@@ -2632,6 +2682,10 @@ body {
   padding-bottom: 0.375rem;
 }
 
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
 .pb-8 {
   padding-bottom: 2rem;
 }
@@ -2692,8 +2746,8 @@ body {
   padding-top: 9px;
 }
 
-.pb-4 {
-  padding-bottom: 1rem;
+.pb-3 {
+  padding-bottom: 0.75rem;
 }
 
 .text-left {
