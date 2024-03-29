@@ -1154,6 +1154,10 @@ body {
   height: 42px;
 }
 
+.h-\[92px\] {
+  height: 92px;
+}
+
 .max-h-64 {
   max-height: 16rem;
 }
@@ -1368,6 +1372,10 @@ body {
 
 .w-\[42px\] {
   width: 42px;
+}
+
+.w-\[18\] {
+  width: 18;
 }
 
 .min-w-10 {
@@ -2748,6 +2756,10 @@ body {
 
 .pb-3 {
   padding-bottom: 0.75rem;
+}
+
+.pb-5 {
+  padding-bottom: 1.25rem;
 }
 
 .text-left {

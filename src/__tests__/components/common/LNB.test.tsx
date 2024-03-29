@@ -18,6 +18,12 @@ describe("LNB component", () => {
     expect(container).toContainEqual(5);
   });
 
+  it("click the ig logo", () => {
+    const { getByText } = render(<></>);
+    fireEvent.click(getByText(""));
+    expect(mockPush).toHaveBeenCalledWith(PATHNAME.DASHBOARD);
+  });
+
   it("go to home", () => {
     const { getByText } = render(<></>);
     fireEvent.click(getByText(""));

@@ -2,6 +2,7 @@ import { ChildrenProps } from "@/types/types";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { useEffect, useState } from "react";
+import { LNB } from "./LNB";
 
 const Layout: React.FC<ChildrenProps> = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -13,7 +14,8 @@ const Layout: React.FC<ChildrenProps> = ({ children }) => {
     // <div className={`${isLoggedIn ? "flex" : "block"} `}>
     <div className={"flex"}>
       {/* <Header /> */}
-      <div className="fixed left-0 w-[72px] h-screen"></div>
+      <LNB />
+      {/* <div className="fixed left-0 w-[72px] h-screen"></div> */}
       <div
         className={`${
           isLoggedIn
