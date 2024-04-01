@@ -9,13 +9,15 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
+
   theme: {
     extend: {
       colors: {
         ...styles.COLOR,
       },
       backgroundImage: {
-        "insta-logos": "url(./public/assets/images/insta_logos.png)",
+        "home-phone": "url('../../public/assets/images/home_phones_2x.png')",
+        "insta-logos": "url(../../public/assets/images/insta_logos.png)",
         "footer-texture": "url('/img/footer-texture.png')",
       },
     },

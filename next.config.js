@@ -2,12 +2,6 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  theme: {
-    backgroundImage: {
-      // "home-phone": "url('../src/assets/images/home_phones_2x.png')",
-    },
-    backgroundSize: {},
-  },
   images: {
     remotePatterns: [
       {

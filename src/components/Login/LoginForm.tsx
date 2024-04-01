@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import { Input } from "../common/Input";
 import { useContext, useState } from "react";
 import { AuthContext } from "@/contexts/AuthContext";
+import HomeHero from "public/assets/images/home_phones_2x.png";
+import Image from "next/image";
 
 const LoginForm: React.FC = () => {
   const ENDPOINT = process.env.NGROK_ENDPOINT;
@@ -39,8 +41,9 @@ const LoginForm: React.FC = () => {
     <article className="flex flex-row justify-center items-stretch mt-8 pb-8 w-full">
       <div className="relative sm:hidden md:hidden lg:block lg:w-[550px]">
         <div className="relative mb-3 mr-8">
-          <div className="bg-[url('../../../assets/images/home_phones_2x.png')] w-full h-[640px]">
-            {/* <Image src={} /> */}
+          {/* <div className="bg-[url('../../public/assets/images/home_phones_2x.png')] bg-cover w-full h-[640px]"> */}
+          <div className="bg-home-phone bg-cover w-full h-[640px]">
+            {/* <Image src={HomeHero} width={540} height={600} alt="img" /> */}
           </div>
         </div>
       </div>

@@ -2,23 +2,20 @@ import { useRouter } from "next/router";
 
 import { PATHNAME } from "@/constants";
 import { ChildrenProps } from "@/types/types";
-import {
-  IGIcon,
-  AddIcon,
-  SearchIcon,
-  CompassIcon,
-  VideoIcon,
-  MenuIcon,
-  MenuHIcon,
-  HomeIcon,
-  SendIcon,
-  LikeIcon,
-  ProfileIcon,
-} from "@/assets/icons/index";
+import IGIcon from "public/assets/icons/instagram_icon.svg";
+import AddIcon from "public/assets/icons/add_icon.svg";
+import SearchIcon from "public/assets/icons/search_icon.svg";
+import CompassIcon from "public/assets/icons/compass_icon.svg";
+import VideoIcon from "public/assets/icons/video_icon.svg";
+import MenuIcon from "public/assets/icons/menu_icon.svg";
+import MenuHIcon from "public/assets/icons/menu_h_icon.svg";
+import HomeIcon from "public/assets/icons/home_icon.svg";
+import SendIcon from "public/assets/icons/send_icon.svg";
+import LikeIcon from "public/assets/icons/like_icon.svg";
+import ProfileIcon from "public/assets/icons/profile_icon.jpeg";
 import { useState } from "react";
 import { List } from "./List";
 import Image from "next/image";
-// import { Image } from "@nextui-org/react";
 
 const ICONS = [
   {
