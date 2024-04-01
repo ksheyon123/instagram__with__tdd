@@ -966,6 +966,10 @@ body {
   margin-right: 0.75rem;
 }
 
+.mr-8 {
+  margin-right: 2rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -1168,6 +1172,10 @@ body {
 
 .h-\[92px\] {
   height: 92px;
+}
+
+.h-\[640px\] {
+  height: 640px;
 }
 
 .max-h-64 {
@@ -2528,6 +2536,18 @@ body {
 
 .bg-stripe-gradient {
   background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1) 75%, transparent 75%, transparent);
+}
+
+.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/home_phones_2x\.png\'\)\] {
+  background-image: url('../../assets/images/home_phones_2x.png');
+}
+
+.bg-\[url\(\'\.\.\/assets\/images\/home_phones_2x\.png\'\)\] {
+  background-image: url('../assets/images/home_phones_2x.png');
+}
+
+.bg-\[url\(\'\.\.\/\.\.\/\.\.\/assets\/images\/home_phones_2x\.png\'\)\] {
+  background-image: url('../../../assets/images/home_phones_2x.png');
 }
 
 .bg-\[length\:1\.25rem_1\.25rem\] {

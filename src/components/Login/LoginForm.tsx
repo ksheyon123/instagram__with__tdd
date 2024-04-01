@@ -37,9 +37,12 @@ const LoginForm: React.FC = () => {
 
   return (
     <article className="flex flex-row justify-center items-stretch mt-8 pb-8 w-full">
-      <div className="sm:hidden md:hidden lg:block lg:w-[550px]">
-        {isMounted && "Mounted"}
-        {/* <Button name="Login with Instagram" onClick={login} /> */}
+      <div className="relative sm:hidden md:hidden lg:block lg:w-[550px]">
+        <div className="relative mb-3 mr-8">
+          <div className="bg-[url('../../../assets/images/home_phones_2x.png')] w-full h-[640px]">
+            {/* <Image src={} /> */}
+          </div>
+        </div>
       </div>
 
       <div className={`flex flex-col justify-center items-center`}>

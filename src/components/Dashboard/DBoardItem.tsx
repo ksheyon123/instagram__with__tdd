@@ -27,7 +27,7 @@ export const DBoardItem: React.FC<IProps> = ({
   const [isShow, setIsShow] = useState<boolean>(false);
   const isVideo = media_type === "VIDEO";
   return (
-    <article className="block">
+    <article className="block" key={id}>
       <div className="flex flex-col w-full min-w-[370px] h-full pb-4 mb-5 border-b border-gray219">
         <ItemHead />
         <div className="relative flex items-center flex-shrink-0 border border-gray219 bg-black rounded">

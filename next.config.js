@@ -2,11 +2,23 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  theme: {
+    backgroundImage: {
+      // "home-phone": "url('../src/assets/images/home_phones_2x.png')",
+    },
+    backgroundSize: {},
+  },
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "*.cdninstagram.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
         port: "",
         pathname: "/**",
       },
@@ -46,6 +58,7 @@ const nextConfig = {
     INSTAGRAM_CLIENT_ID: process.env.INSTAGRAM_CLIENT_ID,
     INSTAGRAM_CLIENT_SECRET: process.env.INSTAGRAM_CLIENT_SECRET,
     NGROK_ENDPOINT: process.env.NGROK_ENDPOINT,
+    PUBLIC_URL: process.env.PUBLIC_URL,
   },
 };
 

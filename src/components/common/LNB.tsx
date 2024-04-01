@@ -2,23 +2,59 @@ import { useRouter } from "next/router";
 
 import { PATHNAME } from "@/constants";
 import { ChildrenProps } from "@/types/types";
-
-import IGIcon from "@/assets/icons/instagram_icon.svg";
-import AddIcon from "@/assets/icons/add_icon.svg";
-import MenuIcon from "@/assets/icons/menu_icon.svg";
-import MenuHIcon from "@/assets/icons/menu_h_icon.svg";
-import HomeIcon from "@/assets/icons/home_icon.svg";
+import {
+  IGIcon,
+  AddIcon,
+  SearchIcon,
+  CompassIcon,
+  VideoIcon,
+  MenuIcon,
+  MenuHIcon,
+  HomeIcon,
+  SendIcon,
+  LikeIcon,
+  ProfileIcon,
+} from "@/assets/icons/index";
 import { useState } from "react";
+import { List } from "./List";
+import Image from "next/image";
+// import { Image } from "@nextui-org/react";
 
 const ICONS = [
+  {
+    name: "home",
+    icon: <HomeIcon className="relative origin-center hover:scale-105" />,
+  },
+
+  {
+    name: "search",
+    icon: <SearchIcon className="relative origin-center hover:scale-105" />,
+  },
+  {
+    name: "compass",
+    icon: <CompassIcon className="relative origin-center hover:scale-105" />,
+  },
+  {
+    name: "video",
+    icon: <VideoIcon className="relative origin-center hover:scale-105" />,
+  },
+  {
+    name: "send",
+    icon: <SendIcon className="relative origin-center hover:scale-105" />,
+  },
+  {
+    name: "like",
+    icon: <LikeIcon className="relative origin-center hover:scale-105" />,
+  },
   {
     name: "add",
     icon: <AddIcon className="relative origin-center hover:scale-105" />,
     modal: true,
   },
   {
-    name: "home",
-    icon: <HomeIcon className="relative origin-center hover:scale-105" />,
+    name: "profile",
+    icon: <Image width={24} height={24} src={ProfileIcon} alt="profile" />,
+    modal: true,
   },
 ];
 
@@ -40,14 +76,18 @@ export const LNB: React.FC = () => {
             </div>
 
             <div className="relative w-full">
-              {ICONS.map(({ icon, modal }) => {
-                return (
-                  <HoverEffect>
-                    <div className="p-3">{icon}</div>
-                    {modal && <ToggleBox />}
-                  </HoverEffect>
-                );
-              })}
+              <List
+                items={ICONS}
+                child={(data) => {
+                  const { icon, modal } = data;
+                  return (
+                    <HoverEffect>
+                      <div className="p-3">{icon}</div>
+                      {modal && <ToggleBox />}
+                    </HoverEffect>
+                  );
+                }}
+              />
             </div>
           </div>
 
