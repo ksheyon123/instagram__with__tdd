@@ -1,10 +1,13 @@
 import { Button } from "../common/Button";
 import { useRouter } from "next/router";
 import { Input } from "../common/Input";
+import { useContext, useState } from "react";
+import { AuthContext } from "@/contexts/AuthContext";
 
 const LoginForm: React.FC = () => {
   const ENDPOINT = process.env.NGROK_ENDPOINT;
   const router = useRouter();
+  const { isMounted } = useContext(AuthContext);
   const login = async () => {
     const qs = new URLSearchParams({
       client_id: process.env.FACEBOOK_CLIENT_ID,
@@ -29,11 +32,16 @@ const LoginForm: React.FC = () => {
     );
   };
 
+  const [userName, setUserName] = useState<string>("");
+  const [pw, setPw] = useState<string>("");
+
   return (
     <article className="flex flex-row justify-center items-stretch mt-8 pb-8 w-full">
       <div className="sm:hidden md:hidden lg:block lg:w-[550px]">
-        <Button name="Login with Instagram" onClick={login} />
+        {isMounted && "Mounted"}
+        {/* <Button name="Login with Instagram" onClick={login} /> */}
       </div>
+
       <div className={`flex flex-col justify-center items-center`}>
         <div
           className={`flex flex-col justify-center items-center border border-solid border-[gray0] rounded py-2.5 mb-2.5 w-[350px]`}
@@ -48,13 +56,25 @@ const LoginForm: React.FC = () => {
           <div className="w-full flex flex-col mb-2.5">
             <div className="mb-[6px] mx-10">
               <Input
+                name="username"
                 placeholder="전화번호, 사용자 이름 또는 이메일"
-                value=""
-                onChange={() => {}}
+                value={userName}
+                onChange={(e) => {
+                  const str = e.target.value;
+                  setUserName(str);
+                }}
               />
             </div>
             <div className="mb-[6px] mx-10">
-              <Input placeholder="비밀번호" value="" onChange={() => {}} />
+              <Input
+                name="password"
+                placeholder="비밀번호"
+                value={pw}
+                onChange={(e) => {
+                  const str = e.target.value;
+                  setPw(str);
+                }}
+              />
             </div>
             <div className="my-2 mx-10">
               <Button name="Login with Instagram" onClick={login} />

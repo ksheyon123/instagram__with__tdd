@@ -11,6 +11,12 @@ jest.mock("next/router", () => ({
 
 // 확인 불가?
 describe("LoginForm Component OAuth2.0 test", () => {
+  it("is mounted", () => {
+    const { getByText } = render(<LoginForm />);
+    const mounted = getByText("Mounted");
+    expect(mounted).toBeInTheDocument();
+  });
+
   it("User click the instagram social login btn", () => {
     const BUTTON_NAME = "Login with Instagram";
     const { getByText } = render(<LoginForm />);

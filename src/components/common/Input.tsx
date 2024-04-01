@@ -6,6 +6,7 @@ interface IProps {
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
 
+  name?: string;
   style?: any;
   placeholder?: string;
   errorMsg?: string;
@@ -66,6 +67,7 @@ const Input: React.FC<IProps> = (props) => {
   const {
     value,
     onChange,
+    name = "",
     errorMsg,
     placeholder,
     disabled,
@@ -74,6 +76,7 @@ const Input: React.FC<IProps> = (props) => {
   return (
     <div>
       <DefaultInputUI
+        name={name}
         color={style}
         size={style}
         radius={style}
