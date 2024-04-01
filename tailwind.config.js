@@ -20,6 +20,12 @@ module.exports = {
         "insta-logos": "url(../../public/assets/images/insta_logos.png)",
         "footer-texture": "url('/img/footer-texture.png')",
       },
+      backgroundSize: {
+        "home-p-size": "468.32px 634.15px",
+      },
+      backgroundPosition: {
+        "left-46": "-46px 0px",
+      },
     },
     screens: {
       sm: { min: "0px", max: "450px" },
