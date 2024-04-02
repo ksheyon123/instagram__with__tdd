@@ -46,8 +46,12 @@ const Dashboard: React.FC = () => {
   };
 
   const getItems = async () => {
-    const fbac = window.localStorage.getItem("fbac");
-    const igac = window.localStorage.getItem("instaac");
+    // const fbac = window.localStorage.getItem("fbac");
+    // const igac = window.localStorage.getItem("instaac");
+    const fbac =
+      "EAAT7Me1T73ABOZCUNeMoi6Kxa4bAeeG7hOH84aAkMbCEUOtc7ZB3xfjVZCWkmBiKGCE57ZCjOVIkjPfBJ2FZAL1FnBhNZCZBRti08flMcxqIcAMnoVBwVnnZA7MKS6rFevvUEfN3KOMV7CZBoXfThg11tciz34rpLdcUoB4eLWSZBx5JlrZBGOv4JiuRTVryX30ugEeUeXXQrLPZAAlo82ttZBgYUArlEQkkZD";
+    const igac =
+      "IGQWRNRy1icElNVHNqSWIwdGo2UmJ2d2JpVVlPVEd4RHRRaFZAtejVmSGtoSUlJMkVkWS1SVE5sTmhhVWg4NkhDbmY5Sm5wS1FONmVUT1gtbTRwR1VaLVQ4N0lwejIyTXRhcWJhY0s0LUJJeUx6elpoSXB1OW1VVmoyeTBJci02MWY1QQZDZD";
     const resp = await fetch(`/api/account?ig_ac=${igac}&fb_ac=${fbac}`);
     const data = await resp.json();
     console.log(data);
@@ -63,7 +67,7 @@ const Dashboard: React.FC = () => {
   };
 
   useEffect(() => {
-    // getItems();
+    getItems();
   }, []);
 
   const getRepliesData = async (id: any) => {

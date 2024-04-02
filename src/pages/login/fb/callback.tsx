@@ -26,6 +26,7 @@ const Callback: React.FC = () => {
   useEffect(() => {
     const access_token = qs();
     if (!!access_token) {
+      console.log(access_token);
       window.localStorage.setItem("fbac", access_token);
       const loginInsta = () => {
         const qs = new URLSearchParams({

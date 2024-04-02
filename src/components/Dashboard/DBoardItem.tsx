@@ -4,11 +4,11 @@ import { useState } from "react";
 
 import { InstagramContent } from "@/types/types";
 
-import LikeIcon from "@/assets/icons/like_icon.svg";
-import CommentIcon from "@/assets/icons/cmt_icon.svg";
-import SendIcon from "@/assets/icons/send_icon.svg";
-import SaveIcon from "@/assets/icons/save_icon.svg";
-import MoreIcon from "@/assets/icons/more_icon.svg";
+import LikeIcon from "public/assets/icons/like_icon.svg";
+import CommentIcon from "public/assets/icons/cmt_icon.svg";
+import SendIcon from "public/assets/icons/send_icon.svg";
+import SaveIcon from "public/assets/icons/save_icon.svg";
+import MoreIcon from "public/assets/icons/more_icon.svg";
 interface IProps extends InstagramContent {
   userData?: any;
   onClick?: any;

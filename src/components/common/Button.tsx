@@ -26,6 +26,7 @@ const Button: React.FC<IProps> = (props) => {
   } = props;
   return (
     <button
+      id={name.toLocaleLowerCase().replaceAll(" ", "")}
       className={`${btnStyle[btnStyleType]}`}
       onClick={onClick}
       disabled={disabled}

@@ -9,6 +9,7 @@ import ScreenShot3 from "public/assets/images/screenshot3_2x.png";
 import ScreenShot4 from "public/assets/images/screenshot4_2x.png";
 import { ImageSlider } from "../common/ImageSlider";
 import Image from "next/image";
+import { PATHNAME } from "@/constants";
 
 const LoginForm: React.FC = () => {
   const ENDPOINT = process.env.NGROK_ENDPOINT;
@@ -91,7 +92,11 @@ const LoginForm: React.FC = () => {
                 />
               </div>
               <div className="my-2 mx-10">
-                <Button name="Login with Instagram" onClick={login} />
+                <Button
+                  name="Login with Instagram"
+                  // onClick={() => router.replace(PATHNAME.DASHBOARD)}
+                  onClick={() => login()}
+                />
               </div>
               <div className="mx-10 mb-[22px] mt-[14px]">
                 <div className="flex">
