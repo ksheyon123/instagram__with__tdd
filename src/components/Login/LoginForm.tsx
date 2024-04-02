@@ -1,20 +1,20 @@
 import { Button } from "../common/Button";
 import { useRouter } from "next/router";
 import { Input } from "../common/Input";
-import { useContext, useState } from "react";
-import { AuthContext } from "@/contexts/AuthContext";
-
-import Image from "next/image";
+import { useState } from "react";
 
 import ScreenShot1 from "public/assets/images/screenshot1_2x.png";
 import ScreenShot2 from "public/assets/images/screenshot2_2x.png";
 import ScreenShot3 from "public/assets/images/screenshot3_2x.png";
 import ScreenShot4 from "public/assets/images/screenshot4_2x.png";
+import { ImageSlider } from "../common/ImageSlider";
+import Image from "next/image";
 
 const LoginForm: React.FC = () => {
   const ENDPOINT = process.env.NGROK_ENDPOINT;
   const router = useRouter();
-  const { isMounted } = useContext(AuthContext);
+
+  const images = [ScreenShot1, ScreenShot2, ScreenShot3, ScreenShot4];
   const login = async () => {
     const qs = new URLSearchParams({
       client_id: process.env.FACEBOOK_CLIENT_ID,
@@ -44,19 +44,14 @@ const LoginForm: React.FC = () => {
 
   return (
     <article className="flex flex-row justify-center items-stretch mt-8 pb-8 w-full shrink-0 grow">
-      <div className="relative sm:hidden md:hidden lg:block mb-3 mr-8">
+      <div className="relative flex justify-center items-center sm:hidden md:hidden lg:flex mb-3 mr-8">
         {/* <div className="bg-[url('../../public/assets/images/home_phones_2x.png')] bg-cover w-full h-[640px]"> */}
         <div className="relative flex w-[380.32px] basis-[380.32px] h-[581.15px] bg-home-phone bg-cover bg-left-46 bg-home-p-size ">
           <div className="relative flex flex-col mt-[27px] ml-[112px]">
-            <Image
-              className="absolute left-0 z-10 max-w-[250px]"
-              src={ScreenShot1}
-              width={250}
-              height={"538.84"}
-              alt="screen_shot1"
-            />
+            <div className="absolute left-0 z-10 w-[250px] h-[538.84px]">
+              <ImageSlider images={images} width={250} height={538.84} />
+            </div>
           </div>
-          {/* <Image src={HomeHero} width={540} height={600} alt="img" /> */}
         </div>
       </div>
 
@@ -67,59 +62,61 @@ const LoginForm: React.FC = () => {
           <div className="mt-9 mb-3">
             <div className="pointer-events-auto">
               <div className="flex w-[175px] h-[51px]">
-                <i className="relative overflow-hidden w-full h-full bg-auto bg-left-top" />
+                <i className="relative overflow-hidden w-full h-full bg-auto bg-left-top bg-ig-imgs-1 bg-ig-logo-size bg-l-0-t-0" />
               </div>
             </div>
           </div>
-          <div className="w-full flex flex-col mb-2.5">
-            <div className="mb-[6px] mx-10">
-              <Input
-                name="username"
-                placeholder="전화번호, 사용자 이름 또는 이메일"
-                value={userName}
-                onChange={(e) => {
-                  const str = e.target.value;
-                  setUserName(str);
-                }}
-              />
-            </div>
-            <div className="mb-[6px] mx-10">
-              <Input
-                name="password"
-                placeholder="비밀번호"
-                value={pw}
-                onChange={(e) => {
-                  const str = e.target.value;
-                  setPw(str);
-                }}
-              />
-            </div>
-            <div className="my-2 mx-10">
-              <Button name="Login with Instagram" onClick={login} />
-            </div>
-            <div className="mx-10 mb-[22px] mt-[14px]">
-              <div className="flex">
-                <div
-                  className={`relative top-2.5 h-[1px] grow bg-[gray0]`}
-                ></div>
-                <div className="mx-[18px]">또는</div>
-                <div
-                  className={`relative top-2.5 h-[1px] grow bg-[gray0]`}
-                ></div>
+          <div className="mt-6 mb-2.5 max-w-[350px] w-full ">
+            <div className="flex flex-col ">
+              <div className="mb-[6px] mx-10">
+                <Input
+                  name="username"
+                  placeholder="전화번호, 사용자 이름 또는 이메일"
+                  value={userName}
+                  onChange={(e) => {
+                    const str = e.target.value;
+                    setUserName(str);
+                  }}
+                />
               </div>
+              <div className="mb-[6px] mx-10">
+                <Input
+                  name="password"
+                  placeholder="비밀번호"
+                  value={pw}
+                  onChange={(e) => {
+                    const str = e.target.value;
+                    setPw(str);
+                  }}
+                />
+              </div>
+              <div className="my-2 mx-10">
+                <Button name="Login with Instagram" onClick={login} />
+              </div>
+              <div className="mx-10 mb-[22px] mt-[14px]">
+                <div className="flex">
+                  <div
+                    className={`relative top-2.5 h-[1px] grow bg-[gray0]`}
+                  ></div>
+                  <div className="mx-[18px]">또는</div>
+                  <div
+                    className={`relative top-2.5 h-[1px] grow bg-[gray0]`}
+                  ></div>
+                </div>
+              </div>
+              <div className="flex flex-col items-stretch self-auto grow-0 self-auto my-2 mx-10">
+                <Button
+                  name="Facebook으로 로그인"
+                  onClick={() => {}}
+                  btnStyleType="fb0"
+                />
+              </div>
+              <a className="inline text-center mt-3">
+                <span className="block font-normal text-fb0 text-xs">
+                  Forgot password?
+                </span>
+              </a>
             </div>
-            <div className="flex flex-col items-stretch self-auto grow-0 self-auto my-2 mx-10">
-              <Button
-                name="Facebook으로 로그인"
-                onClick={() => {}}
-                btnStyleType="fb0"
-              />
-            </div>
-            <a className="inline text-center mt-3">
-              <span className="block font-normal text-fb0 text-xs">
-                Forgot password?
-              </span>
-            </a>
           </div>
         </div>
         <div className="flex flex-col justify-center items-center border border-solid border-[gray0] rounded py-2.5 mb-2.5 w-[350px]">

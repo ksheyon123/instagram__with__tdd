@@ -16,17 +16,13 @@ const Layout: React.FC<ChildrenProps> = ({ children }) => {
       {/* <Header /> */}
       <LNB />
       {/* <div className="fixed left-0 w-[72px] h-screen"></div> */}
-      <div
-        className={`${
-          isLoggedIn
-            ? "ml-auto w-[calc(100%-72px)] h-full align-center align-center"
-            : ""
-        }`}
-      >
-        <main className="relative flex flex-col items-stretch grow shrink-0 z-0 top-0 w-screen h-screen">
-          {children}
-        </main>
-        <Footer />
+      <div className="ml-auto w-[calc(100%-72px)] h-full align-center align-center">
+        <section className="flex flex-col grow min-h-screen">
+          <main className="relative flex flex-col items-stretch grow shrink-0 z-0 top-0 w-screen">
+            {children}
+          </main>
+          <Footer />
+        </section>
       </div>
     </div>
   );

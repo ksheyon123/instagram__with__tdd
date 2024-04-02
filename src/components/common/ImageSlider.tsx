@@ -13,11 +13,10 @@ export const ImageSlider: React.FC<IProps> = ({ images, width, height }) => {
     if (images.length > 0) {
       const intervalId = setInterval(() => {
         setCount((prev) => (prev + 1) % 4);
-      }, 2000);
+      }, 3000);
       return () => clearInterval(intervalId);
     }
   }, [images]);
-
   return (
     <Image
       className={"image-slider-" + count}

@@ -744,10 +744,6 @@ body {
   top: var(--navbar-height);
 }
 
-.right-0 {
-  right: 0px;
-}
-
 .-z-30 {
   z-index: -30;
 }
@@ -918,6 +914,10 @@ body {
   margin-left: -8px;
 }
 
+.ml-\[112px\] {
+  margin-left: 112px;
+}
+
 .ml-auto {
   margin-left: auto;
 }
@@ -966,12 +966,12 @@ body {
   margin-top: 14px;
 }
 
-.ml-\[112px\] {
-  margin-left: 112px;
-}
-
 .mt-\[27px\] {
   margin-top: 27px;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
 }
 
 .box-border {
@@ -1125,8 +1125,12 @@ body {
   height: 51px;
 }
 
-.h-\[600px\] {
-  height: 600px;
+.h-\[538\.84px\] {
+  height: 538.84px;
+}
+
+.h-\[581\.15px\] {
+  height: 581.15px;
 }
 
 .h-\[640px\] {
@@ -1186,8 +1190,8 @@ body {
   height: var(--nextui-spacing-unit-8);
 }
 
-.h-\[581\.15px\] {
-  height: 581.15px;
+.h-\[135px\] {
+  height: 135px;
 }
 
 .max-h-64 {
@@ -1262,6 +1266,10 @@ body {
   min-height: var(--nextui-spacing-unit-8);
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
 .w-1 {
   width: 0.25rem;
 }
@@ -1334,12 +1342,20 @@ body {
   width: 200px;
 }
 
+.w-\[250px\] {
+  width: 250px;
+}
+
 .w-\[300px\] {
   width: 300px;
 }
 
 .w-\[350px\] {
   width: 350px;
+}
+
+.w-\[380\.32px\] {
+  width: 380.32px;
 }
 
 .w-\[42px\] {
@@ -1404,10 +1420,6 @@ body {
 
 .w-unit-8 {
   width: var(--nextui-spacing-unit-8);
-}
-
-.w-\[380\.32px\] {
-  width: 380.32px;
 }
 
 .min-w-10 {
@@ -1569,8 +1581,8 @@ body {
   max-width: 20rem;
 }
 
-.max-w-\[250px\] {
-  max-width: 250px;
+.max-w-\[350px\] {
+  max-width: 350px;
 }
 
 .flex-1 {
@@ -1595,10 +1607,6 @@ body {
 
 .shrink-0 {
   flex-shrink: 0;
-}
-
-.shrink {
-  flex-shrink: 1;
 }
 
 .flex-grow {
@@ -2552,6 +2560,10 @@ body {
   background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1) 75%, transparent 75%, transparent);
 }
 
+.bg-ig-imgs-1 {
+  background-image: url(../../public/assets/images/ig_imgs_1.png);
+}
+
 .bg-\[length\:1\.25rem_1\.25rem\] {
   background-size: 1.25rem 1.25rem;
 }
@@ -2568,12 +2580,20 @@ body {
   background-size: 468.32px 634.15px;
 }
 
+.bg-ig-logo-size {
+  background-size: 176px 258px;
+}
+
 .bg-left-46 {
   background-position: -46px 0px;
 }
 
 .bg-left-top {
   background-position: left top;
+}
+
+.bg-l-0-t-0 {
+  background-position: 0px 0px;
 }
 
 .stroke-current {
@@ -7327,8 +7347,8 @@ body {
     display: block;
   }
 
-  .lg\:w-\[550px\] {
-    width: 550px;
+  .lg\:flex {
+    display: flex;
   }
 }
 
