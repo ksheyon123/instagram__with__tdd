@@ -4,14 +4,34 @@ import { MainItem } from "@/components/Dashboard/MainItem";
 import { Accordion } from "@/components/common/Accordion";
 import { Comments } from "@/components/common/Comments";
 import { List } from "@/components/common/List";
-import { InstagramContent } from "@/types/types";
+import { InstagramContent, UserData } from "@/types/types";
 import { useEffect, useState } from "react";
 
 const Dashboard: React.FC = () => {
   const [instagramContents, setInstagramContents] = useState<
     InstagramContent[]
-  >([]);
-  const [userData, setUserData] = useState<any>();
+  >([
+    {
+      id: "1",
+      media_url: "/1",
+      media_type: "IMAGE",
+      caption: "hi",
+      comments_count: 0,
+      like_count: 0,
+      replies: [],
+    },
+  ]);
+  const [userData, setUserData] = useState<UserData>({
+    id: "1",
+    follow_count: 0,
+    followed_by_count: 0,
+    has_profile_picture: false,
+    is_private: false,
+    is_published: false,
+    media_count: 0,
+    profile_pic: "",
+    username: "kshyeon123",
+  });
   // const fbac = window.localStorage.getItem("fbac");
 
   const getMedia = async (data) => {
@@ -26,8 +46,9 @@ const Dashboard: React.FC = () => {
   };
 
   const getItems = async () => {
-    const instaac = window.localStorage.getItem("instaac");
-    const resp = await fetch(`/api/account?insta_ac=${instaac}`);
+    const fbac = window.localStorage.getItem("fbac");
+    const igac = window.localStorage.getItem("instaac");
+    const resp = await fetch(`/api/account?ig_ac=${igac}&fb_ac=${fbac}`);
     const data = await resp.json();
     console.log(data);
     const { contents } = data;
@@ -38,11 +59,11 @@ const Dashboard: React.FC = () => {
       console.log(newArr);
       setInstagramContents(newArr);
     }
-    setUserData({ userName: data.username, id: data.id });
+    setUserData((prev) => ({ ...prev, username: data.username, id: data.id }));
   };
 
   useEffect(() => {
-    getItems();
+    // getItems();
   }, []);
 
   const getRepliesData = async (id: any) => {
@@ -68,32 +89,16 @@ const Dashboard: React.FC = () => {
       body: JSON.stringify({}),
     });
     const result = await resp.json();
-    console.log(result);
   };
 
   return (
     <div className="flex flex-row w-full h-full justify-center">
       <div className="max-w-screen-sm">
-        <div onClick={gpt}>Click</div>
         <div className="min-w-[470px]">
           <List
             items={instagramContents}
             child={(data: InstagramContent) => {
-              return (
-                <DBoardItem {...data} />
-                // <Accordion
-                //   mainComponent={
-                //     <>
-                //       <MainItem {...data} />
-                //       <ChildItem
-                //         onClick={getRepliesData}
-                //         userData={userData}
-                //         {...data}
-                //       />
-                //     </>
-                //   }
-                //   childComponent={<Comments replies={data.replies} />}
-              );
+              return <DBoardItem userData={userData} {...data} />;
             }}
           />
         </div>

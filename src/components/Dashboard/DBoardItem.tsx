@@ -1,9 +1,14 @@
-import { InstagramContent } from "@/types/types";
 import Image from "next/image";
-import LikeIcon from "./like_icon.svg";
-import CommentIcon from "./cmt_icon.svg";
-import SendIcon from "./send_icon.svg";
-import SaveIcon from "./save_icon.svg";
+
+import { useState } from "react";
+
+import { InstagramContent } from "@/types/types";
+
+import LikeIcon from "@/assets/icons/like_icon.svg";
+import CommentIcon from "@/assets/icons/cmt_icon.svg";
+import SendIcon from "@/assets/icons/send_icon.svg";
+import SaveIcon from "@/assets/icons/save_icon.svg";
+import MoreIcon from "@/assets/icons/more_icon.svg";
 interface IProps extends InstagramContent {
   userData?: any;
   onClick?: any;
@@ -19,12 +24,13 @@ export const DBoardItem: React.FC<IProps> = ({
   id,
   onClick,
 }) => {
+  const [isShow, setIsShow] = useState<boolean>(false);
   const isVideo = media_type === "VIDEO";
   return (
-    <article className="block">
+    <article className="block" key={id}>
       <div className="flex flex-col w-full min-w-[370px] h-full pb-4 mb-5 border-b border-gray219">
-        <div className=""></div>
-        <div className="relative flex items-center flex-shrink-0 border border-gray219 bg-black rounded-1">
+        <ItemHead />
+        <div className="relative flex items-center flex-shrink-0 border border-gray219 bg-black rounded">
           <div className="box-border">
             <div className="relative w-[468px] max-h-[568px] overflow-hidden">
               {isVideo ? (
@@ -101,12 +107,15 @@ export const DBoardItem: React.FC<IProps> = ({
               </section>{" "}
               {/** For the likes */}
               <div className="flex flex-row mt-2">
-                <div className="">
-                  {!!userData ? userData.userName : "Unknown"}
+                <div className="inline-block text-black font-900 text-ellipsis  w-[300px]  overflow-hidden whitespace-nowrap">
+                  <span>{!!userData ? userData.username : "Unknown"} </span>
+                  <span className="font-normal">
+                    {caption +
+                      "ajshdfkajsdhfkjahsdflkahsdflkahsdfkjhasdlkjfhasdlkjfhalskdjfhaslkjdfh"}
+                  </span>
                 </div>
-                <div> {caption}</div>
-                {/* <div>더보기</div> */}
-              </div>{" "}
+                <div>더보기</div>
+              </div>
               {/** For the content description */}
               <div
                 onClick={() => {
@@ -115,21 +124,50 @@ export const DBoardItem: React.FC<IProps> = ({
               >
                 <a>
                   댓글
-                  <span> {comments_count}</span>개 모두 보기
+                  <span onClick={() => setIsShow((prev) => !prev)}>
+                    {" "}
+                    {comments_count}
+                  </span>
+                  개 모두 보기
                 </a>
               </div>{" "}
               {/** For showing other comments */}
-              {/* <Input
-            style="secondary"
-            placeholder="댓글 달기..."
-            value=""
-            onChange={() => {}}
-          /> */}
-              {/** For writing new comment */}
+              {isShow && (
+                <div>
+                  <div></div>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
     </article>
   );
+};
+
+const ItemHead: React.FC = () => {
+  return (
+    <div className="pl-1 pb-3">
+      <div className="flex flex-row w-full items-center justify-start">
+        <div className="mr-3">
+          <div className="relative">
+            <canvas className="absolute w-[42px] h-[42px] top-[-5px] left-[-5px]" />
+            <a className="flex w-8 h-8 rounded-full border-[#000]/[0.0975] border-[1px]">
+              <img className="object-cover" />
+            </a>
+          </div>
+        </div>
+        <div className="flex flex-row items-center justify-start grow">
+          asdasd
+        </div>
+        <div className="flex flex-row items-center justify-start">
+          <MoreIcon />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ItemImage: React.FC = () => {
+  return <></>;
 };

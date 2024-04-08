@@ -4,7 +4,15 @@ import { ChildrenProps } from "@/types/types";
 import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
 
-export const AuthContext = createContext({});
+type AuthContext = {
+  a: string;
+  isMounted: boolean;
+};
+
+export const AuthContext = createContext<AuthContext>({
+  a: "",
+  isMounted: false,
+});
 
 export const AuthContextProvider = ({ children }: ChildrenProps) => {
   const router = useRouter();
@@ -20,5 +28,9 @@ export const AuthContextProvider = ({ children }: ChildrenProps) => {
       console.log("After Mounted");
     }
   }, [isMounted]);
-  return <AuthContext.Provider value={{}}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ a: "", isMounted }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };

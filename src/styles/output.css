@@ -451,7 +451,7 @@ video {
 
 body {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 400;
   color: #737373;
   box-sizing: border-box;
   background-color: transparent;
@@ -640,6 +640,10 @@ body {
   bottom: 0px;
 }
 
+.bottom-\[-20px\] {
+  bottom: -20px;
+}
+
 .bottom-\[10\%\] {
   bottom: 10%;
 }
@@ -670,6 +674,10 @@ body {
 
 .left-3 {
   left: 0.75rem;
+}
+
+.left-\[-5px\] {
+  left: -5px;
 }
 
 .left-\[10\%\] {
@@ -720,6 +728,10 @@ body {
   top: 0.625rem;
 }
 
+.top-\[-5px\] {
+  top: -5px;
+}
+
 .top-\[10\%\] {
   top: 10%;
 }
@@ -758,6 +770,14 @@ body {
 
 .z-50 {
   z-index: 50;
+}
+
+.z-\[1\] {
+  z-index: 1;
+}
+
+.z-\[3\] {
+  z-index: 3;
 }
 
 .-m-2 {
@@ -902,6 +922,10 @@ body {
   margin-left: -8px;
 }
 
+.ml-\[112px\] {
+  margin-left: 112px;
+}
+
 .ml-auto {
   margin-left: auto;
 }
@@ -918,6 +942,14 @@ body {
   margin-right: 0.5rem;
 }
 
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
+.mr-8 {
+  margin-right: 2rem;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -930,6 +962,10 @@ body {
   margin-top: 0.75rem;
 }
 
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
 .mt-8 {
   margin-top: 2rem;
 }
@@ -940,6 +976,10 @@ body {
 
 .mt-\[14px\] {
   margin-top: 14px;
+}
+
+.mt-\[27px\] {
+  margin-top: 27px;
 }
 
 .box-border {
@@ -1069,6 +1109,10 @@ body {
   height: 100dvh;
 }
 
+.h-\[135px\] {
+  height: 135px;
+}
+
 .h-\[14px\] {
   height: 14px;
 }
@@ -1085,8 +1129,32 @@ body {
   height: 2px;
 }
 
+.h-\[42px\] {
+  height: 42px;
+}
+
 .h-\[51px\] {
   height: 51px;
+}
+
+.h-\[538\.84px\] {
+  height: 538.84px;
+}
+
+.h-\[581\.15px\] {
+  height: 581.15px;
+}
+
+.h-\[640px\] {
+  height: 640px;
+}
+
+.h-\[73px\] {
+  height: 73px;
+}
+
+.h-\[92px\] {
+  height: 92px;
 }
 
 .h-\[calc\(100dvh_-_var\(--navbar-height\)_-_1px\)\] {
@@ -1142,16 +1210,16 @@ body {
   max-height: 16rem;
 }
 
+.max-h-\[568px\] {
+  max-height: 568px;
+}
+
 .max-h-\[585px\] {
   max-height: 585px;
 }
 
 .max-h-\[calc\(100\%_-_7\.5rem\)\] {
   max-height: calc(100% - 7.5rem);
-}
-
-.max-h-\[568px\] {
-  max-height: 568px;
 }
 
 .min-h-3 {
@@ -1182,6 +1250,14 @@ body {
   min-height: 0px;
 }
 
+.min-h-full {
+  min-height: 100%;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
 .min-h-unit-10 {
   min-height: var(--nextui-spacing-unit-10);
 }
@@ -1204,10 +1280,6 @@ body {
 
 .min-h-unit-8 {
   min-height: var(--nextui-spacing-unit-8);
-}
-
-.min-h-full {
-  min-height: 100%;
 }
 
 .w-1 {
@@ -1278,8 +1350,32 @@ body {
   width: 175px;
 }
 
+.w-\[200px\] {
+  width: 200px;
+}
+
+.w-\[250px\] {
+  width: 250px;
+}
+
+.w-\[300px\] {
+  width: 300px;
+}
+
 .w-\[350px\] {
   width: 350px;
+}
+
+.w-\[380\.32px\] {
+  width: 380.32px;
+}
+
+.w-\[42px\] {
+  width: 42px;
+}
+
+.w-\[468px\] {
+  width: 468px;
 }
 
 .w-\[470px\] {
@@ -1338,10 +1434,6 @@ body {
   width: var(--nextui-spacing-unit-8);
 }
 
-.w-\[468px\] {
-  width: 468px;
-}
-
 .min-w-10 {
   min-width: 2.5rem;
 }
@@ -1376,6 +1468,10 @@ body {
 
 .min-w-\[200px\] {
   min-width: 200px;
+}
+
+.min-w-\[370px\] {
+  min-width: 370px;
 }
 
 .min-w-\[470px\] {
@@ -1432,10 +1528,6 @@ body {
   min-width: var(--nextui-spacing-unit-8);
 }
 
-.min-w-\[370px\] {
-  min-width: 370px;
-}
-
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -1462,6 +1554,10 @@ body {
 
 .max-w-\[1536px\] {
   max-width: 1536px;
+}
+
+.max-w-\[350px\] {
+  max-width: 350px;
 }
 
 .max-w-\[640px\] {
@@ -1539,6 +1635,10 @@ body {
 
 .basis-0 {
   flex-basis: 0px;
+}
+
+.basis-\[380\.32px\] {
+  flex-basis: 380.32px;
 }
 
 .table-auto {
@@ -1942,6 +2042,10 @@ body {
   border-radius: 50%;
 }
 
+.rounded-\[6px\] {
+  border-radius: 6px;
+}
+
 .rounded-\[calc\(theme\(borderRadius\.large\)\/1\.5\)\] {
   border-radius: calc(var(--nextui-radius-large) / 1.5);
 }
@@ -2050,6 +2154,10 @@ body {
   border-width: 3px;
 }
 
+.border-\[1px\] {
+  border-width: 1px;
+}
+
 .border-\[2px\] {
   border-width: 2px;
 }
@@ -2070,6 +2178,10 @@ body {
   border-bottom-width: var(--nextui-border-width-medium);
 }
 
+.border-r {
+  border-right-width: 1px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -2085,6 +2197,10 @@ body {
 .\!border-danger {
   --tw-border-opacity: 1 !important;
   border-color: hsl(var(--nextui-danger) / var(--nextui-danger-opacity, var(--tw-border-opacity))) !important;
+}
+
+.border-\[\#000\]\/\[0\.0975\] {
+  border-color: rgb(0 0 0 / 0.0975);
 }
 
 .border-\[\#000\]\/\[0\.4\] {
@@ -2448,6 +2564,18 @@ body {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-\[url\(\'\.\.\/\.\.\/public\/assets\/images\/home_phones_2x\.png\'\)\] {
+  background-image: url('../../public/assets/images/home_phones_2x.png');
+}
+
+.bg-home-phone {
+  background-image: url('../../public/assets/images/home_phones_2x.png');
+}
+
+.bg-ig-imgs-1 {
+  background-image: url(../../public/assets/images/ig_imgs_1.png);
+}
+
 .bg-stripe-gradient {
   background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1) 75%, transparent 75%, transparent);
 }
@@ -2458,6 +2586,26 @@ body {
 
 .bg-auto {
   background-size: auto;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-home-p-size {
+  background-size: 468.32px 634.15px;
+}
+
+.bg-ig-logo-size {
+  background-size: 176px 258px;
+}
+
+.bg-l-0-t-0 {
+  background-position: 0px 0px;
+}
+
+.bg-left-46 {
+  background-position: -46px 0px;
 }
 
 .bg-left-top {
@@ -2632,6 +2780,18 @@ body {
   padding-bottom: 0.375rem;
 }
 
+.pb-3 {
+  padding-bottom: 0.75rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+
 .pb-8 {
   padding-bottom: 2rem;
 }
@@ -2690,10 +2850,6 @@ body {
 
 .pt-\[9px\] {
   padding-top: 9px;
-}
-
-.pb-4 {
-  padding-bottom: 1rem;
 }
 
 .text-left {
@@ -3179,6 +3335,11 @@ body {
 
 .blur-lg {
   --tw-blur: blur(16px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.drop-shadow {
+  --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
@@ -4793,6 +4954,12 @@ body {
   background-color: transparent;
 }
 
+.hover\:scale-105:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .hover\:scale-125:hover {
   --tw-scale-x: 1.25;
   --tw-scale-y: 1.25;
@@ -4844,6 +5011,10 @@ body {
   background-color: hsl(var(--nextui-warning) / var(--nextui-warning-opacity, var(--tw-bg-opacity))) !important;
 }
 
+.hover\:bg-\[\#000\]\/\[0\.05\]:hover {
+  background-color: rgb(0 0 0 / 0.05);
+}
+
 .hover\:bg-default-100:hover {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--nextui-default-100) / var(--nextui-default-100-opacity, var(--tw-bg-opacity)));
@@ -4888,6 +5059,26 @@ body {
 
 .hover\:opacity-80:hover {
   opacity: 0.8;
+}
+
+.hover\:transition:hover {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.hover\:duration-300:hover {
+  transition-duration: 300ms;
+}
+
+.hover\:transition:hover {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: ease;
+  transition-duration: 250ms;
 }
 
 .hover\:after\:bg-danger\/20:hover::after {
@@ -7173,12 +7364,8 @@ body {
 }
 
 @media (min-width: 876px) {
-  .lg\:block {
-    display: block;
-  }
-
-  .lg\:w-\[550px\] {
-    width: 550px;
+  .lg\:flex {
+    display: flex;
   }
 }
 

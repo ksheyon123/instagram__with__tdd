@@ -12,7 +12,7 @@ interface IModalProps {
   onOpenChange: (e: boolean) => void;
   header?: ReactNode;
   body?: ReactNode;
-  footer?: ReactNode;
+  buttons?: ReactNode | ReactNode[];
 }
 
 export const ModalWrapper: React.FC<IModalProps> = ({
@@ -20,14 +20,15 @@ export const ModalWrapper: React.FC<IModalProps> = ({
   onOpenChange,
   header,
   body,
-  footer,
+  buttons,
 }) => {
+  const isArray = Array.isArray(buttons);
   return (
-    <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+    <Modal isOpen={isOpen}>
       <ModalContent>
         <ModalHeader>{!!header && header}</ModalHeader>
         <ModalBody>{!!body && body}</ModalBody>
-        <ModalFooter>{!!footer && footer}</ModalFooter>
+        <ModalFooter>{!!buttons && buttons}</ModalFooter>
       </ModalContent>
     </Modal>
   );

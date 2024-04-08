@@ -10,10 +10,21 @@ And finally, I had time to practice it.
 
 ### Setup
 
+#### 1. Enviroment
+
 - Nextjs 14
-- NextUI
+- NextUI & tailwind
 - Typescript
 
-### Tailwindcss compiler
+- Testing-lib : Cypress & testing-lib/react (RTL)
+
+#### 2. Tailwindcss compiler
+
+> Applying css to the web on hot reloading, cmd will be activated.
 
 compile cli : `npx tailwindcss -i ./src/styles/input.css -o ./src/styles/output.css --watch`
+
+#### 3. Run test
+
+1. yarn test '<TEST_FILE_NAME>' will run specific jest test file.
+2. yarn cypress run will test entire servece (E2E test).
