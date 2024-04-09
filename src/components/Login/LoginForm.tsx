@@ -1,13 +1,13 @@
-import { Button } from "../common/Button";
+import { Button } from "../Common/Button";
 import { useRouter } from "next/router";
-import { Input } from "../common/Input";
+import { Input } from "../Common/Input";
 import { useState } from "react";
 
 import ScreenShot1 from "@/assets/images/screenshot1_2x.png";
 import ScreenShot2 from "@/assets/images/screenshot2_2x.png";
 import ScreenShot3 from "@/assets/images/screenshot3_2x.png";
 import ScreenShot4 from "@/assets/images/screenshot4_2x.png";
-import { ImageSlider } from "../common/ImageSlider";
+import { ImageSlider } from "../Common/ImageSlider";
 import Image from "next/image";
 
 const LoginForm: React.FC = () => {

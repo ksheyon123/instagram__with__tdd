@@ -1,6 +1,6 @@
 import { fireEvent, render } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { Comments, Comment } from "@/components/common/Comments";
+import { Comments, Comment } from "@/components/Common/Comments";
 import exp from "constants";
 
 // Test Cases : 댓글 텍스트, 작성 버튼

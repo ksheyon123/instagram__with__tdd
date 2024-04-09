@@ -1,6 +1,6 @@
 import { render, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { Button } from "@/components/common/Button";
+import { Button } from "@/components/Common/Button";
 
 describe("Button Component", () => {
   it("which receives button name", () => {

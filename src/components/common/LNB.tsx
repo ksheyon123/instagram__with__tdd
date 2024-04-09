@@ -21,7 +21,7 @@ import ProfileIcon from "@/assets/icons/profile_icon.jpeg";
 import { useState } from "react";
 import { List } from "./List";
 import Image from "next/image";
-import { ToggleModal } from "../modal/ToggleModal";
+import { ToggleModal } from "@/components/Modal/ToggleModal";
 
 const NAVS = [
   {
@@ -51,12 +51,12 @@ const NAVS = [
   {
     name: "add",
     icon: <AddIcon />,
-    modal: true,
+    modal: false,
   },
   {
     name: "profile",
     icon: <Image width={24} height={24} src={ProfileIcon} alt="profile" />,
-    modal: true,
+    modal: false,
   },
 ];
 

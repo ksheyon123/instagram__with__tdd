@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import { Input } from "@/components/common/Input";
+import { Input } from "@/components/Common/Input";
 
 describe("Input Component", () => {
   const props = {

@@ -4,7 +4,7 @@ import CommentIcon from "./cmt_icon.svg";
 import SendIcon from "./send_icon.svg";
 import SaveIcon from "./save_icon.svg";
 import Image from "next/image";
-import { Input } from "../common/Input";
+import { Input } from "../Common/Input";
 import { InstagramContent } from "@/types/types";
 
 interface IProps extends InstagramContent {

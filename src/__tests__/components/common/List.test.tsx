@@ -1,6 +1,6 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { List } from "@/components/common/List";
+import { List } from "@/components/Common/List";
 
 // v1.0 complete, 2024/04/08
 

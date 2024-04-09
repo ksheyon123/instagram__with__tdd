@@ -1,19 +1,17 @@
 import { ToggleModalItem } from "@/types/types";
-import { List } from "@/components/common/List";
+import { List } from "@/components/Common/List";
 
 import ArrowBack from "@/assets/icons/arrow_back_icon.svg";
 
 interface IProps {
-  isOpen: boolean;
   items: ToggleModalItem[];
 }
 
-const ToggleModal: React.FC<IProps> = ({ items, isOpen }) => {
+const ToggleModal: React.FC<IProps> = (props) => {
+  const { items } = props;
   return (
     <div
-      className={`${
-        isOpen ? "block" : "hidden"
-      } sm:fixed sm:bottom-0 sm:left-0 sm:w-screen absolute left-0 top-0 bg-white z-[3] w-[200px] rounded-[6px]`}
+      className={`sm:fixed sm:bottom-0 sm:left-0 sm:w-screen absolute left-0 top-0 bg-white z-[3] w-[200px] rounded-[6px]`}
       style={{
         filter: "drop-shadow(0 0 5px rgba(0,0,0,0.0975))",
       }}

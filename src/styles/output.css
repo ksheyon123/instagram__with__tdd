@@ -1593,6 +1593,10 @@ body {
   max-width: 20rem;
 }
 
+.max-w-\[470px\] {
+  max-width: 470px;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -2016,6 +2020,10 @@ body {
 
 .whitespace-nowrap {
   white-space: nowrap;
+}
+
+.text-wrap {
+  text-wrap: wrap;
 }
 
 .break-words {
