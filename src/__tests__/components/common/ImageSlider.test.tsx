@@ -7,6 +7,8 @@ import ScreenShot2 from "public/assets/images/screenshot3_2x.png";
 import ScreenShot3 from "public/assets/images/screenshot4_2x.png";
 import { ImageSlider } from "@/components/common/ImageSlider";
 
+// v1.0 complete, 2024/04/08
+
 describe("Image Slider", () => {
   const PREFIX = "image-slider-";
   const items = [ScreenShot0, ScreenShot1, ScreenShot2, ScreenShot3];

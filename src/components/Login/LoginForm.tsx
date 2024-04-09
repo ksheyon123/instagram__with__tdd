@@ -3,10 +3,10 @@ import { useRouter } from "next/router";
 import { Input } from "../common/Input";
 import { useState } from "react";
 
-import ScreenShot1 from "public/assets/images/screenshot1_2x.png";
-import ScreenShot2 from "public/assets/images/screenshot2_2x.png";
-import ScreenShot3 from "public/assets/images/screenshot3_2x.png";
-import ScreenShot4 from "public/assets/images/screenshot4_2x.png";
+import ScreenShot1 from "@/assets/images/screenshot1_2x.png";
+import ScreenShot2 from "@/assets/images/screenshot2_2x.png";
+import ScreenShot3 from "@/assets/images/screenshot3_2x.png";
+import ScreenShot4 from "@/assets/images/screenshot4_2x.png";
 import { ImageSlider } from "../common/ImageSlider";
 import Image from "next/image";
 
@@ -45,7 +45,6 @@ const LoginForm: React.FC = () => {
   return (
     <article className="flex flex-row justify-center items-stretch mt-8 pb-8 w-full shrink-0 grow">
       <div className="relative flex justify-center items-center sm:hidden md:hidden lg:flex mb-3 mr-8">
-        {/* <div className="bg-[url('../../public/assets/images/home_phones_2x.png')] bg-cover w-full h-[640px]"> */}
         <div className="relative flex w-[380.32px] basis-[380.32px] h-[581.15px] bg-home-phone bg-cover bg-left-46 bg-home-p-size ">
           <div className="relative flex flex-col mt-[27px] ml-[112px]">
             <div className="absolute left-0 z-10 w-[250px] h-[538.84px]">

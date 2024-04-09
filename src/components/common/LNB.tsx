@@ -1,55 +1,56 @@
 import { useRouter } from "next/router";
 
 import { PATHNAME } from "@/constants";
-import { ChildrenProps } from "@/types/types";
-import IGIcon from "public/assets/icons/instagram_icon.svg";
-import AddIcon from "public/assets/icons/add_icon.svg";
-import SearchIcon from "public/assets/icons/search_icon.svg";
-import CompassIcon from "public/assets/icons/compass_icon.svg";
-import VideoIcon from "public/assets/icons/video_icon.svg";
-import MenuIcon from "public/assets/icons/menu_icon.svg";
-import MenuHIcon from "public/assets/icons/menu_h_icon.svg";
-import HomeIcon from "public/assets/icons/home_icon.svg";
-import SendIcon from "public/assets/icons/send_icon.svg";
-import LikeIcon from "public/assets/icons/like_icon.svg";
-import PostIcon from "public/assets/icons/post_icon.svg";
-import LiveIcon from "public/assets/icons/live_icon.svg";
+import { ChildrenProps, ToggleModalItem } from "@/types/types";
+import IGIcon from "@/assets/icons/instagram_icon.svg";
+import AddIcon from "@/assets/icons/add_icon.svg";
+import SearchIcon from "@/assets/icons/search_icon.svg";
+import CompassIcon from "@/assets/icons/compass_icon.svg";
+import VideoIcon from "@/assets/icons/video_icon.svg";
+import MenuIcon from "@/assets/icons/menu_icon.svg";
+import MenuHIcon from "@/assets/icons/menu_h_icon.svg";
+import HomeIcon from "@/assets/icons/home_icon.svg";
+import SendIcon from "@/assets/icons/send_icon.svg";
+import LikeIcon from "@/assets/icons/like_icon.svg";
 
-import ProfileIcon from "public/assets/icons/profile_icon.jpeg";
+import PostIcon from "@/assets/icons/post_icon.svg";
+import LiveIcon from "@/assets/icons/live_icon.svg";
+
+import ProfileIcon from "@/assets/icons/profile_icon.jpeg";
 
 import { useState } from "react";
 import { List } from "./List";
 import Image from "next/image";
+import { ToggleModal } from "../modal/ToggleModal";
 
-const ICONS = [
+const NAVS = [
   {
     name: "home",
-    icon: <HomeIcon className="relative origin-center hover:scale-105" />,
+    icon: <HomeIcon />,
   },
-
   {
     name: "search",
-    icon: <SearchIcon className="relative origin-center hover:scale-105" />,
+    icon: <SearchIcon />,
   },
   {
     name: "compass",
-    icon: <CompassIcon className="relative origin-center hover:scale-105" />,
+    icon: <CompassIcon />,
   },
   {
     name: "video",
-    icon: <VideoIcon className="relative origin-center hover:scale-105" />,
+    icon: <VideoIcon />,
   },
   {
     name: "send",
-    icon: <SendIcon className="relative origin-center hover:scale-105" />,
+    icon: <SendIcon />,
   },
   {
     name: "like",
-    icon: <LikeIcon className="relative origin-center hover:scale-105" />,
+    icon: <LikeIcon />,
   },
   {
     name: "add",
-    icon: <AddIcon className="relative origin-center hover:scale-105" />,
+    icon: <AddIcon />,
     modal: true,
   },
   {
@@ -63,6 +64,20 @@ export const LNB: React.FC = () => {
   const router = useRouter();
 
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
+
+  const toggleModalItems: ToggleModalItem[] = [
+    {
+      title: "게시물",
+      icon: <PostIcon />,
+      url: "",
+    },
+    {
+      title: "라이브 방송",
+      icon: <LiveIcon />,
+      url: "",
+    },
+  ];
+
   return (
     <>
       <div className="fixed top-0 left-0 w-auto h-screen z-[1] border-r border-gray219">
@@ -70,8 +85,12 @@ export const LNB: React.FC = () => {
           <div className="relative block w-full h-[92px] shrink-0">
             <div className="absolute h-[73px] w-12 mt-3 top-0">
               <a className="relative">
-                <div className="my-1 p-3">
-                  <IGIcon className="origin-center hover:scale-105" />
+                <div className="my-1 ">
+                  <HoverEffect>
+                    <div className="p-3">
+                      <IGIcon className="origin-center hover:scale-105" />
+                    </div>
+                  </HoverEffect>
                 </div>
               </a>
             </div>
@@ -79,19 +98,26 @@ export const LNB: React.FC = () => {
 
           <div className="grow w-full">
             <List
-              items={ICONS}
+              items={NAVS}
               child={(data) => {
                 const { icon, modal } = data;
                 return (
-                  <div className="relative flex items-center">
-                    <div className="my-1">
+                  <div
+                    className="group relative flex items-center"
+                    onClick={() => {}}
+                  >
+                    <div className="relative my-1">
                       <HoverEffect>
                         <div className="p-3">
-                          <div>{icon}</div>
+                          <div className="relative origin-center group-hover:scale-105">
+                            {icon}
+                          </div>
                         </div>
                       </HoverEffect>
+                      <div className="relative">
+                        {modal && <ToggleModal items={toggleModalItems} />}
+                      </div>
                     </div>
-                    {modal && <ToggleBox />}
                   </div>
                 );
               }}
@@ -118,34 +144,8 @@ export const LNB: React.FC = () => {
 
 const HoverEffect: React.FC<ChildrenProps> = ({ children }) => {
   return (
-    <div className="relative w-full hover:transition hover:ease hover:duration-300 hover:bg-[#000]/[0.05] rounded-lg">
+    <div className="relative w-full group-hover:cursor-pointer group-hover:transition group-hover:ease group-hover:duration-300 group-hover:bg-[#000]/[0.05] rounded-lg">
       {children}
-    </div>
-  );
-};
-
-const ToggleBox: React.FC = (fixed = "") => {
-  return (
-    <div
-      className={`absolute left-0 bottom-[-20px] bg-white z-[3] w-[200px] rounded-[6px]`}
-      style={{
-        filter: "drop-shadow(0 0 5px rgba(0,0,0,0.0975))",
-      }}
-    >
-      <div className="flex flex-col w-full h-full rounded-[6px]">
-        <div className="px-4 py-2">
-          <div>게시물</div>
-          <div>
-            <PostIcon />
-          </div>
-        </div>
-        <div className="px-4 py-2">
-          <div>라이브 방송</div>
-          <div>
-            <LiveIcon />
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

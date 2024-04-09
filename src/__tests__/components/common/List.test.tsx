@@ -2,6 +2,8 @@ import { fireEvent, render, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { List } from "@/components/common/List";
 
+// v1.0 complete, 2024/04/08
+
 describe("List component", () => {
   const NUMBER_OF_CHILDREN = 1;
   const CHILD_NAME = "child";
