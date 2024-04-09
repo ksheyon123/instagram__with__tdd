@@ -978,6 +978,10 @@ body {
   margin-top: 27px;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -1556,6 +1560,10 @@ body {
   max-width: 350px;
 }
 
+.max-w-\[470px\] {
+  max-width: 470px;
+}
+
 .max-w-\[640px\] {
   max-width: 640px;
 }
@@ -1591,10 +1599,6 @@ body {
 
 .max-w-xs {
   max-width: 20rem;
-}
-
-.max-w-\[470px\] {
-  max-width: 470px;
 }
 
 .flex-1 {
@@ -2566,6 +2570,11 @@ body {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-gray219 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 219 219 / var(--tw-bg-opacity));
 }
 
 .bg-home-phone {
@@ -5022,6 +5031,11 @@ body {
 .hover\:bg-default-100:hover {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--nextui-default-100) / var(--nextui-default-100-opacity, var(--tw-bg-opacity)));
+}
+
+.hover\:bg-gray219:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 219 219 / var(--tw-bg-opacity));
 }
 
 .hover\:\!text-danger-foreground:hover {

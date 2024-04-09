@@ -1,11 +1,10 @@
-import { ChildItem } from "@/components/Dashboard/ChildItem";
 import { DBoardItem } from "@/components/Dashboard/DBoardItem";
-import { MainItem } from "@/components/Dashboard/MainItem";
-import { Accordion } from "@/components/Common/Accordion";
-import { Comments } from "@/components/Common/Comments";
 import { List } from "@/components/Common/List";
 import { InstagramContent, UserData } from "@/types/types";
 import { useEffect, useState } from "react";
+
+import IlloRefresh from "@/assets/images/illo_confirm_refresh_light.png";
+import Image from "next/image";
 
 const Dashboard: React.FC = () => {
   const [instagramContents, setInstagramContents] = useState<
@@ -94,6 +93,15 @@ const Dashboard: React.FC = () => {
   return (
     <div className="flex flex-row w-full h-full justify-center">
       <div className="max-w-screen-sm">
+        <div className="flex flex-col w-full">
+          <div className="flex flex-col justify-center items-center mb-4">
+            <Image width={96} height={96} src={IlloRefresh} alt="ill-refresh" />
+          </div>
+          <div className="mb-3">모두 확인했습니다</div>
+          <div className="mb-5">
+            최근 3일 동안 새롭게 올라온 게시물을 모두 확인했습니다.
+          </div>
+        </div>
         <div className="min-w-[470px]">
           <List
             items={instagramContents}

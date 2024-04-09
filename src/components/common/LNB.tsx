@@ -15,6 +15,7 @@ import LikeIcon from "@/assets/icons/like_icon.svg";
 
 import PostIcon from "@/assets/icons/post_icon.svg";
 import LiveIcon from "@/assets/icons/live_icon.svg";
+import AIIcon from "@/assets/icons/ai_icon.svg";
 
 import ProfileIcon from "@/assets/icons/profile_icon.jpeg";
 
@@ -52,6 +53,10 @@ const NAVS = [
     name: "add",
     icon: <AddIcon />,
     modal: false,
+  },
+  {
+    name: "ai",
+    icon: <AIIcon />,
   },
   {
     name: "profile",

@@ -9,6 +9,10 @@ import CommentIcon from "@/assets/icons/cmt_icon.svg";
 import SendIcon from "@/assets/icons/send_icon.svg";
 import SaveIcon from "@/assets/icons/save_icon.svg";
 import MoreIcon from "@/assets/icons/more_icon.svg";
+import DeleteBtn from "@/assets/icons/delete_icon.svg";
+
+import { MoreButton } from "../Common/MoreButton";
+import { Button } from "../Common/Button";
 interface IProps extends InstagramContent {
   userData?: any;
   onClick?: any;
@@ -16,6 +20,7 @@ interface IProps extends InstagramContent {
 type PickMedia = Pick<InstagramContent, "media_url" | "media_type">;
 type PickLikeCount = Pick<InstagramContent, "like_count">;
 type PickUserD = Pick<IProps, "userData" | "caption">;
+type OnlyUser = Omit<PickUserD, "caption">;
 type PickComments = Pick<IProps, "onClick" | "replies" | "comments_count">;
 
 export const DBoardItem: React.FC<IProps> = (props) => {
@@ -31,9 +36,9 @@ export const DBoardItem: React.FC<IProps> = (props) => {
     replies,
   } = props;
   return (
-    <article className="block" key={id}>
+    <article className="dashboard-item block" key={id}>
       <div className="flex flex-col w-full min-w-[370px] h-full pb-4 mb-5 border-b border-gray219">
-        <ItemHead />
+        <ItemHead userData={userData} />
         <ItemImage media_url={media_url} media_type={media_type} />
         <div className="block">
           <div className="relative flex flex-col h-full">
@@ -54,9 +59,18 @@ export const DBoardItem: React.FC<IProps> = (props) => {
   );
 };
 
-const ItemHead: React.FC = () => {
+const ItemHead: React.FC<OnlyUser> = ({ userData }) => {
+  const onClickRemove = () => {};
+  const buttons = [
+    <Button
+      style={{ color: "red", fontSize: "12px" }}
+      btnStyleType="fb0"
+      name="삭제"
+      onClick={onClickRemove}
+    />,
+  ];
   return (
-    <div className="pl-1 pb-3">
+    <div className="dashboard-item-head pl-1 pb-3">
       <div className="flex flex-row w-full items-center justify-start">
         <div className="mr-3">
           <div className="relative">
@@ -67,10 +81,10 @@ const ItemHead: React.FC = () => {
           </div>
         </div>
         <div className="flex flex-row items-center justify-start grow">
-          asdasd
+          {!!userData ? userData.username : "Unknown"}
         </div>
-        <div className="flex flex-row items-center justify-start">
-          <MoreIcon />
+        <div className="flex flex-row">
+          <MoreButton icon={<MoreIcon />} buttons={buttons} />
         </div>
       </div>
     </div>
