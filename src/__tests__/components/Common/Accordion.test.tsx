@@ -1,6 +1,6 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { Accordion } from "@/components/Basic/Accordion";
+import { Accordion } from "@/components/Common/Accordion";
 
 const NAME1 = "1";
 const DESCRIPTION1 = "DESCRIPTION1";

@@ -5,7 +5,7 @@ import ScreenShot0 from "public/assets/images/screenshot1_2x.png";
 import ScreenShot1 from "public/assets/images/screenshot2_2x.png";
 import ScreenShot2 from "public/assets/images/screenshot3_2x.png";
 import ScreenShot3 from "public/assets/images/screenshot4_2x.png";
-import { ImageSlider } from "@/components/Basic/ImageSlider";
+import { ImageSlider } from "@/components/Common/ImageSlider";
 
 // v1.0 complete, 2024/04/08
 

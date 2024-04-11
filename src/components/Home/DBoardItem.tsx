@@ -10,8 +10,8 @@ import SendIcon from "@/assets/icons/send_icon.svg";
 import SaveIcon from "@/assets/icons/save_icon.svg";
 import MoreIcon from "@/assets/icons/more_icon.svg";
 
-import { MoreButton } from "@/components/Basic/MoreButton";
-import { Button } from "@/components/Basic/Button";
+import { MoreButton } from "@/components/Common/MoreButton";
+import { Button } from "@/components/Common/Button";
 interface IProps extends InstagramContent {
   userData?: any;
   onClick?: any;

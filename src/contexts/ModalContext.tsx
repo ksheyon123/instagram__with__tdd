@@ -1,5 +1,5 @@
 // import { getAccessToken } from "@/apis/api";
-import { ModalWrapper } from "@/components/Modals/DefaultModal";
+import { ModalWrapper } from "@/components/Modal/DefaultModal";
 import { PATHNAME } from "@/constants";
 import { ChildrenProps } from "@/types/types";
 import { useRouter } from "next/router";

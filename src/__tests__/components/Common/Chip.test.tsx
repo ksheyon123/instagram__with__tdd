@@ -1,6 +1,6 @@
 import { fireEvent, render } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { Chip } from "@/components/Basic/Chip";
+import { Chip } from "@/components/Common/Chip";
 
 describe("Chip component", () => {
   const CHIP_NAME = "chip_name";
