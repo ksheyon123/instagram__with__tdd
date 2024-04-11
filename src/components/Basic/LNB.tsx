@@ -21,7 +21,7 @@ import ProfileIcon from "@/assets/icons/profile_icon.jpeg";
 import { useState } from "react";
 import { List } from "./List";
 import Image from "next/image";
-import { ToggleModal } from "@/components/modal/ToggleModal";
+import { ToggleModal } from "@/components/Modals/ToggleModal";
 
 const NAVS = [
   {
