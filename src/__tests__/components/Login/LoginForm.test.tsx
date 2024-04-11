@@ -1,6 +1,6 @@
 import { render, fireEvent, getByText, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { LoginForm } from "@/components/Login/LoginForm";
+import { LoginForm } from "@/components/login/LoginForm";
 
 jest.mock("next/router", () => ({
   useRouter: () => {},

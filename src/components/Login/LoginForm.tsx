@@ -1,13 +1,13 @@
-import { Button } from "../Common/Button";
+import { Button } from "../common/Button";
 import { useRouter } from "next/router";
-import { Input } from "../Common/Input";
+import { Input } from "../common/Input";
 import { useState } from "react";
 
 import ScreenShot1 from "@/assets/images/screenshot1_2x.png";
 import ScreenShot2 from "@/assets/images/screenshot2_2x.png";
 import ScreenShot3 from "@/assets/images/screenshot3_2x.png";
 import ScreenShot4 from "@/assets/images/screenshot4_2x.png";
-import { ImageSlider } from "../Common/ImageSlider";
+import { ImageSlider } from "@/components/common/ImageSlider";
 
 const LoginForm: React.FC = () => {
   const ENDPOINT = process.env.NGROK_ENDPOINT;
