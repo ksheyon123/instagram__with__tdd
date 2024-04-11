@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import { Provider as JotaiProvider } from "jotai";
 import { NextUIProvider } from "@nextui-org/react";
 
-import { Layout } from "@/components/common/Layout";
+import { Layout } from "@/components/Basic/Layout";
 import { AuthContextProvider } from "@/contexts/AuthContext";
 
 import "@/styles/output.css";

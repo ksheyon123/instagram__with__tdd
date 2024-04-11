@@ -1,5 +1,5 @@
 import { DBoardItem } from "@/components/dashboard/DBoardItem";
-import { List } from "@/components/common/List";
+import { List } from "@/components/Basic/List";
 import { InstagramContent, UserData } from "@/types/types";
 import { useEffect, useState } from "react";
 

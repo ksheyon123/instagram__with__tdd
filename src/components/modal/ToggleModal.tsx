@@ -1,5 +1,5 @@
 import { ToggleModalItem } from "@/types/types";
-import { List } from "@/components/common/List";
+import { List } from "@/components/Basic/List";
 
 import ArrowBack from "@/assets/icons/arrow_back_icon.svg";
 
