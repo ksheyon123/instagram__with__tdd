@@ -9,7 +9,6 @@ import CommentIcon from "@/assets/icons/cmt_icon.svg";
 import SendIcon from "@/assets/icons/send_icon.svg";
 import SaveIcon from "@/assets/icons/save_icon.svg";
 import MoreIcon from "@/assets/icons/more_icon.svg";
-import DeleteBtn from "@/assets/icons/delete_icon.svg";
 
 import { MoreButton } from "../Common/MoreButton";
 import { Button } from "../Common/Button";
