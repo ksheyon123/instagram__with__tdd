@@ -7,6 +7,7 @@ import IlloRefresh from "@/assets/images/illo_confirm_refresh_light.png";
 import Image from "next/image";
 
 const Dashboard: React.FC = () => {
+  const [a, setA] = useState<boolean>(false);
   const [instagramContents, setInstagramContents] = useState<
     InstagramContent[]
   >([
