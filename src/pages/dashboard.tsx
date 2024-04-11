@@ -1,8 +1,4 @@
-import { ChildItem } from "@/components/Dashboard/ChildItem";
 import { DBoardItem } from "@/components/Dashboard/DBoardItem";
-import { MainItem } from "@/components/Dashboard/MainItem";
-import { Accordion } from "@/components/common/Accordion";
-import { Comments } from "@/components/common/Comments";
 import { List } from "@/components/common/List";
 import { InstagramContent, UserData } from "@/types/types";
 import { useEffect, useState } from "react";

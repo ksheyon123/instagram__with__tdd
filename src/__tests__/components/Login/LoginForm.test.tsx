@@ -1,6 +1,3 @@
-import { http, HttpResponse } from "msw";
-import { setupWorker } from "msw/browser";
-
 import { render, fireEvent, getByText, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { LoginForm } from "@/components/Login/LoginForm";
