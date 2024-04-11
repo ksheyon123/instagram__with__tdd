@@ -39,3 +39,9 @@ export type Reply = {
   text: string;
   timestamp: string;
 };
+
+export type ToggleModalItem = {
+  title: string;
+  icon: any;
+  url: string;
+};

@@ -16,8 +16,8 @@ module.exports = {
         ...styles.COLOR,
       },
       backgroundImage: {
-        "home-phone": "url('../../public/assets/images/home_phones_2x.png')",
-        "ig-imgs-1": "url(../../public/assets/images/ig_imgs_1.png)",
+        "home-phone": "url('../../src/assets/images/home_phones_2x.png')",
+        "ig-imgs-1": "url(../../src/assets/images/ig_imgs_1.png)",
       },
       backgroundSize: {
         "home-p-size": "468.32px 634.15px",

@@ -3,11 +3,12 @@ import { Button as ButtonUI, extendVariants } from "@nextui-org/react";
 import { MouseEventHandler } from "react";
 
 interface IProps {
-  name: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
+  name?: string;
   img?: string;
   disabled?: boolean;
   btnStyleType?: "default" | "fb0";
+  style?: any;
 }
 
 const btnStyle = {
@@ -23,15 +24,17 @@ const Button: React.FC<IProps> = (props) => {
     img,
     disabled = false,
     btnStyleType = "default",
+    style,
   } = props;
   return (
     <button
+      style={style}
       className={`${btnStyle[btnStyleType]}`}
       onClick={onClick}
       disabled={disabled}
     >
       {img && <img src={img} />}
-      <span>{name}</span>
+      {!!name && <span>{name}</span>}
     </button>
   );
 };

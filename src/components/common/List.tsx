@@ -8,7 +8,7 @@ interface IProps {
 
 export const List: React.FC<IProps> = ({ items, child, prefix = "" }) => {
   return (
-    <div>
+    <div role="listbox">
       {items.map((el, idx) => (
         <>{child(el)}</>
       ))}
