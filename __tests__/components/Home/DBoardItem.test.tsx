@@ -1,10 +1,6 @@
 import { useRouter } from "next/router";
-
 import { fireEvent, render } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { ToggleModalItem } from "@/types/types";
-import { PATHNAME } from "@/constants";
-import { ToggleModal } from "@/components/Modal/ToggleModal";
 
 jest.mock("next/router", () => ({
   useRouter: jest.fn(),
