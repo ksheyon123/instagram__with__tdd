@@ -17,14 +17,17 @@ module.exports = {
       },
       backgroundImage: {
         "home-phone": "url('../../src/assets/images/home_phones_2x.png')",
+        "log-fb-0": "url('../../src/assets/images/ig_icons.png')",
         "ig-imgs-1": "url(../../src/assets/images/ig_imgs_1.png)",
       },
       backgroundSize: {
         "home-p-size": "468.32px 634.15px",
+        "log-fb-size": "440px 411px",
         "ig-logo-size": "176px 258px",
       },
       backgroundPosition: {
         "left-46": "-46px 0px",
+        "log-fb-pos": "-347px -329px",
         "l-0-t-0": "0px 0px",
       },
     },

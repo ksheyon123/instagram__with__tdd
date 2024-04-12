@@ -1,11 +1,13 @@
 import { styles } from "@/styles";
 import { Button as ButtonUI, extendVariants } from "@nextui-org/react";
-import { MouseEventHandler } from "react";
+import Image from "next/image";
+import { MouseEventHandler, ReactNode } from "react";
 
 interface IProps {
   onClick: MouseEventHandler<HTMLButtonElement>;
   name?: string;
   img?: string;
+  imgEl?: ReactNode;
   disabled?: boolean;
   btnStyleType?: "default" | "fb0";
   style?: any;
@@ -22,6 +24,7 @@ const Button: React.FC<IProps> = (props) => {
     name,
     onClick,
     img,
+    imgEl,
     disabled = false,
     btnStyleType = "default",
     style,
@@ -33,7 +36,8 @@ const Button: React.FC<IProps> = (props) => {
       onClick={onClick}
       disabled={disabled}
     >
-      {img && <img src={img} />}
+      {!!img && <Image src={img} alt="btn-img" />}
+      {!!imgEl && imgEl}
       {!!name && <span>{name}</span>}
     </button>
   );
