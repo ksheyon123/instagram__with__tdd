@@ -10,14 +10,14 @@ import ScreenShot4 from "@/assets/images/screenshot4_2x.png";
 import { ImageSlider } from "@/components/Common/ImageSlider";
 
 const LoginForm: React.FC = () => {
-  const ENDPOINT = process.env.NGROK_ENDPOINT;
+  // const ENDPOINT = process.env.NGROK_ENDPOINT;
   const router = useRouter();
 
   const images = [ScreenShot1, ScreenShot2, ScreenShot3, ScreenShot4];
   const login = async () => {
     const qs = new URLSearchParams({
       client_id: process.env.FACEBOOK_CLIENT_ID,
-      redirect_uri: `${ENDPOINT}/login/fb/callback`,
+      redirect_uri: `/login/fb/callback`,
       state: "1234",
       response_type: "token",
       // display: "popup",

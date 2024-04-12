@@ -2,7 +2,7 @@ import { PATHNAME } from "@/constants";
 import { useAtom, useSetAtom } from "jotai";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-const ENDPOINT = process.env.NGROK_ENDPOINT;
+// const ENDPOINT = process.env.NGROK_ENDPOINT;
 const qs = () => {
   const url = window.location.href;
   const qs = url.split("#")[1];
@@ -30,7 +30,7 @@ const Callback: React.FC = () => {
       const loginInsta = () => {
         const qs = new URLSearchParams({
           client_id: process.env.INSTAGRAM_CLIENT_ID,
-          redirect_uri: `${ENDPOINT}/login/callback`,
+          redirect_uri: "/login/callback",
           response_type: "code",
           scope: "user_profile,user_media",
         });

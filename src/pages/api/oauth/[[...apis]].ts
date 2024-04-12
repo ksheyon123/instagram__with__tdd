@@ -16,10 +16,7 @@ export default async function handler(
     formData.append("client_id", process.env.INSTAGRAM_CLIENT_ID);
     formData.append("client_secret", process.env.INSTAGRAM_CLIENT_SECRET);
     formData.append("code", code);
-    formData.append(
-      "redirect_uri",
-      `${process.env.NGROK_ENDPOINT}/login/callback`
-    );
+    formData.append("redirect_uri", "/login/callback");
 
     //https://graph.instagram.com/v19.0/me
     const resp = await fetch("https://api.instagram.com/oauth/access_token", {
