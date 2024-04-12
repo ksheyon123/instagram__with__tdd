@@ -53,6 +53,7 @@ const nextConfig = {
     INSTAGRAM_CLIENT_SECRET: process.env.INSTAGRAM_CLIENT_SECRET,
     NGROK_ENDPOINT: process.env.NGROK_ENDPOINT,
   },
+  output: "standalone",
 };
 
 module.exports = nextConfig;

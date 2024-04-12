@@ -12,6 +12,9 @@
     "css": "npx tailwindcss -i ./src/styles/input.css -o ./src/styles/output.css --watch",
     "test": "jest --silent"
   },
+  "engines": {
+    "node": "18.17.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/ksheyon123/instagram__with__tdd.git"
