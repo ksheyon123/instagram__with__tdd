@@ -10,10 +10,10 @@ const allPaths = Object.values(PATHNAME);
 const middleware: NextMiddleware = (request) => {
   const res = NextResponse.next();
 
-  // If the user access to the wrong path, redirect them to the SIGN_IN page.
-  if (!allPaths.some((el) => el === request.nextUrl.pathname)) {
-    return NextResponse.redirect(new URL(PATHNAME.SIGN_IN, request.url));
-  }
+  // // If the user access to the wrong path, redirect them to the SIGN_IN page.
+  // if (!allPaths.some((el) => el === request.nextUrl.pathname)) {
+  //   return NextResponse.redirect(new URL(PATHNAME.SIGN_IN, request.url));
+  // }
 
   //other middleware operations
   return res;
