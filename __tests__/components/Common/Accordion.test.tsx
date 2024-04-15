@@ -19,7 +19,7 @@ describe("Accordion component", () => {
   });
 
   it("shows child component when the user click the accordion item", async () => {
-    const { container, getByTestId, queryByText, getByText } = render(
+    const { container, getByTestId } = render(
       <Accordion
         mainComponent={mainComponent}
         childComponent={childComponent}
@@ -34,7 +34,7 @@ describe("Accordion component", () => {
   });
 
   it("hide the child component when the user click it twice!", () => {
-    const { container, rerender, getByTestId } = render(
+    const { container, getByTestId } = render(
       <Accordion
         mainComponent={mainComponent}
         childComponent={childComponent}
@@ -44,7 +44,6 @@ describe("Accordion component", () => {
     const accordion = getByTestId("accordion");
 
     fireEvent.click(accordion);
-
     expect(container).toHaveTextContent(DESCRIPTION1);
     fireEvent.click(accordion);
     expect(container).not.toHaveTextContent(DESCRIPTION1);

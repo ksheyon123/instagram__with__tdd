@@ -38,7 +38,7 @@ const LoginForm: React.FC = () => {
 
   return (
     <>
-      <div className="mt-6 mb-2.5 max-w-[350px] w-full ">
+      <div className="mt-6 mb-2.5 max-w-[350px] w-full">
         <div className="flex flex-col ">
           <div className="mb-[6px] mx-10">
             <Input

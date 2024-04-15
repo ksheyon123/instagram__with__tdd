@@ -2,6 +2,7 @@ export const styles = {
   COLOR: {
     white: "#FFF", // rgb(255, 255, 255)
     gray250: "#FAFAFA", // (250, 250, 250)
+    gray239: "#EFEFEF", // rgb(239, 239, 239)
     gray219: "#dbdbdb", // rgb(219, 219, 219)
     gray168: "#A8A8A8", // rgb(168, 168, 168)
     gray115: "#737373", // rgb(115, 115, 115)

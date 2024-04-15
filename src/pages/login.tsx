@@ -10,6 +10,7 @@ import ScreenShot2 from "@/assets/images/screenshot2_2x.png";
 import ScreenShot3 from "@/assets/images/screenshot3_2x.png";
 import ScreenShot4 from "@/assets/images/screenshot4_2x.png";
 import { LoginForm } from "@/components/Login/LoginForm";
+import { LoginOAuth } from "@/components/Login/LoginOAuth";
 
 const LoginPage: React.FC = () => {
   // const ENDPOINT = process.env.NGROK_ENDPOINT;
@@ -44,7 +45,8 @@ const LoginPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <LoginForm />
+            {/* <LoginForm /> */}
+            <LoginOAuth />
           </div>
           <div className="flex flex-col justify-center items-center border border-solid border-[gray0] rounded py-2.5 mb-2.5 w-[350px]">
             <div className="block">
