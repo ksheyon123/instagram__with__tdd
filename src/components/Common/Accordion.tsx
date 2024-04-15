@@ -10,10 +10,13 @@ export const Accordion: React.FC<IListProps> = ({
   mainComponent,
   childComponent,
 }) => {
-  const [isShow, setIsShow] = useState<boolean>(true);
+  const [isShow, setIsShow] = useState<boolean>(false);
   return (
     <div>
-      <article onClick={() => setIsShow((prev) => !prev)}>
+      <article
+        data-testid="accordion"
+        onClick={() => setIsShow((prev) => !prev)}
+      >
         <div>{!!mainComponent && mainComponent}</div>
         {!!childComponent && isShow && childComponent}
       </article>
