@@ -1412,6 +1412,10 @@ body {
   width: var(--nextui-spacing-unit-8);
 }
 
+.w-\[68px\] {
+  width: 68px;
+}
+
 .min-w-10 {
   min-width: 2.5rem;
 }
