@@ -14,7 +14,7 @@ import { LoginOAuth } from "@/components/Login/LoginOAuth";
 import { useAuthHook } from "@/hooks/useAuthHook";
 
 const LoginPage: React.FC = () => {
-  const { goToOAuthFB } = useAuthHook();
+  const { goToOAuthFB, goToOAuthIG } = useAuthHook();
   // const ENDPOINT = process.env.NGROK_ENDPOINT;
   const router = useRouter();
 
@@ -23,10 +23,12 @@ const LoginPage: React.FC = () => {
   const handleOnFB = async () => {
     try {
       const fbac = window.localStorage.getItem("fbac");
-      if (!fbac) {
+      const igac = window.localStorage.getItem("igac");
+      console.log(igac);
+      if (!igac) {
         throw JSON.stringify({ message: "No access_token" });
       }
-      const rsp = await fetch(`/api/facebook/me?access_token=${fbac}`, {
+      const rsp = await fetch(`/api/instagram/me?access_token=${igac}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +42,7 @@ const LoginPage: React.FC = () => {
       console.log(d);
     } catch (e) {
       console.log(e);
-      goToOAuthFB();
+      goToOAuthIG();
     }
   };
 

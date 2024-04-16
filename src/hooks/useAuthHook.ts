@@ -26,7 +26,22 @@ export const useAuthHook = () => {
       // "popup=true"
     );
   };
-  const goToOAuthIG = () => {};
+  const goToOAuthIG = () => {
+    // https://rhino-organic-bison.ngrok-free.app
+    const qs = new URLSearchParams({
+      client_id: process.env.INSTAGRAM_CLIENT_ID,
+      redirect_uri: "https://rhino-organic-bison.ngrok-free.app/login/callback",
+      response_type: "code",
+      scope: "user_profile,user_media",
+    });
+    // https://api.instagram.com/oauth/authorize
+    router.replace(
+      `https://api.instagram.com/oauth/authorize?${qs}`
+      // "popup",
+      // "popup=true"
+    );
+    // Next : https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
+  };
 
   const getIGProfile = async () => {};
 
@@ -34,5 +49,5 @@ export const useAuthHook = () => {
     const rsp = await getIGProfile();
   };
 
-  return { goToOAuthFB };
+  return { goToOAuthFB, goToOAuthIG };
 };
