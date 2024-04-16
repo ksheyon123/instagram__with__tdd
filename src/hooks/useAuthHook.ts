@@ -1,11 +1,12 @@
 import { useRouter } from "next/router";
 
-const useAuthHook = () => {
+export const useAuthHook = () => {
   const router = useRouter();
   const goToOAuthFB = () => {
+    // https://rhino-organic-bison.ngrok-free.app
     const qs = new URLSearchParams({
       client_id: process.env.FACEBOOK_CLIENT_ID,
-      redirect_uri: `/login/fb/callback`,
+      redirect_uri: `https://rhino-organic-bison.ngrok-free.app/login/fb/callback`,
       state: "1234",
       response_type: "token",
       // display: "popup",
@@ -33,5 +34,5 @@ const useAuthHook = () => {
     const rsp = await getIGProfile();
   };
 
-  return {};
+  return { goToOAuthFB };
 };

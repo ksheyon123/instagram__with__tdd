@@ -11,15 +11,38 @@ import ScreenShot3 from "@/assets/images/screenshot3_2x.png";
 import ScreenShot4 from "@/assets/images/screenshot4_2x.png";
 import { LoginForm } from "@/components/Login/LoginForm";
 import { LoginOAuth } from "@/components/Login/LoginOAuth";
+import { useAuthHook } from "@/hooks/useAuthHook";
 
 const LoginPage: React.FC = () => {
+  const { goToOAuthFB } = useAuthHook();
   // const ENDPOINT = process.env.NGROK_ENDPOINT;
   const router = useRouter();
 
   const images = [ScreenShot1, ScreenShot2, ScreenShot3, ScreenShot4];
 
-  const [userName, setUserName] = useState<string>("");
-  const [pw, setPw] = useState<string>("");
+  const handleOnFB = async () => {
+    try {
+      const fbac = window.localStorage.getItem("fbac");
+      if (!fbac) {
+        throw JSON.stringify({ message: "No access_token" });
+      }
+      const rsp = await fetch(`/api/facebook/me?access_token=${fbac}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(rsp.status);
+      if (rsp.status !== 200) {
+        throw JSON.stringify({ message: "Erro" });
+      }
+      const d = await rsp.json();
+      console.log(d);
+    } catch (e) {
+      console.log(e);
+      goToOAuthFB();
+    }
+  };
 
   return (
     <article className="flex flex-row justify-center items-stretch mt-8 pb-8 w-full shrink-0 grow">
@@ -45,8 +68,15 @@ const LoginPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            {/* <LoginForm /> */}
-            <LoginOAuth />
+            <div
+              onClick={() => {
+                handleOnFB();
+              }}
+            >
+              aaa
+            </div>
+            <LoginForm />
+            {/* <LoginOAuth /> */}
           </div>
           <div className="flex flex-col justify-center items-center border border-solid border-[gray0] rounded py-2.5 mb-2.5 w-[350px]">
             <div className="block">
@@ -54,6 +84,31 @@ const LoginPage: React.FC = () => {
                 <p className="m-[15px] text-black font-normal">
                   {/* {"Don't have an account? "} */}
                   {"계정이 없으신가요? "}
+                  <a>
+                    <span className="cursor-not-allowed text-hfb0 font-semibold">
+                      {/* Register */}
+                      가입하기
+                    </span>
+                  </a>
+                </p>
+              </span>
+            </div>
+            <div className="block">
+              <span className="leading-[18px]">
+                <p className="m-[15px] text-black font-normal">
+                  <a
+                    className="cursor-pointer"
+                    onClick={() =>
+                      window.open("https://facebook.com", "_blank")
+                    }
+                  >
+                    <span className="text-hfb0 font-semibold">
+                      {/* Register */}
+                      계정 변경{" "}
+                    </span>
+                  </a>
+                  {/* {"Don't have an account? "} */}
+                  {"또는 "}
                   <a>
                     <span className="cursor-not-allowed text-hfb0 font-semibold">
                       {/* Register */}

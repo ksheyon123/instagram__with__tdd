@@ -22,7 +22,6 @@ export default async function handler(
       }
     );
     const d0 = await resp0.json();
-    console.log(d0);
     const fb_id = "7199702623450166";
     const ig_id = "7314100441978717";
     const resp1 = await fetch(
@@ -48,7 +47,7 @@ export default async function handler(
     console.log(d2);
     res.status(200).json({ ...d0, contents: data } as any);
   } catch (e) {
-    console.error("Error", JSON.stringify(e));
+    console.error("Error", e.message);
     res.status(500).json(e);
   }
 }

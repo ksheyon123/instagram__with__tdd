@@ -28,9 +28,11 @@ const Callback: React.FC = () => {
     if (!!access_token) {
       window.localStorage.setItem("fbac", access_token);
       const loginInsta = () => {
+        // https://rhino-organic-bison.ngrok-free.app
         const qs = new URLSearchParams({
           client_id: process.env.INSTAGRAM_CLIENT_ID,
-          redirect_uri: "/login/callback",
+          redirect_uri:
+            "https://rhino-organic-bison.ngrok-free.app/login/callback",
           response_type: "code",
           scope: "user_profile,user_media",
         });
