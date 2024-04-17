@@ -10,13 +10,15 @@ export default async function handler(
 ) {
   try {
     const { code } = req.body;
-
     const formData = new URLSearchParams();
     formData.append("grant_type", "authorization_code");
     formData.append("client_id", process.env.INSTAGRAM_CLIENT_ID);
     formData.append("client_secret", process.env.INSTAGRAM_CLIENT_SECRET);
     formData.append("code", code);
-    formData.append("redirect_uri", "/login/callback");
+    formData.append(
+      "redirect_uri",
+      "https://rhino-organic-bison.ngrok-free.app/login/callback"
+    );
 
     //https://graph.instagram.com/v19.0/me
     const resp = await fetch("https://api.instagram.com/oauth/access_token", {

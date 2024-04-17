@@ -1360,6 +1360,10 @@ body {
   width: 468px;
 }
 
+.w-\[68px\] {
+  width: 68px;
+}
+
 .w-\[72px\] {
   width: 72px;
 }
@@ -1410,10 +1414,6 @@ body {
 
 .w-unit-8 {
   width: var(--nextui-spacing-unit-8);
-}
-
-.w-\[68px\] {
-  width: 68px;
 }
 
 .min-w-10 {

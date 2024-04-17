@@ -35,8 +35,8 @@ const Callback: React.FC = () => {
           }),
         });
         const { userId, accessToken } = await resp.json();
-        console.log(userId);
-        window.localStorage.setItem("instaac", accessToken);
+        console.log("userId", userId);
+        window.localStorage.setItem("igac", accessToken);
         console.log("Access Token", accessToken);
         setAccessCode(accessToken);
         router.replace(PATHNAME.DASHBOARD);

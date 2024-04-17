@@ -1,37 +1,12 @@
 import { Button } from "../Common/Button";
-import { useRouter } from "next/router";
 import { Input } from "../Common/Input";
 import { useState } from "react";
-import { PATHNAME } from "@/constants";
 import { Tooltip } from "@nextui-org/react";
+import { useAuthHook } from "@/hooks/useAuthHook";
 
 const LoginForm: React.FC = () => {
   // const ENDPOINT = process.env.NGROK_ENDPOINT;
-  const router = useRouter();
-
-  const login = async () => {
-    const qs = new URLSearchParams({
-      client_id: process.env.FACEBOOK_CLIENT_ID,
-      redirect_uri: `/login/fb/callback`,
-      state: "1234",
-      response_type: "token",
-      // display: "popup",
-      auth_type: "rerequest",
-      scope:
-        "public_profile, instagram_basic, pages_show_list, instagram_manage_comments, pages_read_engagement",
-      // scope: ", instagram_basic, pages_show_list",
-    });
-
-    //email,instagram_basic,pages_show_list
-    // https://www.facebook.com/v19.0/dialog/oauth?
-    // response_type=token&display=popup&client_id=949275753220874
-    // &redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer%2Fcallback&auth_type=rerequest&scope=
-    router.replace(
-      `${PATHNAME.OAUTH_FB}?${qs}`
-      // "popup",
-      // "popup=true"
-    );
-  };
+  const { goToOAuthFB } = useAuthHook();
 
   const [userName, setUserName] = useState<string>("");
   const [pw, setPw] = useState<string>("");
@@ -70,7 +45,7 @@ const LoginForm: React.FC = () => {
                 <Button
                   disabled={true}
                   name="로그인"
-                  onClick={login}
+                  onClick={() => goToOAuthFB()}
                   style={{ cursor: "not-allowed" }}
                 />
               </div>
@@ -89,7 +64,7 @@ const LoginForm: React.FC = () => {
               imgEl={
                 <div className="relative inline-block top-[3px] w-4 h-4 bg-log-fb-pos bg-log-fb-size bg-log-fb-0 mr-2" />
               }
-              onClick={login}
+              onClick={() => goToOAuthFB()}
               btnStyleType="fb0"
               style={{ display: "flex", justifyContent: "center" }}
             />

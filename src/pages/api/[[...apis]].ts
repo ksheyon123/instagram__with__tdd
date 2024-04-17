@@ -42,11 +42,27 @@ export default async function handler(
           data = await rsp.json();
         }
 
+        return res.status(200).json(data);
       // rsp = await fetch(`https://graph.${}`)
       case "POST":
+        rsp = await fetch(`https://graph.${type}.com/${ep}?${queryString}`, {
+          method,
+          headers: {
+            "content-type": "application/x-www-form-urlencoded",
+            accept: "application/json",
+          },
+        });
+        console.log(rsp);
+        if (!rsp.ok) {
+          throw new Error(
+            JSON.stringify({ message: rsp.statusText, code: rsp.status })
+          );
+        } else {
+          data = await rsp.json();
+        }
+        return res.status(200).json(data);
     }
     // const rsp = await fetch();
-    res.status(200).json(data);
   } catch (e) {
     console.error("Error", JSON.stringify(e));
     res.status(500).json(e);

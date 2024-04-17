@@ -22,18 +22,20 @@ const LoginPage: React.FC = () => {
 
   const handleOnFB = async () => {
     try {
-      const fbac = window.localStorage.getItem("fbac");
       const igac = window.localStorage.getItem("igac");
       console.log(igac);
       if (!igac) {
         throw JSON.stringify({ message: "No access_token" });
       }
-      const rsp = await fetch(`/api/instagram/me?access_token=${igac}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const rsp = await fetch(
+        `/api/instagram/me?access_token=${igac}&fields=id,username,followers_count,follows_count,media_count,name,profile_picture_url`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       console.log(rsp.status);
       if (rsp.status !== 200) {
         throw JSON.stringify({ message: "Erro" });
