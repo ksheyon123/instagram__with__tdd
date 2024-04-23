@@ -66,7 +66,7 @@ const getIGProfile = async (ig_id) => {
   try {
     const fbac = localStorage.getItem("fbac");
     const rsp = await get(`${api}${facebook}/${ig_id}`, {
-      fields: "id, username, profile_picture_url, followers_count",
+      fields: "id, username, profile_picture_url",
       access_token: fbac,
     });
     console.log(rsp);
