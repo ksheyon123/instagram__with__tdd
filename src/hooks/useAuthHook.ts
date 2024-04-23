@@ -1,12 +1,18 @@
 import { useRouter } from "next/router";
+import { useCallback } from "react";
 
 export const useAuthHook = () => {
+  const redirect_domain = process.env.PUBLIC_URL;
+  console.log(redirect_domain);
+  const headers: HeadersInit = {
+    "Content-Type": "application/json",
+  };
   const router = useRouter();
-  const goToOAuthFB = () => {
+  const goToOAuthFB = useCallback(() => {
     // https://rhino-organic-bison.ngrok-free.app
     const qs = new URLSearchParams({
       client_id: process.env.FACEBOOK_CLIENT_ID,
-      redirect_uri: `https://rhino-organic-bison.ngrok-free.app/login/fb/callback`,
+      redirect_uri: `${redirect_domain}/login/fb/callback`,
       state: "1234",
       response_type: "token",
       // display: "popup",
@@ -16,6 +22,7 @@ export const useAuthHook = () => {
       // scope: ", instagram_basic, pages_show_list",
     });
 
+    console.log(qs.toString());
     //email,instagram_basic,pages_show_list
     // https://www.facebook.com/v19.0/dialog/oauth?
     // response_type=token&display=popup&client_id=949275753220874
@@ -25,12 +32,13 @@ export const useAuthHook = () => {
       // "popup",
       // "popup=true"
     );
-  };
+  }, [redirect_domain]);
+
   const goToOAuthIG = () => {
     // https://rhino-organic-bison.ngrok-free.app
     const qs = new URLSearchParams({
       client_id: process.env.INSTAGRAM_CLIENT_ID,
-      redirect_uri: "https://rhino-organic-bison.ngrok-free.app/login/callback",
+      redirect_uri: `${redirect_domain}/login/callback`,
       response_type: "code",
       scope: "user_profile,user_media",
     });
@@ -43,7 +51,18 @@ export const useAuthHook = () => {
     // Next : https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
   };
 
-  const getIGProfile = async () => {};
+  const getIGProfile = async () => {
+    // "https://graph.facebook.com/v19.0/134895793791914?fields=instagram_business_account&access_token={access-token}"
+    const qs = new URLSearchParams({
+      fields: "instagram_business_account",
+    });
+    await fetch(``, {
+      method: "GET",
+      headers: {
+        ...headers,
+      },
+    });
+  };
 
   const loginWithFB = async () => {
     const rsp = await getIGProfile();

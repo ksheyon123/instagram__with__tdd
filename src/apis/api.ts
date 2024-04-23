@@ -1,7 +1,6 @@
-// import { get, post } from "./https";
+import { get, post } from "./https";
 
 export const ENDPOINT = {
-  LOGIN: "/fbid/login",
   ACCOUNT_INFO: "/me/accounts",
   GET_ACCESS_TOKEN: "/oauth/access_token",
 };
@@ -13,27 +12,27 @@ const INSTA_PREFIX = "instagram";
 const FB_PATHNAME = "facebook.com";
 const FB_API_VERSION = "v19.0";
 
-// const getAccessToken = async (code: string) => {
-//   //https://graph.facebook.com/v19.0/oauth/access_token?
-//   const data = await get(
-//     `https://${FB_PREFIX}.${FB_PATHNAME}/${FB_API_VERSION}${PATH.GET_ACCESS_TOKEN}`,
-//     {
-//       client_id: process.env.FACEBOOK_CLIENT_ID,
-//       client_secret: process.env.FACEBOOK_CLIENT_SECRET,
-//       redirect_uri: "http://localhost:3000/signin",
-//       code,
-//     }
-//   );
-//   const { access_token } = data;
-//   return access_token;
-// };
-// const getAccounts = async (key: string) => {
-//   // https://graph.facebook.com/v19.0/me/accounts?access_token={access-token}
-//   const data = await get(
-//     `https://${FB_PREFIX}.${FB_PATHNAME}/${FB_API_VERSION}${PATH.ACCOUNT_INFO}`,
-//     { access_token: key }
-//   );
-//   console.log(data);
-// };
+const getFBProfile = async () => {
+  try {
+    const fbac = localStorage.getItem("fbac");
+    if (!fbac) {
+      throw JSON.stringify({ code: 404, message: "No facebook access_token" });
+    }
+    const rsp = await get(`${ENDPOINT.ACCOUNT_INFO}`, {
+      access_token: fbac,
+    });
+    return rsp;
+  } catch (e) {
+    throw e;
+  }
+};
 
-export {};
+const getIGProfilesByFB = async (fb_id: string) => {
+  const fbac = localStorage.getItem("fbac");
+  const rsp = await get(`${ENDPOINT.ACCOUNT_INFO}/${fb_id}`, {
+    fields: "instagram_business_account",
+    access_token: fbac,
+  });
+};
+
+export { getFBProfile, getIGProfilesByFB };

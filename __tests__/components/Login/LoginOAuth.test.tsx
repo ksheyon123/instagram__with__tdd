@@ -22,7 +22,7 @@ describe("LoginOAuth component", () => {
       replace: mockOn,
     });
     const { getByText } = render(<></>);
-    const span = getByText("Facebook으로 로그인");
+    const span = getByText("로그인");
     const button = span.parentNode;
     fireEvent.click(button);
     expect(mockOn).toHaveBeenCalledWith(`${PATHNAME.OAUTH_IG}?${qs}`);

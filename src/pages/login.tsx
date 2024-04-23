@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ImageSlider } from "@/components/Common/ImageSlider";
 import { Button } from "@/components/Common/Button";
@@ -12,41 +12,57 @@ import ScreenShot4 from "@/assets/images/screenshot4_2x.png";
 import { LoginForm } from "@/components/Login/LoginForm";
 import { LoginOAuth } from "@/components/Login/LoginOAuth";
 import { useAuthHook } from "@/hooks/useAuthHook";
+import { getFBProfile } from "@/apis/api";
 
 const LoginPage: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const { goToOAuthFB, goToOAuthIG } = useAuthHook();
   // const ENDPOINT = process.env.NGROK_ENDPOINT;
   const router = useRouter();
 
   const images = [ScreenShot1, ScreenShot2, ScreenShot3, ScreenShot4];
 
-  const handleOnFB = async () => {
-    try {
-      const igac = window.localStorage.getItem("igac");
-      console.log(igac);
-      if (!igac) {
-        throw JSON.stringify({ message: "No access_token" });
+  // const handleOnFB = async () => {
+  //   try {
+  //     const igac = window.localStorage.getItem("igac");
+  //     console.log(igac);
+  //     if (!igac) {
+  //       throw JSON.stringify({ message: "No access_token" });
+  //     }
+  //     const rsp = await fetch(
+  //       `/api/instagram/me?access_token=${igac}&fields=id,username,followers_count,follows_count,media_count,name,profile_picture_url`,
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     console.log(rsp.status);
+  //     if (rsp.status !== 200) {
+  //       throw JSON.stringify({ message: "Error" });
+  //     }
+  //     const d = await rsp.json();
+  //     console.log(d);
+  //   } catch (e) {
+  //     console.log(e);
+  //     goToOAuthIG();
+  //   }
+  // };
+
+  useEffect(() => {
+    const chkFBAuth = async () => {
+      try {
+        const rsp = await getFBProfile();
+        console.log(rsp);
+        setIsLoggedIn(true);
+      } catch (e) {
+        const err = typeof e ? JSON.parse(e) : e;
+        console.error(err);
       }
-      const rsp = await fetch(
-        `/api/instagram/me?access_token=${igac}&fields=id,username,followers_count,follows_count,media_count,name,profile_picture_url`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log(rsp.status);
-      if (rsp.status !== 200) {
-        throw JSON.stringify({ message: "Erro" });
-      }
-      const d = await rsp.json();
-      console.log(d);
-    } catch (e) {
-      console.log(e);
-      goToOAuthIG();
-    }
-  };
+    };
+    chkFBAuth();
+  }, []);
 
   return (
     <article className="flex flex-row justify-center items-stretch mt-8 pb-8 w-full shrink-0 grow">
@@ -71,13 +87,6 @@ const LoginPage: React.FC = () => {
                   <i className="relative overflow-hidden w-full h-full bg-auto bg-left-top bg-ig-imgs-1 bg-ig-logo-size bg-l-0-t-0" />
                 </div>
               </div>
-            </div>
-            <div
-              onClick={() => {
-                handleOnFB();
-              }}
-            >
-              aaa
             </div>
             <LoginForm />
             {/* <LoginOAuth /> */}

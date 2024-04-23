@@ -1,22 +1,24 @@
 import { NextMiddleware, NextRequest, NextResponse } from "next/server";
 import { PATHNAME } from "@/constants/index";
-import { cookies } from "next/headers";
 
 const keys = Object.keys(PATHNAME).filter(
   (el) => el !== "SIGN_IN" && el !== "SIGN_UP"
 );
 const allPaths = Object.values(PATHNAME);
 
-const middleware: NextMiddleware = (request) => {
-  const res = NextResponse.next();
+const middleware: NextMiddleware = (request, next) => {
+  const response = NextResponse.next();
 
   // If the user access to the wrong path, redirect them to the SIGN_IN page.
   if (!allPaths.some((el) => el === request.nextUrl.pathname)) {
     return NextResponse.redirect(new URL(PATHNAME.SIGN_IN, request.url));
   }
 
+  if (request.nextUrl.pathname === PATHNAME.SIGN_IN) {
+  }
+
   //other middleware operations
-  return res;
+  return response;
 };
 
 export default middleware;
