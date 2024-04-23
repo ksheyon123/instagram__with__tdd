@@ -27,9 +27,8 @@ const Callback: React.FC = () => {
     const access_token = qs();
     if (!!access_token) {
       window.localStorage.setItem("fbac", access_token);
-    } else {
-      router.replace(PATHNAME.SIGN_IN);
     }
+    router.replace(PATHNAME.SIGN_IN);
   }, []);
   return <div></div>;
 };

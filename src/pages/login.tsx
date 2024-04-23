@@ -12,11 +12,10 @@ import ScreenShot4 from "@/assets/images/screenshot4_2x.png";
 import { LoginForm } from "@/components/Login/LoginForm";
 import { LoginOAuth } from "@/components/Login/LoginOAuth";
 import { useAuthHook } from "@/hooks/useAuthHook";
-import { getFBProfile } from "@/apis/api";
+import { getFBProfile, getIGProfile, getIGProfilesByPageId } from "@/apis/api";
 
 const LoginPage: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const { goToOAuthFB, goToOAuthIG } = useAuthHook();
   // const ENDPOINT = process.env.NGROK_ENDPOINT;
   const router = useRouter();
 
@@ -53,12 +52,17 @@ const LoginPage: React.FC = () => {
   useEffect(() => {
     const chkFBAuth = async () => {
       try {
-        const rsp = await getFBProfile();
-        console.log(rsp);
+        const pages = await getFBProfile();
+        const { id } = pages[0];
+        const da = await getIGProfilesByPageId(id);
+        const igid = da[0].instagram_business_account.id;
+        console.log(igid);
+        const media = await getIGProfile(igid);
+        console.log(media);
         setIsLoggedIn(true);
       } catch (e) {
+        console.error(e);
         const err = typeof e ? JSON.parse(e) : e;
-        console.error(err);
       }
     };
     chkFBAuth();

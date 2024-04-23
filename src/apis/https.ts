@@ -1,3 +1,11 @@
+/**
+ *
+ * @param domain Next.js Middlware receives /api/${type : instagram, facebook}/${PATHNAME}
+ * @param params params for query string
+ * @param headers optional headers
+ * @returns
+ */
+
 const get = async (domain: string, params = {}, headers = {}) => {
   const qs = new URLSearchParams(params);
   const initHeaders: HeadersInit = {

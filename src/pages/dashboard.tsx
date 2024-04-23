@@ -74,7 +74,7 @@ const Dashboard: React.FC = () => {
 
   const like = async () => {
     const fbac = window.localStorage.getItem("fbac");
-    const instaac = window.localStorage.getItem("instaac");
+    const instaac = window.localStorage.getItem("igac");
 
     await fetch(`/api/like?access_token=${fbac}&ig_ac=${instaac}`);
   };

@@ -17,9 +17,10 @@ export const useAuthHook = () => {
       response_type: "token",
       // display: "popup",
       auth_type: "rerequest",
+      // scope:
+      // "public_profile, instagram_basic, pages_show_list, instagram_manage_comments, pages_read_engagement",
       scope:
-        "public_profile, instagram_basic, pages_show_list, instagram_manage_comments, pages_read_engagement",
-      // scope: ", instagram_basic, pages_show_list",
+        "email, public_profile, instagram_basic, pages_show_list, business_management, pages_read_engagement",
     });
 
     console.log(qs.toString());

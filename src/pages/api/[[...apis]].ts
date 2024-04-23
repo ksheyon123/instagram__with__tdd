@@ -25,15 +25,24 @@ export default async function handler(
           ...(query as any),
           access_token: query.access_token,
         });
-        console.log(`https://graph.${type}.com/${ep}?${queryString}`);
-        rsp = await fetch(`https://graph.${type}.com/${ep}?${queryString}`, {
-          method,
-          headers: {
-            "content-type": "application/x-www-form-urlencoded",
-            accept: "application/json",
-          },
-        });
-        console.log(rsp);
+        const isFB = type === "facebook";
+        console.log(
+          `Request endpoint : \n https://graph.${type}.com/${
+            isFB ? "v19.0/" + ep : ep
+          }?${queryString}`
+        );
+        rsp = await fetch(
+          `https://graph.${type}.com/${
+            isFB ? "v19.0/" + ep : ep
+          }?${queryString}`,
+          {
+            method,
+            headers: {
+              "content-type": "application/x-www-form-urlencoded",
+              accept: "application/json",
+            },
+          }
+        );
         if (!rsp.ok) {
           throw new Error(
             JSON.stringify({ message: rsp.statusText, code: rsp.status })
