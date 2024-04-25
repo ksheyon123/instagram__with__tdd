@@ -34,6 +34,12 @@ export type UserData = {
   username: string;
 };
 
+export type AccountInfo = {
+  id: string;
+  profile_picture_url: string;
+  username: string;
+};
+
 export type Reply = {
   id: string;
   text: string;

@@ -2,22 +2,15 @@ import ProfileIcon from "@/assets/icons/profile_icon.jpeg";
 import Image, { StaticImageData } from "next/image";
 import { Button } from "@/components/Common/Button";
 import { List } from "@/components/Common/List";
+import { AccountInfo } from "@/types/types";
+import { styles } from "@/styles";
+import { useAuthHook } from "@/hooks/useAuthHook";
 
-type Profile = {
-  id: number;
-  name: string;
-  icon: StaticImageData;
-};
+interface IProps {
+  accounts: AccountInfo[];
+}
 
-const PROFILES: Profile[] = [
-  {
-    id: 1,
-    name: "kshyeon123",
-    icon: ProfileIcon,
-  },
-];
-
-const LoginOAuth: React.FC = () => {
+const LoginOAuth: React.FC<IProps> = ({ accounts }) => {
   return (
     <div className="flex flex-col justify-center max-w-[350px] w-full">
       <div className="mt-2 mb-4 px-3">
@@ -29,7 +22,7 @@ const LoginOAuth: React.FC = () => {
         <div className="p-4">
           <div className="flex flex-col border-t pt-3 border-gray239">
             <List
-              items={PROFILES}
+              items={accounts}
               child={(data) => <OAuthProfile {...data} />}
             />
           </div>
@@ -39,16 +32,22 @@ const LoginOAuth: React.FC = () => {
   );
 };
 
-const OAuthProfile: React.FC<Profile> = (props) => {
-  const { id, name, icon } = props;
+const OAuthProfile: React.FC<AccountInfo> = (props) => {
+  const { id, username, profile_picture_url } = props;
+  const { goToOAuthIG } = useAuthHook();
+
   return (
     <div key={id} className="flex flex-row pb-3 items-center">
-      <div className="w-8 h-8 mr-3">
-        <Image src={icon} alt="profile" />
+      <div className="w-8 h-8 mr-3 overflow-hidden rounded-full">
+        <Image width={32} height={32} src={profile_picture_url} alt="profile" />
       </div>
-      <div className="grow">{name}</div>
+      <div className="grow">{username}</div>
       <div className="w-[68px] h-8">
-        <Button name="로그인" onClick={() => {}} />
+        <Button
+          name="로그인"
+          onClick={() => goToOAuthIG()}
+          style={{ opacity: 1 }}
+        />
       </div>
     </div>
   );

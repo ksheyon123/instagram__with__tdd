@@ -1,9 +1,6 @@
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { ImageSlider } from "@/components/Common/ImageSlider";
-import { Button } from "@/components/Common/Button";
-import { Input } from "@/components/Common/Input";
 
 import ScreenShot1 from "@/assets/images/screenshot1_2x.png";
 import ScreenShot2 from "@/assets/images/screenshot2_2x.png";
@@ -11,58 +8,36 @@ import ScreenShot3 from "@/assets/images/screenshot3_2x.png";
 import ScreenShot4 from "@/assets/images/screenshot4_2x.png";
 import { LoginForm } from "@/components/Login/LoginForm";
 import { LoginOAuth } from "@/components/Login/LoginOAuth";
-import { useAuthHook } from "@/hooks/useAuthHook";
 import { getFBProfile, getIGProfile, getIGProfilesByPageId } from "@/apis/api";
+import { Spinner } from "@nextui-org/react";
+import { AccountInfo } from "@/types/types";
 
 const LoginPage: React.FC = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  // const ENDPOINT = process.env.NGROK_ENDPOINT;
-  const router = useRouter();
+
+  const [accounts, setAccounts] = useState<AccountInfo[]>([]);
 
   const images = [ScreenShot1, ScreenShot2, ScreenShot3, ScreenShot4];
 
-  // const handleOnFB = async () => {
-  //   try {
-  //     const igac = window.localStorage.getItem("igac");
-  //     console.log(igac);
-  //     if (!igac) {
-  //       throw JSON.stringify({ message: "No access_token" });
-  //     }
-  //     const rsp = await fetch(
-  //       `/api/instagram/me?access_token=${igac}&fields=id,username,followers_count,follows_count,media_count,name,profile_picture_url`,
-  //       {
-  //         method: "GET",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-  //     console.log(rsp.status);
-  //     if (rsp.status !== 200) {
-  //       throw JSON.stringify({ message: "Error" });
-  //     }
-  //     const d = await rsp.json();
-  //     console.log(d);
-  //   } catch (e) {
-  //     console.log(e);
-  //     goToOAuthIG();
-  //   }
-  // };
-
   useEffect(() => {
     const chkFBAuth = async () => {
+      setIsLoading(true);
       try {
         const pages = await getFBProfile();
         const { id } = pages[0];
-        const da = await getIGProfilesByPageId(id);
-        const igid = da[0].instagram_business_account.id;
-        console.log(igid);
-        const media = await getIGProfile(igid);
-        console.log(media);
+        const ids = await getIGProfilesByPageId(id);
+        // const igid = da.instagram_business_account.id;
+        const accounts = await Promise.all(
+          ids.map((d) => getIGProfile(d.instagram_business_account.id))
+        );
+        console.log(accounts);
+        setAccounts(accounts);
         setIsLoggedIn(true);
       } catch (e) {
-        console.error(e);
         const err = typeof e ? JSON.parse(e) : e;
+      } finally {
+        setIsLoading(false);
       }
     };
     chkFBAuth();
@@ -92,8 +67,9 @@ const LoginPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <LoginForm />
-            {/* <LoginOAuth /> */}
+            {!isLoading && !isLoggedIn && <LoginForm />}
+            {!isLoading && isLoggedIn && <LoginOAuth accounts={accounts} />}
+            {isLoading && <Spinner />}
           </div>
           <div className="flex flex-col justify-center items-center border border-solid border-[gray0] rounded py-2.5 mb-2.5 w-[350px]">
             <div className="block">
@@ -115,11 +91,9 @@ const LoginPage: React.FC = () => {
                 <p className="m-[15px] text-black font-normal">
                   <a
                     className="cursor-pointer"
-                    onClick={() =>
-                      window.open("https://facebook.com", "_blank")
-                    }
+                    onClick={() => setIsLoggedIn(false)}
                   >
-                    <span className="text-hfb0 font-semibold">
+                    <span className="text-hfb0 font-semibold ">
                       {/* Register */}
                       계정 변경{" "}
                     </span>

@@ -11,6 +11,13 @@ const nextConfig = {
         pathname: "/**",
       },
       {
+        protocol: "https",
+        hostname: "*.fbcdn.net",
+        port: "",
+        pathname: "/**",
+      },
+
+      {
         protocol: "http",
         hostname: "localhost",
         port: "",
