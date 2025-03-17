@@ -8,7 +8,7 @@ import ScreenShot3 from "@/assets/images/screenshot3_2x.png";
 import ScreenShot4 from "@/assets/images/screenshot4_2x.png";
 import { LoginForm } from "@/components/Login/LoginForm";
 import { LoginOAuth } from "@/components/Login/LoginOAuth";
-import { getFBProfile, getIGProfile, getIGProfilesByPageId } from "@/apis/api";
+import { getFBProfile, getIGProfile, getIGProfilesByPageId, getUserProfile } from "@/apis/api";
 import { Spinner } from "@nextui-org/react";
 import { AccountInfo } from "@/types/types";
 
@@ -24,17 +24,12 @@ const LoginPage: React.FC = () => {
     const chkFBAuth = async () => {
       setIsLoading(true);
       try {
-        const pages = await getFBProfile();
-        const { id } = pages[0];
-        const ids = await getIGProfilesByPageId(id);
-        // const igid = da.instagram_business_account.id;
-        const accounts = await Promise.all(
-          ids.map((d) => getIGProfile(d.instagram_business_account.id))
-        );
-        console.log(accounts);
+        const pages = await getUserProfile();
+        console.log(pages)
         setAccounts(accounts);
         setIsLoggedIn(true);
       } catch (e) {
+        console.log(e)
         const err = typeof e ? JSON.parse(e) : e;
       } finally {
         setIsLoading(false);
@@ -93,7 +88,7 @@ const LoginPage: React.FC = () => {
                     className="cursor-pointer"
                     onClick={() => setIsLoggedIn(false)}
                   >
-                    <span className="text-hfb0 font-semibold ">
+                    <span className="cursor-not-allowed text-hfb0 font-semibold ">
                       {/* Register */}
                       계정 변경{" "}
                     </span>

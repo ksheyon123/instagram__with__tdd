@@ -26,15 +26,33 @@ const api = "/api";
 //   }
 // };
 
-const getFBProfile = async () => {
+const getUserProfile = async () => {
   try {
     const fbac = localStorage.getItem("fbac");
     if (!fbac) {
       throw JSON.stringify({ code: 404, message: "No facebook access_token" });
     }
+    const rsp = await get(`https://graph.facebook.com/v19.0${ENDPOINT.FB_ID}`, {
+      access_token: fbac,
+    });
+    const { data } = rsp;
+    console.log("RSP", rsp);
+    return data;
+  } catch (e) {
+    throw e;
+  }
+};
+
+const getFBProfile = async () => {
+  try {
+    const fbac = localStorage.getItem("fbac");
+    console.log(fbac);
+    if (!fbac) {
+      throw JSON.stringify({ code: 404, message: "No facebook access_token" });
+    }
     const rsp = await get(`${api}${facebook}${ENDPOINT.ACCOUNT_INFO}`, {
       access_token: fbac,
-      fields: "id, name",
+      fields: "id, name, email",
     });
     const { data } = rsp;
     console.log("RSP", rsp);
@@ -76,4 +94,4 @@ const getIGProfile = async (ig_id) => {
   }
 };
 
-export { getFBProfile, getIGProfilesByPageId, getIGProfile };
+export { getUserProfile, getFBProfile, getIGProfilesByPageId, getIGProfile };

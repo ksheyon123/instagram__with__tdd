@@ -3,6 +3,7 @@ import { Input } from "../Common/Input";
 import { useState } from "react";
 import { Tooltip } from "@nextui-org/react";
 import { useAuthHook } from "@/hooks/useAuthHook";
+import { FaceBookSdkBtn } from "./FacebookSdkBtn";
 
 const LoginForm: React.FC = () => {
   // const ENDPOINT = process.env.NGROK_ENDPOINT;
@@ -68,6 +69,7 @@ const LoginForm: React.FC = () => {
               btnStyleType="fb0"
               style={{ display: "flex", justifyContent: "center" }}
             />
+            <FaceBookSdkBtn />
           </div>
           <a className="inline text-center mt-3">
             <span className="cursor-not-allowed block font-normal text-fb0 text-xs">

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { Fragment, ReactNode } from "react";
 
 interface IProps {
   items: any[];
@@ -10,7 +10,7 @@ export const List: React.FC<IProps> = ({ items, child, prefix = "" }) => {
   return (
     <div role="listbox">
       {items.map((el, idx) => (
-        <>{child(el)}</>
+        <Fragment key={idx}>{child(el)}</Fragment>
       ))}
     </div>
   );
