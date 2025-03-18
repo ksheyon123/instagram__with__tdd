@@ -26,6 +26,25 @@ const api = "/api";
 //   }
 // };
 
+const verifyAccessToken = async (inspectToken: string) => {
+  // App Access Token: 949308743408411|mg2FgTjRS90NZWAItW0p85yyI1g
+  const appAccessToken = "949308743408411|mg2FgTjRS90NZWAItW0p85yyI1g";
+  const rsp = await get(`https://graph.facebook.com/debug_token`, {
+    input_token: inspectToken,
+    access_token: appAccessToken,
+  });
+  console.log(rsp);
+};
+
+const getAppAccessToken = async () => {
+  const rsp = await get(`https://graph.facebook.com/oauth/access_token`, {
+    client_id: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID,
+    client_secret: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_SECRET,
+    grant_type: "client_credentials",
+  });
+  return rsp;
+};
+
 const getUserProfile = async () => {
   try {
     const fbac = localStorage.getItem("fbac");
@@ -35,8 +54,7 @@ const getUserProfile = async () => {
     const rsp = await get(`https://graph.facebook.com/v19.0${ENDPOINT.FB_ID}`, {
       access_token: fbac,
     });
-    const { data } = rsp;
-    console.log("RSP", rsp);
+    const { data } = await rsp;
     return data;
   } catch (e) {
     throw e;
@@ -94,4 +112,11 @@ const getIGProfile = async (ig_id) => {
   }
 };
 
-export { getUserProfile, getFBProfile, getIGProfilesByPageId, getIGProfile };
+export {
+  verifyAccessToken,
+  getAppAccessToken,
+  getUserProfile,
+  getFBProfile,
+  getIGProfilesByPageId,
+  getIGProfile,
+};

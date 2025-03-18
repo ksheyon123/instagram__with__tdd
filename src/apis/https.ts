@@ -11,6 +11,7 @@ const get = async (domain: string, params = {}, headers = {}) => {
   const initHeaders: HeadersInit = {
     ...headers,
   };
+  console.log(qs);
   const rsp = await fetch(`${domain}${qs ? `?${qs}` : ""} `, {
     method: "GET",
     headers: {
@@ -30,7 +31,7 @@ const post = async (domain: string, params = {}, headers = {}) => {
     ...headers,
   };
   const rsp = await fetch(`${domain}`, {
-    method: "GET",
+    method: "POST",
     headers: {
       ...initHeaders,
     },

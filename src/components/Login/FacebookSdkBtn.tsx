@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/Common/Button";
+import {
+  getAppAccessToken,
+  verifyAccessToken,
+  getUserProfile,
+} from "@/apis/api";
 
 export const FaceBookSdkBtn = () => {
   const [loginStatus, setLoginStatus] = useState<string>("");
-
+  const [data, setData] = useState<string>("");
   // Facebook 로그인 상태 콜백 함수
   const statusChangeCallback = (response: any) => {
-    console.log("statusChangeCallback");
     console.log(response);
 
     if (response.status === "connected") {
@@ -16,13 +20,6 @@ export const FaceBookSdkBtn = () => {
       // 페이스북이나 웹페이지에 로그인되지 않은 상태
       setLoginStatus("페이스북 로그인이 필요합니다.");
     }
-  };
-
-  // 로그인 버튼 클릭 후 호출되는 함수
-  const checkLoginState = () => {
-    (window as any).FB.getLoginStatus(function (response: any) {
-      statusChangeCallback(response);
-    });
   };
 
   // 로그인 성공 후 사용자 정보를 가져오는 함수
@@ -45,10 +42,11 @@ export const FaceBookSdkBtn = () => {
         cookie: true, // 세션 액세스를 위한 쿠키 활성화
         xfbml: true, // 소셜 플러그인 파싱 활성화
         version: "v18.0", // 사용할 Graph API 버전
+        popup: false,
       });
 
       (window as any).FB.getLoginStatus(function (response: any) {
-        console.log("USER", response);
+        console.log("GET ACCESS TOKEN", response);
         // SDK 초기화 후 호출됨
         statusChangeCallback(response);
       });
@@ -66,8 +64,9 @@ export const FaceBookSdkBtn = () => {
       (window as any).FB.login(
         (response: any) => {
           if (response.authResponse) {
-            console.log("AUTH : ", response);
-            checkLoginState();
+            const token = response.authResponse.accessToken;
+            window.localStorage.setItem("fbac", token);
+            setData(token);
           } else {
             console.log("User cancelled login or did not fully authorize.");
           }
@@ -79,9 +78,18 @@ export const FaceBookSdkBtn = () => {
     }
   };
 
+  const verify = async () => {
+    const rsp = await getAppAccessToken();
+    console.log(rsp);
+    verifyAccessToken(data);
+  };
+
   return (
     <div>
       <Button name="Facebook 로그인" onClick={handleFacebookLogin} />
+      <Button name="GET App access token" onClick={verify} />
+      <Button name="Test API" onClick={testAPI} />
+      <Button name="Get Profile" onClick={getUserProfile} />
     </div>
   );
 };

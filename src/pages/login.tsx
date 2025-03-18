@@ -20,23 +20,23 @@ const LoginPage: React.FC = () => {
 
   const images = [ScreenShot1, ScreenShot2, ScreenShot3, ScreenShot4];
 
-  useEffect(() => {
-    const chkFBAuth = async () => {
-      setIsLoading(true);
-      try {
-        const pages = await getUserProfile();
-        console.log(pages)
-        setAccounts(accounts);
-        setIsLoggedIn(true);
-      } catch (e) {
-        console.log(e)
-        const err = typeof e ? JSON.parse(e) : e;
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    chkFBAuth();
-  }, []);
+  // useEffect(() => {
+  //   const chkFBAuth = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       const pages = await getUserProfile();
+  //       console.log("getUserProfile : ", pages)
+  //       setAccounts(accounts);
+  //       setIsLoggedIn(true);
+  //     } catch (e) {
+  //       console.log(e)
+  //       const err = typeof e ? JSON.parse(e) : e;
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+  //   chkFBAuth();
+  // }, []);
 
   return (
     <article className="flex flex-row justify-center items-stretch mt-8 pb-8 w-full shrink-0 grow">
